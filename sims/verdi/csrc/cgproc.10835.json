@@ -1,0 +1,151 @@
+{
+    "CompUnits": {
+        "amcQw_d": {
+            "mod": "...MASTER...",
+            "out": "objs/amcQw_d.o",
+            "bytes": 7576,
+            "checksum": 0,
+            "mode": 4
+        },
+        "HD5gB_d": {
+            "mod": "full_handshake_tx",
+            "out": "HD5gB_d.o",
+            "bytes": 18978,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "reYIK_d": {
+            "mod": "std",
+            "out": "reYIK_d.o",
+            "bytes": 41566,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "rzVRz_d": {
+            "mod": "div",
+            "out": "rzVRz_d.o",
+            "bytes": 34550,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "aLYw7_d": {
+            "mod": "full_handshake_rx",
+            "out": "aLYw7_d.o",
+            "bytes": 18002,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "AJ0A6_d": {
+            "mod": "tinyriscv_soc_tb",
+            "out": "AJ0A6_d.o",
+            "bytes": 259642,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "vTyec_d": {
+            "mod": "jtag_top",
+            "out": "vTyec_d.o",
+            "bytes": 75950,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "qW9kS_d": {
+            "mod": "clint",
+            "out": "qW9kS_d.o",
+            "bytes": 24702,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        },
+        "UfirL_d": {
+            "mod": "bus",
+            "out": "UfirL_d.o",
+            "bytes": 33476,
+            "checksum": 0,
+            "mode": 4,
+            "archive": "archive.0/_10835_archive_1.a"
+        }
+    },
+    "Modules": {
+        "...MASTER...": {},
+        "clint": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "std": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "full_handshake_tx": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "tinyriscv_soc_tb": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "jtag_top": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "bus": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "full_handshake_rx": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "div": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        }
+    },
+    "reusePaths": {},
+    "ObjArchives": [
+        {
+            "size": 506866,
+            "archive": "archive.0/_10835_archive_1.a",
+            "objects": [
+                [
+                    "reYIK_d.o",
+                    41566
+                ],
+                [
+                    "AJ0A6_d.o",
+                    259642
+                ],
+                [
+                    "vTyec_d.o",
+                    75950
+                ],
+                [
+                    "aLYw7_d.o",
+                    18002
+                ],
+                [
+                    "HD5gB_d.o",
+                    18978
+                ],
+                [
+                    "UfirL_d.o",
+                    33476
+                ],
+                [
+                    "qW9kS_d.o",
+                    24702
+                ],
+                [
+                    "rzVRz_d.o",
+                    34550
+                ]
+            ]
+        }
+    ]
+}

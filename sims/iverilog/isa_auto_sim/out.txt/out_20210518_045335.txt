@@ -1,0 +1,141 @@
+test name: add
+test result: fail
+
+test name: addi
+test result: fail
+
+test name: and
+test result: fail
+
+test name: andi
+test result: fail
+
+test name: auipc
+test result: fail
+
+test name: beq
+test result: fail
+
+test name: bge
+test result: fail
+
+test name: bgeu
+test result: fail
+
+test name: blt
+test result: fail
+
+test name: bltu
+test result: fail
+
+test name: bne
+test result: fail
+
+test name: fence_i
+test result: fail
+
+test name: jal
+test result: fail
+
+test name: jalr
+test result: fail
+
+test name: lb
+test result: fail
+
+test name: lbu
+test result: fail
+
+test name: lh
+test result: fail
+
+test name: lhu
+test result: fail
+
+test name: lui
+test result: fail
+
+test name: lw
+test result: fail
+
+test name: or
+test result: fail
+
+test name: ori
+test result: fail
+
+test name: sb
+test result: fail
+
+test name: sh
+test result: fail
+
+test name: sll
+test result: fail
+
+test name: slli
+test result: fail
+
+test name: slt
+test result: fail
+
+test name: slti
+test result: fail
+
+test name: sltiu
+test result: fail
+
+test name: sltu
+test result: fail
+
+test name: sra
+test result: fail
+
+test name: srai
+test result: fail
+
+test name: srl
+test result: fail
+
+test name: srli
+test result: fail
+
+test name: sub
+test result: fail
+
+test name: sw
+test result: fail
+
+test name: xor
+test result: fail
+
+test name: xori
+test result: fail
+
+test name: div
+test result: fail
+
+test name: divu
+test result: fail
+
+test name: mul
+test result: fail
+
+test name: mulh
+test result: fail
+
+test name: mulhsu
+test result: fail
+
+test name: mulhu
+test result: fail
+
+test name: rem
+test result: fail
+
+test name: remu
+test result: fail
+
+test number : 46
+pass number : 0
+fail number : 46

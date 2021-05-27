@@ -1,0 +1,62 @@
+Command: ./simv +test_case=../../tests/c_tests/simple/simple.data -l sim.log +notimingcheck +nospecify
+Chronologic VCS simulator copyright 1991-2016
+Contains Synopsys proprietary information.
+Compiler version L-2016.06_Full64; Runtime version L-2016.06_Full64;  May  9 14:45 2021
+test running...
+test_path=../../tests/c_tests/simple/simple.data
+*Verdi3* Loading libsscore_vcs201606.so
+*Verdi3* : FSDB_GATE is set.
+*Verdi3* : FSDB_RTL is set.
+*Verdi3* : Enable Parallel Dumping.
+FSDB Dumper for VCS, Release Verdi3_L-2016.06-1, Linux x86_64/64bit, 07/10/2016
+(C) 1996 - 2016 by Synopsys, Inc.
+*Verdi3* : Create FSDB file 'riscv.fsdb'
+*Verdi3* : Begin traversing the scopes, layer (0).
+*Verdi3* : End of traversing.
+~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~
+~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~
+~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~
+~~~~~~~~~ #####   ######       #       #~~~~~~~~~
+~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~
+~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+x 0 = 0xxxxxxxxx
+x 1 = 0x00000060
+x 2 = 0x10004000
+x 3 = 0x10000800
+x 4 = 0xxxxxxxxx
+x 5 = 0x00000003
+x 6 = 0xxxxxxxxx
+x 7 = 0xxxxxxxxx
+x 8 = 0xxxxxxxxx
+x 9 = 0xxxxxxxxx
+x10 = 0x00000000
+x11 = 0x10000008
+x12 = 0x10000008
+x13 = 0xxxxxxxxx
+x14 = 0x00001d7e
+x15 = 0x00000000
+x16 = 0xxxxxxxxx
+x17 = 0xxxxxxxxx
+x18 = 0xxxxxxxxx
+x19 = 0xxxxxxxxx
+x20 = 0xxxxxxxxx
+x21 = 0xxxxxxxxx
+x22 = 0xxxxxxxxx
+x23 = 0xxxxxxxxx
+x24 = 0xxxxxxxxx
+x25 = 0xxxxxxxxx
+x26 = 0x00000001
+x27 = 0x00000001
+x28 = 0xxxxxxxxx
+x29 = 0xxxxxxxxx
+x30 = 0xxxxxxxxx
+x31 = 0xxxxxxxxx
+$finish called from file "./soc_tb.v", line 488.
+$finish at simulation time             57890000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 57890000 ps
+CPU Time:      0.290 seconds;       Data structure size:   0.1Mb
+Sun May  9 14:45:36 2021

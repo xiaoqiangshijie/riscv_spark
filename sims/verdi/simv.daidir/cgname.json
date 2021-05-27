@@ -1,0 +1,47 @@
+{
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module"
+    ],
+    "clint": [
+        "clint",
+        "qW9kS",
+        "module"
+    ],
+    "std": [
+        "std",
+        "reYIK",
+        "module"
+    ],
+    "full_handshake_tx": [
+        "full_handshake_tx",
+        "HD5gB",
+        "module"
+    ],
+    "tinyriscv_soc_tb": [
+        "tinyriscv_soc_tb",
+        "AJ0A6",
+        "module"
+    ],
+    "jtag_top": [
+        "jtag_top",
+        "vTyec",
+        "module"
+    ],
+    "bus": [
+        "bus",
+        "UfirL",
+        "module"
+    ],
+    "full_handshake_rx": [
+        "full_handshake_rx",
+        "aLYw7",
+        "module"
+    ],
+    "div": [
+        "div",
+        "rzVRz",
+        "module"
+    ]
+}

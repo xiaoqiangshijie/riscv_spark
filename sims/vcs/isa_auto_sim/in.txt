@@ -1,0 +1,137 @@
+test_name:add
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-add.data
+
+test_name:addi
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-addi.data
+
+test_name:and
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-and.data
+
+test_name:andi
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-andi.data
+
+test_name:auipc
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-auipc.data
+
+test_name:beq
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-beq.data
+
+test_name:bge
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-bge.data
+
+test_name:bgeu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-bgeu.data
+
+test_name:blt
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-blt.data
+
+test_name:bltu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-bltu.data
+
+test_name:bne
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-bne.data
+
+test_name:fence_i
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-fence_i.data
+
+test_name:jal
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-jal.data
+
+test_name:jalr
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-jalr.data
+
+test_name:lb
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lb.data
+
+test_name:lbu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lbu.data
+
+test_name:lh
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lh.data
+
+test_name:lhu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lhu.data
+
+test_name:lui
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lui.data
+
+test_name:lw
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-lw.data
+
+test_name:or
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-or.data
+
+test_name:ori
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-ori.data
+
+test_name:sb
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sb.data
+
+test_name:sh
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sh.data
+
+test_name:sll
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sll.data
+
+test_name:slli
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-slli.data
+
+test_name:slt
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-slt.data
+
+test_name:slti
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-slti.data
+
+test_name:sltiu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sltiu.data
+
+test_name:sltu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sltu.data
+
+test_name:sra
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sra.data
+
+test_name:srai
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-srai.data
+
+test_name:srl
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-srl.data
+
+test_name:srli
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-srli.data
+
+test_name:sub
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sub.data
+
+test_name:sw
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-sw.data
+
+test_name:xor
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-xor.data
+
+test_name:xori
+test_command:../simv +test_case=../../../tests/isa/generated/rv32ui-p-xori.data
+
+test_name:div
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-div.data
+
+test_name:divu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-divu.data
+
+test_name:mul
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-mul.data
+
+test_name:mulh
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-mulh.data
+
+test_name:mulhsu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-mulhsu.data
+
+test_name:mulhu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-mulhu.data
+
+test_name:rem
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-rem.data
+
+test_name:remu
+test_command:../simv +test_case=../../../tests/isa/generated/rv32um-p-remu.data

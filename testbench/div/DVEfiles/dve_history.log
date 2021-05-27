@@ -1,0 +1,128 @@
+# Preference setting overrides
+gui_create_pref_key -category {Globals} -key {load_detail_for_funcov} -value_type {bool} -value {false}
+
+# State setting overrides
+gui_state_default_create -off -ini
+gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file /home/lj/ic/riscv_soc/testbench/div/vcdplus.vpd -design V1} {gui_open_db -file /home/lj/riscv/sim_vcs/vcdplus.vpd -design V1} {gui_open_db -file /home/lj/chipyard/sims/vcs/vcdplus.vpd -design V1} {gui_open_db -file /home/lj/riscv/sim_vcs/tinyriscv_soc_tb.vcd -design V1} {gui_open_db -file /home/lj/riscv/sim_vcs/tinyriscv_soc_tb.vcd.vpd -design V1}}
+gui_set_state_value -category Layout -key child_console_size_x -value 1852
+gui_set_state_value -category Layout -key child_console_size_y -value 415
+gui_set_state_value -category Layout -key child_data_coltype -value 91
+gui_set_state_value -category Layout -key child_data_colvalue -value 116
+gui_set_state_value -category Layout -key child_data_colvariable -value 341
+gui_set_state_value -category Layout -key child_data_size_x -value 554
+gui_set_state_value -category Layout -key child_data_size_y -value 528
+gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
+gui_set_state_value -category Layout -key child_hier_colhier -value 324
+gui_set_state_value -category Layout -key child_hier_colpd -value 0
+gui_set_state_value -category Layout -key child_hier_coltype -value 62
+gui_set_state_value -category Layout -key child_hier_size_x -value 392
+gui_set_state_value -category Layout -key child_hier_size_y -value 528
+gui_set_state_value -category Layout -key child_memory_docknewline -value false
+gui_set_state_value -category Layout -key child_memory_pos_x -value {-2}
+gui_set_state_value -category Layout -key child_memory_pos_y -value {-15}
+gui_set_state_value -category Layout -key child_memory_size_x -value 891
+gui_set_state_value -category Layout -key child_memory_size_y -value 520
+gui_set_state_value -category Layout -key child_source_docknewline -value false
+gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
+gui_set_state_value -category Layout -key child_source_pos_y -value {-15}
+gui_set_state_value -category Layout -key child_source_size_x -value 909
+gui_set_state_value -category Layout -key child_source_size_y -value 523
+gui_set_state_value -category Layout -key child_wave_colname -value 267
+gui_set_state_value -category Layout -key child_wave_colvalue -value 267
+gui_set_state_value -category Layout -key child_wave_left -value 537
+gui_set_state_value -category Layout -key child_wave_right -value 1310
+gui_set_state_value -category Layout -key main_pos_x -value 0
+gui_set_state_value -category Layout -key main_pos_y -value 28
+gui_set_state_value -category Layout -key main_size_x -value 1852
+gui_set_state_value -category Layout -key main_size_y -value 1052
+gui_set_state_value -category Layout -key stand_wave_child_docknewline -value false
+gui_set_state_value -category Layout -key stand_wave_child_pos_x -value {-2}
+gui_set_state_value -category Layout -key stand_wave_child_pos_y -value {-15}
+gui_set_state_value -category Layout -key stand_wave_child_size_x -value 1857
+gui_set_state_value -category Layout -key stand_wave_child_size_y -value 938
+gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 67
+gui_set_state_value -category Layout -key stand_wave_top_pos_y -value 80
+gui_set_state_value -category Layout -key stand_wave_top_size_x -value 1919
+gui_set_state_value -category Layout -key stand_wave_top_size_y -value 1104
+gui_create_state_key -category FindDialog -key m_pMatchCase -value_type bool -value false
+gui_create_state_key -category FindDialog -key m_pMatchWord -value_type bool -value false
+gui_create_state_key -category FindDialog -key m_pUseCombo -value_type string -value {}
+gui_create_state_key -category FindDialog -key m_pWrapAround -value_type bool -value true
+gui_state_default_create -off
+
+# Begin command logging
+gui_open_db -file /home/lj/ic/riscv_soc/testbench/div/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   div_test
+gui_list_select -id Hier.1 -current_item_name div_test.u_div -current_item_type Scope  -selected  { div_test.u_div   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 { div_test.u_div } -insertionbar
+gui_marker_move -id  Wave.1 C1 112
+gui_zoom -window Wave.1 -full
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_remu   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  {div_test.u_div.dividend_invert[31:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  {div_test.u_div.dividend_invert[31:0]}  div_test.u_div.op_remu   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  div_test.u_div.op_remu   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  div_test.u_div.op_remu  div_test.u_div.op_div   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  div_test.u_div.op_remu  div_test.u_div.op_div  {div_test.u_div.reg_waddr_o[4:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.STATE_END[3:0]}  {div_test.u_div.STATE_CALC[3:0]}  {div_test.u_div.STATE_START[3:0]}  {div_test.u_div.STATE_IDLE[3:0]}  div_test.u_div.op_rem  div_test.u_div.op_remu  div_test.u_div.op_div  {div_test.u_div.reg_waddr_o[4:0]}  {div_test.u_div.reg_waddr_i[4:0]}   }
+gui_delete_selected -id  Wave.1
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.result_o[31:0]}   }
+gui_marker_move -id  Wave.1 C1 630000
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.div_result_tmp[31:0]}   }
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_wv_scroll_hslidermove -id  Wave.1 7726
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 670000
+gui_marker_move -id  Wave.1 C1 630000
+gui_marker_move -id  Wave.1 C1 637464
+gui_get_drivers -id Wave.1 -signal div_test.u_div.minuend_ge_divisor
+gui_list_select -id DriverLoad.1 -selected  {  }
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 438457
+gui_marker_move -id  Wave.1 C1 638733
+gui_marker_move -id  Wave.1 C1 694961
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.minuend[31:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.dividend_invert[31:0]}   }
+gui_marker_move -id  Wave.1 C1 226178
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.minuend[31:0]}   }
+gui_marker_move -id  Wave.1 C1 610000
+gui_list_select -id Wave.1 -selected  { div_test.u_div.minuend_ge_divisor   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.div_result_tmp[31:0]}   }
+gui_list_select -id Wave.1 -selected  { {div_test.u_div.minuend[31:0]}   }
+gui_marker_move -id  Wave.1 C1 630000
+gui_marker_move -id  Wave.1 C1 670000
+gui_marker_move -id  Wave.1 C1 766353
+gui_marker_move -id  Wave.1 C1 715178
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 590000
+gui_marker_move -id  Wave.1 C1 590000
+gui_marker_move -id  Wave.1 C1 580609
+gui_marker_select -id  Wave.1 { C1 }
+gui_marker_move -id  Wave.1 C1 523116
+gui_marker_move -id  Wave.1 C1 513008
+gui_marker_move -id  Wave.1 C1 665899
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 576818
+gui_marker_move -id  Wave.1 C1 592612
+gui_marker_move -id  Wave.1 C1 605880
+gui_marker_move -id  Wave.1 C1 630000
+gui_marker_move -id  Wave.1 C1 630000
+gui_marker_move -id  Wave.1 C1 630000
+gui_marker_move -id  Wave.1 C1 650000
+gui_marker_move -id  Wave.1 C1 650000
+gui_marker_move -id  Wave.1 C1 224915

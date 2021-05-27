@@ -1,0 +1,137 @@
+test_name:add
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-add.mem
+
+test_name:addi
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-addi.mem
+
+test_name:and
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-and.mem
+
+test_name:andi
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-andi.mem
+
+test_name:auipc
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-auipc.mem
+
+test_name:beq
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-beq.mem
+
+test_name:bge
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-bge.mem
+
+test_name:bgeu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-bgeu.mem
+
+test_name:blt
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-blt.mem
+
+test_name:bltu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-bltu.mem
+
+test_name:bne
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-bne.mem
+
+test_name:fence_i
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-fence_i.mem
+
+test_name:jal
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-jal.mem
+
+test_name:jalr
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-jalr.mem
+
+test_name:lb
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lb.mem
+
+test_name:lbu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lbu.mem
+
+test_name:lh
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lh.mem
+
+test_name:lhu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lhu.mem
+
+test_name:lui
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lui.mem
+
+test_name:lw
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-lw.mem
+
+test_name:or
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-or.mem
+
+test_name:ori
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-ori.mem
+
+test_name:sb
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sb.mem
+
+test_name:sh
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sh.mem
+
+test_name:sll
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sll.mem
+
+test_name:slli
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-slli.mem
+
+test_name:slt
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-slt.mem
+
+test_name:slti
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-slti.mem
+
+test_name:sltiu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sltiu.mem
+
+test_name:sltu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sltu.mem
+
+test_name:sra
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sra.mem
+
+test_name:srai
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-srai.mem
+
+test_name:srl
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-srl.mem
+
+test_name:srli
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-srli.mem
+
+test_name:sub
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sub.mem
+
+test_name:sw
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-sw.mem
+
+test_name:xor
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-xor.mem
+
+test_name:xori
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32ui-p-xori.mem
+
+test_name:div
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-div.mem
+
+test_name:divu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-divu.mem
+
+test_name:mul
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-mul.mem
+
+test_name:mulh
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-mulh.mem
+
+test_name:mulhsu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-mulhsu.mem
+
+test_name:mulhu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-mulhu.mem
+
+test_name:rem
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-rem.mem
+
+test_name:remu
+test_command:vvp -n simv +test_case=../../tests/isa/generated/rv32um-p-remu.mem

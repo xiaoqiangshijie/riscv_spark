@@ -1,0 +1,128 @@
+
+Warning-[DBG_FLAG_DEP] Debug Option is being Deprecated
+  The '-fsdb' debug-related option is being deprecated and will no longer be 
+  supported in a future release.
+  Please recompile using the '-debug_access<+options>' switch and incremental 
+  options as required.  Recommended options are '-debug_access' for 
+  post-process debug, '-debug_access+classdbg' for testbench debug, and 
+  '-debug_access+all' for all debug capabilities.  Refer the VCS user guide 
+  for more granular options for debug control under the switch '-debug_access'
+  and refer to '-debug_region' for region control.
+
+Command: vcs -full64 -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed -fsdb -sverilog \
+-debug_all +notimingcheck +nospecify +memcbk +define+FSDB +incdir+../../src -l com.log \
+-f filelist
+*** Using c compiler gcc-4.8 instead of cc ...
+                         Chronologic VCS (TM)
+         Version L-2016.06_Full64 -- Sun May  9 14:45:34 2021
+               Copyright (c) 1991-2016 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file './soc_tb.v'
+Parsing included file '../../src/defines.v'.
+Back to file './soc_tb.v'.
+Parsing design file '../../src/soc/soc_top.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/soc_top.v'.
+Parsing design file '../../src/soc/jtag/jtag_top.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/jtag/jtag_top.v'.
+Parsing design file '../../src/soc/jtag/jtag_dm.v'
+Parsing design file '../../src/soc/jtag/jtag_driver.v'
+Parsing design file '../../src/soc/jtag/full_handshake_rx.v'
+Parsing design file '../../src/soc/jtag/full_handshake_tx.v'
+Parsing design file '../../src/soc/core/bus.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/bus.v'.
+Parsing design file '../../src/soc/core/core_top.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/core_top.v'.
+Parsing design file '../../src/soc/core/clint.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/clint.v'.
+Parsing design file '../../src/soc/core/div.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/div.v'.
+Parsing design file '../../src/soc/core/ex.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/ex.v'.
+Parsing design file '../../src/soc/core/id_ex.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/id_ex.v'.
+Parsing design file '../../src/soc/core/gen_dff.v'
+Parsing design file '../../src/soc/core/if_id.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/if_id.v'.
+Parsing design file '../../src/soc/core/csr_reg.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/csr_reg.v'.
+Parsing design file '../../src/soc/core/regs.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/regs.v'.
+Parsing design file '../../src/soc/core/ctrl.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/ctrl.v'.
+Parsing design file '../../src/soc/core/if.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/if.v'.
+Parsing design file '../../src/soc/core/id.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/core/id.v'.
+Parsing design file '../../src/soc/peripherals/ram.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/peripherals/ram.v'.
+Parsing design file '../../src/soc/peripherals/rom.v'
+Parsing included file '../../src/defines.v'.
+Back to file '../../src/soc/peripherals/rom.v'.
+Top Level Modules:
+       tinyriscv_soc_tb
+TimeScale is 1 ns / 1 ps
+
+Warning-[TFIPC] Too few instance port connections
+../../src/soc/core/core_top.v, 367
+"bus u_bus( .clk (clk),  .rst (rst),  .m0_addr_i (rib_ex_addr_o),  .m0_data_i (rib_ex_data_o),  .m0_data_o (rib_ex_data_i),  .m0_req_i (rib_ex_req_o),  .m0_we_i (rib_ex_we_o),  .m1_addr_i (rib_pc_addr_o),  .m1_data_i (32'b0),  .m1_data_o (rib_pc_data_i),  .m1_req_i (1'b1),  .m1_we_i (1'b0),  .s0_addr_o (s0_addr_o),  .s0_data_o (s0_data_o),  .s0_data_i (s0_data_i),  .s0_we_o (s0_we_o),  .s1_addr_o (s1_addr_o),  .s1_data_o (s1_data_o),  .s1_data_i (s1_data_i),  .s1_we_o (s1_we_o),  .hold_flag_o (rib_hold_flag_i));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+./soc_tb.v, 537
+"soc_top u_soc_top( .clk (clk),  .rst (rst));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+Starting vcs inline pass...
+8 unique modules to generate
+8 modules and 0 UDP read. 
+recompiling package std
+recompiling module tinyriscv_soc_tb
+recompiling module jtag_top
+recompiling module full_handshake_rx
+recompiling module full_handshake_tx
+recompiling module bus
+recompiling module clint
+recompiling module div
+All of 8 modules done
+make[1]: Entering directory '/home/lj/riscv_soc/sims/verdi/csrc'
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++-4.8  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ \
+-Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -Wl,--no-as-needed -rdynamic   amcQwB.o \
+objs/amcQw_d.o   _10835_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o \
+rmar_llvm_0_1.o rmar_llvm_0_0.o          /home/lj/synopsys/vcs_2016.06/linux64/lib/libzerosoft_rt_stubs.so \
+/home/lj/synopsys/vcs_2016.06/linux64/lib/libvirsim.so /home/lj/synopsys/vcs_2016.06/linux64/lib/liberrorinf.so \
+/home/lj/synopsys/vcs_2016.06/linux64/lib/libsnpsmalloc.so    /home/lj/synopsys/vcs_2016.06/linux64/lib/libvcsnew.so \
+/home/lj/synopsys/vcs_2016.06/linux64/lib/libsimprofile.so /home/lj/synopsys/vcs_2016.06/linux64/lib/libuclinative.so \
+-Wl,-whole-archive /home/lj/synopsys/vcs_2016.06/linux64/lib/libvcsucli.so -Wl,-no-whole-archive \
+_vcs_pli_stub_.o   /home/lj/synopsys/vcs_2016.06/linux64/lib/vcs_save_restore_new.o \
+/home/lj/synopsys/verdi_2016.06-1/share/PLI/VCS/LINUX64/pli.a -ldl  -lc -lm -lpthread \
+-ldl 
+../simv up to date
+make[1]: Leaving directory '/home/lj/riscv_soc/sims/verdi/csrc'
+CPU time: .497 seconds to compile + .253 seconds to elab + .215 seconds to link

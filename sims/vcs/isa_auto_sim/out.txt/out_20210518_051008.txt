@@ -1,0 +1,141 @@
+test name: add
+test result: pass
+
+test name: addi
+test result: pass
+
+test name: and
+test result: pass
+
+test name: andi
+test result: pass
+
+test name: auipc
+test result: pass
+
+test name: beq
+test result: pass
+
+test name: bge
+test result: pass
+
+test name: bgeu
+test result: pass
+
+test name: blt
+test result: pass
+
+test name: bltu
+test result: pass
+
+test name: bne
+test result: pass
+
+test name: fence_i
+test result: pass
+
+test name: jal
+test result: pass
+
+test name: jalr
+test result: pass
+
+test name: lb
+test result: pass
+
+test name: lbu
+test result: pass
+
+test name: lh
+test result: pass
+
+test name: lhu
+test result: pass
+
+test name: lui
+test result: pass
+
+test name: lw
+test result: pass
+
+test name: or
+test result: pass
+
+test name: ori
+test result: pass
+
+test name: sb
+test result: pass
+
+test name: sh
+test result: pass
+
+test name: sll
+test result: pass
+
+test name: slli
+test result: pass
+
+test name: slt
+test result: pass
+
+test name: slti
+test result: pass
+
+test name: sltiu
+test result: pass
+
+test name: sltu
+test result: pass
+
+test name: sra
+test result: pass
+
+test name: srai
+test result: pass
+
+test name: srl
+test result: pass
+
+test name: srli
+test result: pass
+
+test name: sub
+test result: pass
+
+test name: sw
+test result: pass
+
+test name: xor
+test result: pass
+
+test name: xori
+test result: pass
+
+test name: div
+test result: pass
+
+test name: divu
+test result: pass
+
+test name: mul
+test result: pass
+
+test name: mulh
+test result: pass
+
+test name: mulhsu
+test result: pass
+
+test name: mulhu
+test result: pass
+
+test name: rem
+test result: pass
+
+test name: remu
+test result: pass
+
+test number : 46
+pass number : 46
+fail number : 0
