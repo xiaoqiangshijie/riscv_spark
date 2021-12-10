@@ -1,6 +1,6 @@
 all: clean compile simulate
 
-test:=
+test:=simple
 
 test_type?=c_test
 
@@ -19,7 +19,7 @@ compile:
 
 simulate:
 ifeq ($(test_type),c_test)
-	./simv +test_case=../../tests/c_tests/$(test)/$(test).data -l sim.log +notimingcheck +nospecify
+	./simv +test_case=../../tests/c_tests/$(test)/$(test).mem -l sim.log +notimingcheck +nospecify
 else ifeq ($(test_type),isa)
 	./simv -f filelist -ssf soc_tb.fsdb +test_case=../../tests/isa/generated/rv32ui-p-$(test).data -l sim.log +notimingcheck +nospecify
 endif
