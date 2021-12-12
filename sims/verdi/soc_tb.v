@@ -531,6 +531,7 @@ module tinyriscv_soc_tb;
     initial begin
 	    $fsdbDumpfile("riscv.fsdb");
 	    $fsdbDumpvars;
+        $fsdbDumpMDA();
     end
     `endif
 
