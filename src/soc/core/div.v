@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "/home/wq/riscv_soc1/src/defines.v"
 
 // 除法模块
 // 试商法实现32位整数除法

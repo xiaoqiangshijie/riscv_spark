@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "/home/wq/riscv_soc1/src/defines.v"
 
 // 译码模块
 // 纯组合逻辑电路

@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "/home/wq/riscv_soc1/src/defines.v"
 
 // 通用寄存器模块
 module regs(

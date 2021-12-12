@@ -1,4 +1,4 @@
-`include "defines.v"
+`include "/home/wq/riscv_soc1/src/defines.v"
 
 // 处理器核顶层模块
 module core(
