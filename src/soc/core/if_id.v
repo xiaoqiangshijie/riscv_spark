@@ -1,4 +1,4 @@
-`include "/home/wq/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_soc1/src/defines.v"
 
 // 将指令向译码模块传递
 module if_id(

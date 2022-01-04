@@ -1,4 +1,4 @@
-`include "/home/wq/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_soc1/src/defines.v"
 
 // soc顶层模块
 module soc_top(

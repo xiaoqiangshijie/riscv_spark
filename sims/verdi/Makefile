@@ -5,7 +5,7 @@ test:=simple
 test_type?=c_test
 
 compile:
-	vcs -full64 -cpp g++-4.8 -cc gcc-4.8 -LDFLAGS -Wl,--no-as-needed \
+	vcs -full64 -cpp g++-9 -cc gcc-9 -LDFLAGS -Wl,--no-as-needed \
 	-fsdb \
 	-sverilog \
 	-debug_all \

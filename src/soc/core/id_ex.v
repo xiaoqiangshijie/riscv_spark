@@ -1,4 +1,4 @@
-`include "/home/wq/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_soc1/src/defines.v"
 
 // 将译码结果向执行模块传递
 module id_ex(
