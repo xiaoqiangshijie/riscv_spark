@@ -1,8 +1,8 @@
 all: clean compile simulate
 
-test:=simple
+test:=add
 
-test_type?=c_test
+test_type?=isa
 
 compile:
 	vcs -full64 -cpp g++-9 -cc gcc-9 -LDFLAGS -Wl,--no-as-needed \
@@ -21,7 +21,7 @@ simulate:
 ifeq ($(test_type),c_test)
 	./simv +test_case=../../tests/c_tests/$(test)/$(test).mem -l sim.log +notimingcheck +nospecify
 else ifeq ($(test_type),isa)
-	./simv -f filelist -ssf soc_tb.fsdb +test_case=../../tests/isa/generated/rv32ui-p-$(test).data -l sim.log +notimingcheck +nospecify
+	./simv -f filelist -ssf soc_tb.fsdb +test_case=../../tests/isa/generated/rv32ui-p-$(test).mem -l sim.log +notimingcheck +nospecify
 endif
 
 clean:
