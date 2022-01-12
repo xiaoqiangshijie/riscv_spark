@@ -29,8 +29,8 @@ LDFLAGS += -T ../c_tests/link.lds -nostartfiles -Wl,--gc-sections -Wl,--check-se
 all: clean $(TARGET)
 
 $(TARGET):
-	$(RISCV_GCC) $(CFLAGS) -c ./smoke_add.S
-	$(RISCV_GCC) $(CFLAGS) $(LDFLAGS) smoke_add.o -o $@
+	$(RISCV_GCC) $(CFLAGS) -c ./s_test.S
+	$(RISCV_GCC) $(CFLAGS) $(LDFLAGS) s_test.o -o $@
 	$(RISCV_OBJCOPY) -O binary $@ $@.bin
 	$(RISCV_OBJDUMP) --disassemble-all $@ > $@.dump
 	python3 ../bin2mem.py $@.bin $@.mem

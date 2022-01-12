@@ -3,7 +3,7 @@ RISCV_ABI := ilp32
 RISCV_MCMODEL := medlow
 
 
-TARGET = smoke_add
+TARGET = s_test
 
 
 CFLAGS += -DSIMULATION
