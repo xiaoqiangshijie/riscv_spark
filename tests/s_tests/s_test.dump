@@ -5,9 +5,7 @@ s_test：     文件格式 elf32-littleriscv
 Disassembly of section .init:
 
 00000000 <start>:
-   0:	00100113          	li	sp,1
-   4:	00100193          	li	gp,1
-   8:	003100b3          	add	ra,sp,gp
+   0:	00906093          	ori	ra,zero,9
 
 Disassembly of section .stack:
 

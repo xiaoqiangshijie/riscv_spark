@@ -1,0 +1,8 @@
+./soc_tb.v
+
+../rtl/soc.v
+../rtl/cpu/core.v
+../rtl/cpu/ifu.v
+../rtl/cpu/ifu_de.v
+
+../rtl/memory/rom.v

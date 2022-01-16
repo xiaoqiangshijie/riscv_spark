@@ -1,8 +1,8 @@
 all: clean compile simulate
 
-test:=add
+test:=simple
 
-test_type?=s_test
+test_type?=c_test
 
 compile:
 	vcs -full64 -cpp g++-9 -cc gcc-9 -LDFLAGS -Wl,--no-as-needed \
