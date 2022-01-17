@@ -1,5 +1,8 @@
 module alu_lsu(
 
+    input clk,
+    input rst_n,
+
     input [31:0] reg_wdata_o,     
     input        alu_rd_reg_en_o,                  
     input [4:0]  alu_rd_reg_addr_o,

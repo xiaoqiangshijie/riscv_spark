@@ -6,9 +6,9 @@ module wb(
     input [31:0] wb_pc,
     input [31:0] wb_inst,
 
-    output        wr_en,
-    output [4:0]  wr_addr,
-    output [31:0] wr_data
+    output reg        wr_en,
+    output reg [4:0]  wr_addr,
+    output reg [31:0] wr_data
 
 );
 

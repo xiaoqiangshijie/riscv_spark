@@ -6,11 +6,11 @@ module lsu(
     input [31:0] lsu_pc,
     input [31:0] lsu_inst,
 
-    output [31:0] lsu_reg_wdata_o,     
-    output        lsu_rd_reg_en_o,                  
-    output [4:0]  lsu_rd_reg_addr_o,
-    output [31:0] lsu_pc_o,
-    output [31:0] lsu_inst_o
+    output reg [31:0] lsu_reg_wdata_o,     
+    output reg        lsu_rd_reg_en_o,                  
+    output reg [4:0]  lsu_rd_reg_addr_o,
+    output reg [31:0] lsu_pc_o,
+    output reg [31:0] lsu_inst_o
 
 );
 

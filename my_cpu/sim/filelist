@@ -4,5 +4,13 @@
 ../rtl/cpu/core.v
 ../rtl/cpu/ifu.v
 ../rtl/cpu/ifu_de.v
+../rtl/cpu/de.v
+../rtl/cpu/regs.v
+../rtl/cpu/de_alu.v
+../rtl/cpu/alu.v
+../rtl/cpu/alu_lsu.v
+../rtl/cpu/lsu.v
+../rtl/cpu/lsu_wb.v
+../rtl/cpu/wb.v
 
 ../rtl/memory/rom.v
