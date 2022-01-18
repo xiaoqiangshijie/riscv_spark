@@ -117,6 +117,16 @@ de u2_de(
     .rd_data1(rd_data1),
     .rd_data2(rd_data2),
 
+    //from bypass_alu
+    .reg_wdata_o(reg_wdata_o),     
+    .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
+    .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
+
+    //from bypass_lsu
+    .lsu_reg_wdata_o(lsu_reg_wdata_o),     
+    .lsu_wr_reg_en_o(lsu_wr_reg_en_o),                  
+    .lsu_wr_reg_addr_o(lsu_wr_reg_addr_o),
+
     //to regs
     .rd_addr1(rd_addr1),
     .rd_addr2(rd_addr2),

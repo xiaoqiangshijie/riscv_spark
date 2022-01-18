@@ -6,9 +6,8 @@ Disassembly of section .init:
 
 00000000 <start>:
    0:	00106093          	ori	ra,zero,1
-   4:	00206113          	ori	sp,zero,2
-   8:	00306193          	ori	gp,zero,3
-   c:	0030e093          	ori	ra,ra,3
+   4:	0020e093          	ori	ra,ra,2
+   8:	00206113          	ori	sp,zero,2
 
 Disassembly of section .stack:
 

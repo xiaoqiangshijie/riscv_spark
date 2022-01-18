@@ -9,6 +9,16 @@ module de(
     input [31:0] rd_data1,
     input [31:0] rd_data2,
 
+    //from bypass_alu
+    input [31:0] reg_wdata_o,     
+    input        alu_wr_reg_en_o,                  
+    input [4:0]  alu_wr_reg_addr_o,
+
+    //from bypass_lsu
+    input [31:0] lsu_reg_wdata_o,     
+    input        lsu_wr_reg_en_o,                  
+    input [4:0]  lsu_wr_reg_addr_o,
+
     //to regs
     output reg [4:0]rd_addr1,
     output reg [4:0]rd_addr2,
@@ -72,11 +82,17 @@ reg [31:0] op1_in;
 reg [31:0] op2_in;
 reg [31:0] imm;
 
-//rd_reg or imm 
+//rd_reg or imm and
 //bypass techology
 
 always @(*) begin
-    if(rd_reg1_flag == 1'b1) begin
+    if(rd_reg1_flag == 1'b1 && alu_wr_reg_en_o == 1'b1 && alu_wr_reg_addr_o == rd_addr1) begin
+        op1_in = reg_wdata_o;
+    end
+    else if(rd_reg1_flag == 1'b1 && lsu_wr_reg_en_o == 1'b1 && lsu_wr_reg_addr_o == rd_addr1) begin
+        op1_in = lsu_reg_wdata_o;
+    end
+    else if(rd_reg1_flag == 1'b1) begin
         op1_in = rd_data1;
     end
     else if(rd_reg1_flag == 1'b0) begin
@@ -88,7 +104,13 @@ always @(*) begin
 end
 
 always @(*) begin
-    if(rd_reg2_flag == 1'b1) begin
+    if(rd_reg2_flag == 1'b1 && alu_wr_reg_en_o == 1'b1 && alu_wr_reg_addr_o == rd_addr2) begin
+        op2_in = reg_wdata_o;
+    end
+    else if(rd_reg2_flag == 1'b1 && lsu_wr_reg_en_o == 1'b1 && lsu_wr_reg_addr_o == rd_addr2) begin
+        op2_in = lsu_reg_wdata_o;
+    end
+    else if(rd_reg2_flag == 1'b1) begin
         op2_in = rd_data2;
     end
     else if(rd_reg2_flag == 1'b0) begin
