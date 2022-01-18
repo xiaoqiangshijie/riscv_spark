@@ -12,6 +12,8 @@ module de(
     //to regs
     output reg [4:0]rd_addr1,
     output reg [4:0]rd_addr2,
+    output reg      rd_reg1_flag,
+    output reg      rd_reg2_flag,
 
     //to de_alu inst type
     output reg [2:0]  inst_type,
@@ -20,8 +22,8 @@ module de(
     //to de_alu
     output reg [31:0] op1,
     output reg [31:0] op2,
-    output reg        rd_reg_en,
-    output reg [4:0]  rd_reg_addr,
+    output reg        wr_reg_en,
+    output reg [4:0]  wr_reg_addr,
 
     output reg [31:0] de_pc_o,
     output reg [31:0] de_inst_o
@@ -66,34 +68,74 @@ assign ori_sign = (opcode == INST_TYPE_I) && (funct3 == INST_ORI);
 assign or_sign  = (opcode == INST_TYPE_R) && ((funct7 == 7'b0000000 || funct7 == 7'b0100000)) && (funct3 == INST_OR);
 assign or_flag = ori_sign || or_sign;
 
+reg [31:0] op1_in;
+reg [31:0] op2_in;
+reg [31:0] imm;
+
+//rd_reg or imm 
+//bypass techology
+
 always @(*) begin
-    de_pc_o     =  de_pc;
-    de_inst_o   =  de_inst;
-    op1         =  32'b0;
-    op2         =  32'b0;
-    rd_reg_en   =  1'b0;
-    rd_reg_addr =  32'b0;
-    inst_type   =  3'b0;
+    if(rd_reg1_flag == 1'b1) begin
+        op1_in = rd_data1;
+    end
+    else if(rd_reg1_flag == 1'b0) begin
+        op1_in = imm;
+    end
+    else begin
+        op1_in = 32'b0;
+    end
+end
+
+always @(*) begin
+    if(rd_reg2_flag == 1'b1) begin
+        op2_in = rd_data2;
+    end
+    else if(rd_reg2_flag == 1'b0) begin
+        op2_in = imm;
+    end
+    else begin
+        op2_in = 32'b0;
+    end
+end
+
+always @(*) begin
+    de_pc_o      =  de_pc;
+    de_inst_o    =  de_inst;
+    op1          =  32'b0;
+    op2          =  32'b0;
+    wr_reg_en    =  1'b0;
+    wr_reg_addr  =  32'b0;
+    inst_type    =  3'b0;
+    imm          =  32'b0;
+    rd_reg1_flag =  1'b0;
+    rd_reg2_flag =  1'b0;
     case(opcode)
         INST_TYPE_I: begin
             case(funct3) 
                 INST_ORI: begin
-                    rd_reg_en   = 1'b1;
-                    rd_reg_addr = rd;
-                    rd_addr1    = rs1;
-                    rd_addr2    = 5'b0;
-                    op1         = rd_data1;
-                    op2         = {{20{de_inst[31]}}, de_inst[31:20]};
-                    inst_type   = 3'd1;
+                    wr_reg_en    = 1'b1;
+                    wr_reg_addr  = rd;
+                    rd_addr1     = rs1;
+                    rd_addr2     = 5'b0;
+                    imm          = {{20{de_inst[31]}}, de_inst[31:20]};
+                    rd_reg1_flag = 1'b1;
+                    rd_reg2_flag = 1'b0;
+                    op1          = op1_in;
+                    op2          = op2_in;
+                    inst_type    = 3'd1;
                 end
                 default: begin
-                    rd_reg_en   = 1'b0;
-                    rd_reg_addr = 5'b0;
-                    rd_addr1    = 5'b0;
-                    rd_addr2    = 5'b0;
-                    op1         = 32'b0;
-                    op2         = 32'b0; 
-                    inst_type   = 3'd0;
+                    wr_reg_en    = 1'b0;
+                    wr_reg_addr  = 5'b0;
+                    rd_addr1     = 5'b0;
+                    rd_addr2     = 5'b0;
+                    imm          = 32'b0;
+                    rd_reg1_flag = 1'b0;
+                    rd_reg2_flag = 1'b0;
+                    op1          = 32'b0;
+                    op2          = 32'b0; 
+                    inst_type    = 3'd0;
                 end
             endcase
         end
@@ -101,19 +143,25 @@ always @(*) begin
             if(funct7 == 7'b0000000 || funct7 == 7'b0100000) begin
                 case(funct3) 
                     INST_OR: begin
-                        rd_reg_en   = 1'b1;
-                        rd_reg_addr = rd;
-                        rd_addr1    = rs1;
-                        rd_addr2    = rs2;
-                        op1         = rd_data1;
-                        op2         = rd_data2; 
+                        wr_reg_en    = 1'b1;
+                        wr_reg_addr  = rd;
+                        rd_addr1     = rs1;
+                        rd_addr2     = rs2;
+                        imm          = 32'b0;
+                        rd_reg1_flag = 1'b1;
+                        rd_reg2_flag = 1'b1;
+                        op1         = op1_in;
+                        op2         = op2_in; 
                         inst_type   = 3'd2;
                     end
                     default: begin
-                        rd_reg_en   = 1'b0;
-                        rd_reg_addr = 5'b0;
+                        wr_reg_en   = 1'b0;
+                        wr_reg_addr = 5'b0;
                         rd_addr1    = 5'b0;
                         rd_addr2    = 5'b0;
+                        imm          = 32'b0;
+                        rd_reg1_flag = 1'b0;
+                        rd_reg2_flag = 1'b0;
                         op1         = 32'b0;
                         op2         = 32'b0; 
                         inst_type   = 3'd0;

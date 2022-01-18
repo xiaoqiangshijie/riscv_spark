@@ -5,8 +5,8 @@ module de_alu(
 
     input [31:0] op1,
     input [31:0] op2,
-    input        rd_reg_en,
-    input [4:0]  rd_reg_addr,
+    input        wr_reg_en,
+    input [4:0]  wr_reg_addr,
 
     input [31:0] de_pc_o,
     input [31:0] de_inst_o,
@@ -16,8 +16,8 @@ module de_alu(
 
     output reg [31:0] alu_op1,
     output reg [31:0] alu_op2,
-    output reg        alu_rd_reg_en,
-    output reg [4:0]  alu_rd_reg_addr,
+    output reg        alu_wr_reg_en,
+    output reg [4:0]  alu_wr_reg_addr,
 
     output reg [31:0] alu_pc,
     output reg [31:0] alu_inst,
@@ -30,8 +30,8 @@ always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         alu_op1         <= 32'b0;
         alu_op2         <= 32'b0;
-        alu_rd_reg_en   <= 1'b0;
-        alu_rd_reg_addr <= 5'b0;
+        alu_wr_reg_en   <= 1'b0;
+        alu_wr_reg_addr <= 5'b0;
         alu_pc          <= 32'b0;
         alu_inst        <= 32'b0;
         alu_inst_type   <= 3'b0;
@@ -40,8 +40,8 @@ always @(posedge clk or negedge rst_n) begin
     else begin
         alu_op1         <= op1;
         alu_op2         <= op2;
-        alu_rd_reg_en   <= rd_reg_en;
-        alu_rd_reg_addr <= rd_reg_addr;
+        alu_wr_reg_en   <= wr_reg_en;
+        alu_wr_reg_addr <= wr_reg_addr;
         alu_pc          <= de_pc_o;
         alu_inst        <= de_inst_o;
         alu_inst_type   <= inst_type;

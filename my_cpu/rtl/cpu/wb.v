@@ -1,8 +1,8 @@
 module wb(
 
     input [31:0] wb_reg_wdata,     
-    input        wb_rd_reg_en,                  
-    input [4:0]  wb_rd_reg_addr,
+    input        wb_wr_reg_en,                  
+    input [4:0]  wb_wr_reg_addr,
     input [31:0] wb_pc,
     input [31:0] wb_inst,
 
@@ -13,8 +13,8 @@ module wb(
 );
 
 always @(*) begin
-    wr_en   =  wb_rd_reg_en;
-    wr_addr =  wb_rd_reg_addr;
+    wr_en   =  wb_wr_reg_en;
+    wr_addr =  wb_wr_reg_addr;
     wr_data =  wb_reg_wdata;
 end
 

@@ -31,8 +31,8 @@ wire [31:0] rd_data2;
 //de   ->  de_alu
 wire [31:0] op1;
 wire [31:0] op2;
-wire        rd_reg_en;
-wire [4:0]  rd_reg_addr;
+wire        wr_reg_en;
+wire [4:0]  wr_reg_addr;
 wire [31:0] de_pc_o;
 wire [31:0] de_inst_o;
 wire [2:0]  inst_type;
@@ -42,8 +42,8 @@ wire        or_flag;
 
 wire [31:0] alu_op1;
 wire [31:0] alu_op2;
-wire        alu_rd_reg_en;
-wire [4:0]  alu_rd_reg_addr;
+wire        alu_wr_reg_en;
+wire [4:0]  alu_wr_reg_addr;
 wire [31:0] alu_pc;
 wire [31:0] alu_inst;
 wire [2:0]  alu_inst_type;
@@ -51,29 +51,29 @@ wire        alu_or_flag;
 
 //alu -> alu_lsu
 wire [31:0] reg_wdata_o;
-wire        alu_rd_reg_en_o;                  
-wire [4:0]  alu_rd_reg_addr_o;
+wire        alu_wr_reg_en_o;                  
+wire [4:0]  alu_wr_reg_addr_o;
 wire [31:0] alu_pc_o;
 wire [31:0] alu_inst_o;
 
 //alu_lsu -> lsu
 wire [31:0] lsu_reg_wdata;   
-wire        lsu_rd_reg_en;                  
-wire [4:0]  lsu_rd_reg_addr;
+wire        lsu_wr_reg_en;                  
+wire [4:0]  lsu_wr_reg_addr;
 wire [31:0] lsu_pc;
 wire [31:0] lsu_inst;
 
 //lsu -> lsu_wb
 wire [31:0] lsu_reg_wdata_o;   
-wire        lsu_rd_reg_en_o;                  
-wire [4:0]  lsu_rd_reg_addr_o;
+wire        lsu_wr_reg_en_o;                  
+wire [4:0]  lsu_wr_reg_addr_o;
 wire [31:0] lsu_pc_o;
 wire [31:0] lsu_inst_o;
 
 //lsu_wb -> wb
 wire [31:0] wb_reg_wdata;
-wire        wb_rd_reg_en;                  
-wire [4:0]  wb_rd_reg_addr;
+wire        wb_wr_reg_en;                  
+wire [4:0]  wb_wr_reg_addr;
 wire [31:0] wb_pc;
 wire [31:0] wb_inst;
 
@@ -128,8 +128,8 @@ de u2_de(
     //to de_alu
     .op1(op1),
     .op2(op2),
-    .rd_reg_en(rd_reg_en),
-    .rd_reg_addr(rd_reg_addr),
+    .wr_reg_en(wr_reg_en),
+    .wr_reg_addr(wr_reg_addr),
 
     .de_pc_o(de_pc_o),
     .de_inst_o(de_inst_o)
@@ -142,8 +142,8 @@ de_alu u2_de_alu(
 
     .op1(op1),
     .op2(op2),
-    .rd_reg_en(rd_reg_en),
-    .rd_reg_addr(rd_reg_addr),
+    .wr_reg_en(wr_reg_en),
+    .wr_reg_addr(wr_reg_addr),
 
     .de_pc_o(de_pc_o),
     .de_inst_o(de_inst_o),
@@ -153,8 +153,8 @@ de_alu u2_de_alu(
 
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
-    .alu_rd_reg_en(alu_rd_reg_en),
-    .alu_rd_reg_addr(alu_rd_reg_addr),
+    .alu_wr_reg_en(alu_wr_reg_en),
+    .alu_wr_reg_addr(alu_wr_reg_addr),
 
     .alu_pc(alu_pc),
     .alu_inst(alu_inst),
@@ -168,8 +168,8 @@ alu u3_alu(
     //from de_alu
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
-    .alu_rd_reg_en(alu_rd_reg_en),
-    .alu_rd_reg_addr(alu_rd_reg_addr),
+    .alu_wr_reg_en(alu_wr_reg_en),
+    .alu_wr_reg_addr(alu_wr_reg_addr),
 
     .alu_pc(alu_pc),
     .alu_inst(alu_inst),
@@ -179,8 +179,8 @@ alu u3_alu(
 
     //alu to alu_mem
     .reg_wdata_o(reg_wdata_o),     
-    .alu_rd_reg_en_o(alu_rd_reg_en_o),                  
-    .alu_rd_reg_addr_o(alu_rd_reg_addr_o),
+    .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
+    .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
     .alu_pc_o(alu_pc_o),
     .alu_inst_o(alu_inst_o)
 );
@@ -190,14 +190,14 @@ alu_lsu u3_alu_lsu(
     .clk(clk),
     .rst_n(rst_n),
     .reg_wdata_o(reg_wdata_o),     
-    .alu_rd_reg_en_o(alu_rd_reg_en_o),                  
-    .alu_rd_reg_addr_o(alu_rd_reg_addr_o),
+    .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
+    .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
     .alu_pc_o(alu_pc_o),
     .alu_inst_o(alu_inst_o),
 
     .lsu_reg_wdata(lsu_reg_wdata),     
-    .lsu_rd_reg_en(lsu_rd_reg_en),                  
-    .lsu_rd_reg_addr(lsu_rd_reg_addr),
+    .lsu_wr_reg_en(lsu_wr_reg_en),                  
+    .lsu_wr_reg_addr(lsu_wr_reg_addr),
     .lsu_pc(lsu_pc),
     .lsu_inst(lsu_inst)
     
@@ -206,14 +206,14 @@ alu_lsu u3_alu_lsu(
 lsu u4_lsu(
 
     .lsu_reg_wdata(lsu_reg_wdata),     
-    .lsu_rd_reg_en(lsu_rd_reg_en),                  
-    .lsu_rd_reg_addr(lsu_rd_reg_addr),
+    .lsu_wr_reg_en(lsu_wr_reg_en),                  
+    .lsu_wr_reg_addr(lsu_wr_reg_addr),
     .lsu_pc(lsu_pc),
     .lsu_inst(lsu_inst),
 
     .lsu_reg_wdata_o(lsu_reg_wdata_o),     
-    .lsu_rd_reg_en_o(lsu_rd_reg_en_o),                  
-    .lsu_rd_reg_addr_o(lsu_rd_reg_addr_o),
+    .lsu_wr_reg_en_o(lsu_wr_reg_en_o),                  
+    .lsu_wr_reg_addr_o(lsu_wr_reg_addr_o),
     .lsu_pc_o(lsu_pc_o),
     .lsu_inst_o(lsu_inst_o)
 
@@ -225,14 +225,14 @@ lsu_wb u4_lsu_wb(
     .rst_n(rst_n),
 
     .lsu_reg_wdata_o(lsu_reg_wdata_o),     
-    .lsu_rd_reg_en_o(lsu_rd_reg_en_o),                  
-    .lsu_rd_reg_addr_o(lsu_rd_reg_addr_o),
+    .lsu_wr_reg_en_o(lsu_wr_reg_en_o),                  
+    .lsu_wr_reg_addr_o(lsu_wr_reg_addr_o),
     .lsu_pc_o(lsu_pc_o),
     .lsu_inst_o(lsu_inst_o),
 
     .wb_reg_wdata(wb_reg_wdata),     
-    .wb_rd_reg_en(wb_rd_reg_en),                  
-    .wb_rd_reg_addr(wb_rd_reg_addr),
+    .wb_wr_reg_en(wb_wr_reg_en),                  
+    .wb_wr_reg_addr(wb_wr_reg_addr),
     .wb_pc(wb_pc),
     .wb_inst(wb_inst)
 );
@@ -240,8 +240,8 @@ lsu_wb u4_lsu_wb(
 wb u5_wb(
 
     .wb_reg_wdata(wb_reg_wdata),     
-    .wb_rd_reg_en(wb_rd_reg_en),                  
-    .wb_rd_reg_addr(wb_rd_reg_addr),
+    .wb_wr_reg_en(wb_wr_reg_en),                  
+    .wb_wr_reg_addr(wb_wr_reg_addr),
     .wb_pc(wb_pc),
     .wb_inst(wb_inst),
 

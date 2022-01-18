@@ -3,8 +3,8 @@ module alu(
     //from de_alu
     input [31:0] alu_op1,
     input [31:0] alu_op2,
-    input        alu_rd_reg_en,
-    input [4:0]  alu_rd_reg_addr,
+    input        alu_wr_reg_en,
+    input [4:0]  alu_wr_reg_addr,
 
     input [31:0] alu_pc,
     input [31:0] alu_inst,
@@ -14,8 +14,8 @@ module alu(
 
     //alu to alu_mem
     output reg [31:0] reg_wdata_o,     
-    output reg        alu_rd_reg_en_o,                  
-    output reg [4:0]  alu_rd_reg_addr_o,
+    output reg        alu_wr_reg_en_o,                  
+    output reg [4:0]  alu_wr_reg_addr_o,
     output reg [31:0] alu_pc_o,
     output reg [31:0] alu_inst_o
 );
@@ -53,8 +53,8 @@ wire [4:0] uimm   = alu_inst[19:15];
 
 always @ (*) begin
 
-    alu_rd_reg_en_o   = alu_rd_reg_en;
-    alu_rd_reg_addr_o = alu_rd_reg_addr;
+    alu_wr_reg_en_o   = alu_wr_reg_en;
+    alu_wr_reg_addr_o = alu_wr_reg_addr;
     alu_pc_o          = alu_pc;
     alu_inst_o        = alu_inst;
     
