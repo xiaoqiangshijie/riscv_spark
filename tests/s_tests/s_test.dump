@@ -5,9 +5,25 @@ s_test：     文件格式 elf32-littleriscv
 Disassembly of section .init:
 
 00000000 <start>:
-   0:	00106093          	ori	ra,zero,1
-   4:	0020e093          	ori	ra,ra,2
-   8:	00206113          	ori	sp,zero,2
+   0:	00100093          	li	ra,1
+   4:	00202113          	slti	sp,zero,2
+   8:	00303193          	sltiu	gp,zero,3
+   c:	00404213          	xori	tp,zero,4
+  10:	00506293          	ori	t0,zero,5
+  14:	00607313          	andi	t1,zero,6
+  18:	00701393          	slli	t2,zero,0x7
+  1c:	00805413          	srli	s0,zero,0x8
+  20:	40905493          	srai	s1,zero,0x9
+  24:	001101b3          	add	gp,sp,ra
+  28:	401101b3          	sub	gp,sp,ra
+  2c:	001111b3          	sll	gp,sp,ra
+  30:	005121b3          	slt	gp,sp,t0
+  34:	0022b1b3          	sltu	gp,t0,sp
+  38:	0022c1b3          	xor	gp,t0,sp
+  3c:	4022d1b3          	sra	gp,t0,sp
+  40:	005151b3          	srl	gp,sp,t0
+  44:	005161b3          	or	gp,sp,t0
+  48:	005171b3          	and	gp,sp,t0
 
 Disassembly of section .stack:
 

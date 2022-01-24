@@ -69,6 +69,10 @@ parameter INST_SR       = 3'b101;
 parameter INST_OR       = 3'b110;
 parameter INST_AND      = 3'b111;
 
+//NOP type
+parameter INST_NOP_OP   = 7'b0000001;
+
+
 
 //inst type
 wire ori_sign;
@@ -135,7 +139,7 @@ always @(*) begin
     case(opcode)
         INST_TYPE_I: begin
             case(funct3) 
-                INST_ORI: begin
+                INST_ADDI, INST_SLTI, INST_SLTIU, INST_XORI, INST_ORI, INST_ANDI, INST_SLLI, INST_SRI: begin
                     wr_reg_en    = 1'b1;
                     wr_reg_addr  = rd;
                     rd_addr1     = rs1;
@@ -164,7 +168,7 @@ always @(*) begin
         INST_TYPE_R: begin
             if(funct7 == 7'b0000000 || funct7 == 7'b0100000) begin
                 case(funct3) 
-                    INST_OR: begin
+                    INST_ADD_SUB,INST_SLL,INST_SLT,INST_SLTU,INST_XOR,INST_SR,INST_OR,INST_AND: begin
                         wr_reg_en    = 1'b1;
                         wr_reg_addr  = rd;
                         rd_addr1     = rs1;
@@ -172,26 +176,49 @@ always @(*) begin
                         imm          = 32'b0;
                         rd_reg1_flag = 1'b1;
                         rd_reg2_flag = 1'b1;
-                        op1         = op1_in;
-                        op2         = op2_in; 
-                        inst_type   = 3'd2;
+                        op1          = op1_in;
+                        op2          = op2_in; 
+                        inst_type    = 3'd2;
                     end
                     default: begin
-                        wr_reg_en   = 1'b0;
-                        wr_reg_addr = 5'b0;
-                        rd_addr1    = 5'b0;
-                        rd_addr2    = 5'b0;
+                        wr_reg_en    = 1'b0;
+                        wr_reg_addr  = 5'b0;
+                        rd_addr1     = 5'b0;
+                        rd_addr2     = 5'b0;
                         imm          = 32'b0;
                         rd_reg1_flag = 1'b0;
                         rd_reg2_flag = 1'b0;
-                        op1         = 32'b0;
-                        op2         = 32'b0; 
-                        inst_type   = 3'd0;
+                        op1          = 32'b0;
+                        op2          = 32'b0; 
+                        inst_type    = 3'd0;
                     end
                 endcase
             end
         end
-
+        INST_NOP_OP:begin
+            wr_reg_en    = 1'b0;
+            wr_reg_addr  = 5'b0;
+            rd_addr1     = 5'b0;
+            rd_addr2     = 5'b0;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0; 
+            op1          = 32'b0;
+            op2          = 32'b0; 
+            inst_type    = 3'd0;
+        end
+        default:begin
+            wr_reg_en    = 1'b0;
+            wr_reg_addr  = 5'b0;
+            rd_addr1     = 5'b0;
+            rd_addr2     = 5'b0;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0;
+            op1          = 32'b0;
+            op2          = 32'b0; 
+            inst_type    = 3'd0;
+        end
     endcase
 end
 

@@ -42,6 +42,8 @@ parameter INST_SR       = 3'b101;
 parameter INST_OR       = 3'b110;
 parameter INST_AND      = 3'b111;
 
+// NOP type inst
+parameter INST_NOP_OP   = 7'b0000001;
 
 
 wire [6:0] opcode = alu_inst[6:0];
@@ -51,24 +53,118 @@ wire [4:0] rd     = alu_inst[11:7];
 wire [4:0] uimm   = alu_inst[19:15];
 
 
+
+///////////////////////operate data///////////////////////
+
+wire op1_ge_op2_signed;
+wire op1_ge_op2_unsigned;
+wire [31:0] sri_shift_mask;
+wire [31:0] sr_shift_mask;
+wire [31:0] sri_shift;
+wire [31:0] sr_shift;
+
+
+assign op1_ge_op2_signed = $signed(alu_op1) >= $signed(alu_op2);
+assign op1_ge_op2_unsigned = alu_op1 >= alu_op2;
+assign sri_shift_mask = 32'hffffffff >> alu_inst[24:20];
+assign sr_shift_mask = 32'hffffffff >> alu_op2[4:0];
+assign sri_shift     = alu_op1 >> alu_inst[24:20];
+assign sr_shift = alu_op1 >> alu_op2[4:0];
+
 always @ (*) begin
 
     alu_wr_reg_en_o   = alu_wr_reg_en;
     alu_wr_reg_addr_o = alu_wr_reg_addr;
     alu_pc_o          = alu_pc;
     alu_inst_o        = alu_inst;
-    
+
     case (opcode)
         INST_TYPE_I: begin
             case (funct3)
+                INST_ADDI: begin
+                    reg_wdata_o = alu_op1 + alu_op2;
+                end
+                INST_SLTI: begin
+                    reg_wdata_o = {32{(~op1_ge_op2_signed)}} & 32'h1;
+                end
+                INST_SLTIU: begin
+                    reg_wdata_o = {32{(~op1_ge_op2_unsigned)}} & 32'h1;
+                end
+                INST_XORI: begin
+                    reg_wdata_o = alu_op1 ^ alu_op2;
+                end
                 INST_ORI: begin
                     reg_wdata_o = alu_op1 | alu_op2;
+                end
+                INST_ANDI: begin
+                    reg_wdata_o = alu_op1 & alu_op2;
+                end
+                INST_SLLI: begin
+                    reg_wdata_o = alu_op1 << alu_inst[24:20];
+                end
+                INST_SRI: begin
+                    if (alu_inst[30] == 1'b1) begin
+                        reg_wdata_o = (sri_shift & sri_shift_mask) | ({32{alu_op1[31]}} & (~sri_shift_mask));
+                    end else begin
+                        reg_wdata_o = alu_op1 >> alu_inst[24:20];
+                    end
                 end
                 default:reg_wdata_o = 32'b0;
             endcase
         end
+        INST_TYPE_R:begin
+            if ((funct7 == 7'b0000000) || (funct7 == 7'b0100000)) begin
+                case (funct3)
+                    INST_ADD_SUB:begin
+                        if (alu_inst[30] == 1'b0) begin
+                            reg_wdata_o = alu_op1 + alu_op2;
+                        end else begin
+                            reg_wdata_o = alu_op1 - alu_op2;
+                        end
+                    end
+                    INST_SLL:begin
+                        reg_wdata_o = alu_op1 << alu_op2[4:0];
+                    end
+                    INST_SLT:begin
+                        reg_wdata_o = {32{(~op1_ge_op2_signed)}} & 32'h1;
+                    end
+                    INST_SLTU:begin
+                        reg_wdata_o = {32{(~op1_ge_op2_unsigned)}} & 32'h1;
+                    end
+                    INST_XOR:begin
+                        reg_wdata_o = alu_op1 ^ alu_op2;
+                    end
+                    INST_SR:begin    //SRA_SRL
+                        if (alu_inst[30] == 1'b1) begin
+                            reg_wdata_o = (sr_shift & sr_shift_mask) | ({32{alu_op1[31]}} & (~sr_shift_mask));
+                        end else begin
+                            reg_wdata_o = alu_op1 >> alu_op2[4:0];
+                        end
+                    end
+                    INST_OR:begin
+                        reg_wdata_o = alu_op1 | alu_op2;
+                    end
+                    INST_AND:begin
+                        reg_wdata_o = alu_op1 & alu_op2;
+                    end
+                    
+                    default:begin
+                        reg_wdata_o = 32'b0;
+                    end
+                endcase
+            end
+        end
+        INST_NOP_OP: begin
+            reg_wdata_o = 32'b0;
+        end
+        
+
+
+
+
+
+
         default:reg_wdata_o = 32'b0;
     endcase
 end
-
 endmodule

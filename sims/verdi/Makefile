@@ -2,7 +2,7 @@ all: clean compile simulate
 
 test:=simple
 
-test_type?=c_test
+test_type?=s_test
 
 compile:
 	vcs -full64 -cpp g++-9 -cc gcc-9 -LDFLAGS -Wl,--no-as-needed \
