@@ -5,6 +5,8 @@ module de_alu(
 
     input [31:0] op1,
     input [31:0] op2,
+    input [31:0] op1_jump,
+    input [31:0] op2_jump,
     input        wr_reg_en,
     input [4:0]  wr_reg_addr,
 
@@ -14,8 +16,12 @@ module de_alu(
     input [2:0]  inst_type,
     input        or_flag,
 
+    input [5:0]  stall,
+
     output reg [31:0] alu_op1,
     output reg [31:0] alu_op2,
+    output reg [31:0] alu_op1_jump,
+    output reg [31:0] alu_op2_jump,
     output reg        alu_wr_reg_en,
     output reg [4:0]  alu_wr_reg_addr,
 
@@ -30,6 +36,8 @@ always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         alu_op1         <= 32'b0;
         alu_op2         <= 32'b0;
+        alu_op1_jump    <= 32'b0;
+        alu_op2_jump    <= 32'b0;
         alu_wr_reg_en   <= 1'b0;
         alu_wr_reg_addr <= 5'b0;
         alu_pc          <= 32'b0;
@@ -37,9 +45,23 @@ always @(posedge clk or negedge rst_n) begin
         alu_inst_type   <= 3'b0;
         alu_or_flag     <= 1'b0;
     end
-    else begin
+    else if(stall[2] == 1'b1) begin
+        alu_op1         <= 32'b0;
+        alu_op2         <= 32'b0;
+        alu_op1_jump    <= 32'b0;
+        alu_op2_jump    <= 32'b0;
+        alu_wr_reg_en   <= 1'b0;
+        alu_wr_reg_addr <= 5'b0;
+        alu_pc          <= 32'b0;
+        alu_inst        <= 32'b0;
+        alu_inst_type   <= 3'b0;
+        alu_or_flag     <= 1'b0;
+    end
+    else if(stall[2] == 1'b0) begin
         alu_op1         <= op1;
         alu_op2         <= op2;
+        alu_op1_jump    <= op1_jump;
+        alu_op2_jump    <= op2_jump;
         alu_wr_reg_en   <= wr_reg_en;
         alu_wr_reg_addr <= wr_reg_addr;
         alu_pc          <= de_pc_o;

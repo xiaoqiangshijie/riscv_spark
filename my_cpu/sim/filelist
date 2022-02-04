@@ -12,5 +12,6 @@
 ../rtl/cpu/lsu.v
 ../rtl/cpu/lsu_wb.v
 ../rtl/cpu/wb.v
+../rtl/cpu/ctrl.v
 
 ../rtl/memory/rom.v

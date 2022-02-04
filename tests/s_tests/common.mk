@@ -2,6 +2,8 @@
 
 RISCV_PATH = ../../toolchains/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64
 
+system := ubuntu
+
 ifeq ($(system),win)
 GUN = $(RISCV_PATH)-w64-mingw32
 else ifeq ($(system),ubuntu)

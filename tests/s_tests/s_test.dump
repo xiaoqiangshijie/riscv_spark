@@ -5,25 +5,56 @@ s_test：     文件格式 elf32-littleriscv
 Disassembly of section .init:
 
 00000000 <start>:
-   0:	00100093          	li	ra,1
-   4:	00202113          	slti	sp,zero,2
-   8:	00303193          	sltiu	gp,zero,3
-   c:	00404213          	xori	tp,zero,4
-  10:	00506293          	ori	t0,zero,5
-  14:	00607313          	andi	t1,zero,6
-  18:	00701393          	slli	t2,zero,0x7
-  1c:	00805413          	srli	s0,zero,0x8
-  20:	40905493          	srai	s1,zero,0x9
-  24:	001101b3          	add	gp,sp,ra
-  28:	401101b3          	sub	gp,sp,ra
-  2c:	001111b3          	sll	gp,sp,ra
-  30:	005121b3          	slt	gp,sp,t0
-  34:	0022b1b3          	sltu	gp,t0,sp
-  38:	0022c1b3          	xor	gp,t0,sp
-  3c:	4022d1b3          	sra	gp,t0,sp
-  40:	005151b3          	srl	gp,sp,t0
-  44:	005161b3          	or	gp,sp,t0
-  48:	005171b3          	and	gp,sp,t0
+   0:	00500293          	li	t0,5
+   4:	00400213          	li	tp,4
+   8:	0a520663          	beq	tp,t0,b4 <fail>
+   c:	00400213          	li	tp,4
+  10:	0a421263          	bne	tp,tp,b4 <fail>
+  14:	00400213          	li	tp,4
+  18:	00120193          	addi	gp,tp,1 # 1 <start+0x1>
+  1c:	00500313          	li	t1,5
+  20:	08619a63          	bne	gp,t1,b4 <fail>
+  24:	00400213          	li	tp,4
+  28:	fff22193          	slti	gp,tp,-1
+  2c:	00000313          	li	t1,0
+  30:	08619263          	bne	gp,t1,b4 <fail>
+  34:	00202113          	slti	sp,zero,2
+  38:	00303193          	sltiu	gp,zero,3
+  3c:	00404213          	xori	tp,zero,4
+  40:	00506293          	ori	t0,zero,5
+  44:	00607313          	andi	t1,zero,6
+  48:	00701393          	slli	t2,zero,0x7
+  4c:	00805413          	srli	s0,zero,0x8
+  50:	40905493          	srai	s1,zero,0x9
+  54:	001101b3          	add	gp,sp,ra
+  58:	401101b3          	sub	gp,sp,ra
+  5c:	001111b3          	sll	gp,sp,ra
+  60:	005121b3          	slt	gp,sp,t0
+  64:	0022b1b3          	sltu	gp,t0,sp
+  68:	0022c1b3          	xor	gp,t0,sp
+  6c:	4022d1b3          	sra	gp,t0,sp
+  70:	005151b3          	srl	gp,sp,t0
+  74:	005161b3          	or	gp,sp,t0
+  78:	005171b3          	and	gp,sp,t0
+  7c:	fff00213          	li	tp,-1
+  80:	fff00293          	li	t0,-1
+  84:	025201b3          	mul	gp,tp,t0
+  88:	fff00213          	li	tp,-1
+  8c:	fff00293          	li	t0,-1
+  90:	025231b3          	mulhu	gp,tp,t0
+  94:	fff00213          	li	tp,-1
+  98:	fff00293          	li	t0,-1
+  9c:	025211b3          	mulh	gp,tp,t0
+  a0:	fff00213          	li	tp,-1
+  a4:	fff00293          	li	t0,-1
+  a8:	025221b3          	mulhsu	gp,tp,t0
+
+000000ac <pass>:
+  ac:	00100d13          	li	s10,1
+  b0:	0080006f          	j	b8 <run_end>
+
+000000b4 <fail>:
+  b4:	00100d93          	li	s11,1
 
 Disassembly of section .stack:
 

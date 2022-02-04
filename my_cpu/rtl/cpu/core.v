@@ -31,6 +31,8 @@ wire [31:0] rd_data2;
 //de   ->  de_alu
 wire [31:0] op1;
 wire [31:0] op2;
+wire [31:0] op1_jump;
+wire [31:0] op2_jump;
 wire        wr_reg_en;
 wire [4:0]  wr_reg_addr;
 wire [31:0] de_pc_o;
@@ -42,6 +44,8 @@ wire        or_flag;
 
 wire [31:0] alu_op1;
 wire [31:0] alu_op2;
+wire [31:0] alu_op1_jump;
+wire [31:0] alu_op2_jump;
 wire        alu_wr_reg_en;
 wire [4:0]  alu_wr_reg_addr;
 wire [31:0] alu_pc;
@@ -55,6 +59,10 @@ wire        alu_wr_reg_en_o;
 wire [4:0]  alu_wr_reg_addr_o;
 wire [31:0] alu_pc_o;
 wire [31:0] alu_inst_o;
+
+//alu -> ctrl
+wire          jump_flag;
+wire [31:0]   jump_addr;
 
 //alu_lsu -> lsu
 wire [31:0] lsu_reg_wdata;   
@@ -83,14 +91,32 @@ wire        wr_en;
 wire [4:0]  wr_addr;
 wire [31:0] wr_data;
 
+//crtl -> ifu ifu_de de_alu 
+wire [5:0]  stall;
+wire        ctrl_jump_flag;
+wire [31:0] ctrl_jump_addr;
+
 
 assign rom_addr_o = pc;
 assign rom_en_o   = ~pc_stall;
+
+ctrl u_ctrl(
+    .rst_n(rst_n),
+    .jump_flag(jump_flag),
+    .jump_addr(jump_addr),
+
+    .stall(stall),
+    .ctrl_jump_flag(ctrl_jump_flag),
+    .ctrl_jump_addr(ctrl_jump_addr)
+);
 
 ifu u1_ifu(
     .clk(clk),
     .rst_n(rst_n),
     .inst_i(inst_i),
+    .stall(stall),
+    .ctrl_jump_flag(ctrl_jump_flag),
+    .ctrl_jump_addr(ctrl_jump_addr),
 
     .pc(pc),
     .inst_o(inst_o),
@@ -102,6 +128,7 @@ ifu_de u1_ifu_de(
     .rst_n(rst_n),
     .inst_o(inst_o),
     .pc(pc),
+    .stall(stall),
 
     .de_pc(de_pc),
     .de_inst(de_inst)
@@ -138,6 +165,8 @@ de u2_de(
     //to de_alu
     .op1(op1),
     .op2(op2),
+    .op1_jump(op1_jump),
+    .op2_jump(op2_jump),
     .wr_reg_en(wr_reg_en),
     .wr_reg_addr(wr_reg_addr),
 
@@ -152,6 +181,8 @@ de_alu u2_de_alu(
 
     .op1(op1),
     .op2(op2),
+    .op1_jump(op1_jump),
+    .op2_jump(op2_jump),
     .wr_reg_en(wr_reg_en),
     .wr_reg_addr(wr_reg_addr),
 
@@ -160,9 +191,12 @@ de_alu u2_de_alu(
 
     .inst_type(inst_type),
     .or_flag(or_flag),
+    .stall(stall),
 
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
+    .alu_op1_jump(alu_op1_jump),
+    .alu_op2_jump(alu_op2_jump),
     .alu_wr_reg_en(alu_wr_reg_en),
     .alu_wr_reg_addr(alu_wr_reg_addr),
 
@@ -171,6 +205,7 @@ de_alu u2_de_alu(
 
     .alu_inst_type(alu_inst_type),
     .alu_or_flag(alu_or_flag)
+
 );
 
 alu u3_alu(
@@ -178,6 +213,8 @@ alu u3_alu(
     //from de_alu
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
+    .alu_op1_jump(alu_op1_jump),
+    .alu_op2_jump(alu_op2_jump),
     .alu_wr_reg_en(alu_wr_reg_en),
     .alu_wr_reg_addr(alu_wr_reg_addr),
 
@@ -186,6 +223,10 @@ alu u3_alu(
 
     .alu_inst_type(alu_inst_type),
     .alu_or_flag(alu_or_flag),
+
+    //alu to alu_ctrl
+    .jump_flag(jump_flag),
+    .jump_addr(jump_addr),
 
     //alu to alu_mem
     .reg_wdata_o(reg_wdata_o),     
@@ -204,6 +245,7 @@ alu_lsu u3_alu_lsu(
     .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
     .alu_pc_o(alu_pc_o),
     .alu_inst_o(alu_inst_o),
+    .stall(stall),
 
     .lsu_reg_wdata(lsu_reg_wdata),     
     .lsu_wr_reg_en(lsu_wr_reg_en),                  
@@ -239,12 +281,14 @@ lsu_wb u4_lsu_wb(
     .lsu_wr_reg_addr_o(lsu_wr_reg_addr_o),
     .lsu_pc_o(lsu_pc_o),
     .lsu_inst_o(lsu_inst_o),
+    .stall(stall),
 
     .wb_reg_wdata(wb_reg_wdata),     
     .wb_wr_reg_en(wb_wr_reg_en),                  
     .wb_wr_reg_addr(wb_wr_reg_addr),
     .wb_pc(wb_pc),
     .wb_inst(wb_inst)
+
 );
 
 wb u5_wb(

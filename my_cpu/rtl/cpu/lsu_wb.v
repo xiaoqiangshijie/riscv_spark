@@ -8,6 +8,7 @@ module lsu_wb(
     input [4:0]  lsu_wr_reg_addr_o,
     input [31:0] lsu_pc_o,
     input [31:0] lsu_inst_o,
+    input [5:0]  stall,
 
     output reg [31:0] wb_reg_wdata,     
     output reg        wb_wr_reg_en,                  
@@ -24,7 +25,14 @@ always @(posedge clk or negedge rst_n) begin
         wb_pc          <= 32'b0;
         wb_inst        <= 32'b0;
     end
-    else begin
+    else if(stall[4] == 1'b1 && stall[5] == 1'b0) begin
+        wb_reg_wdata   <= 32'b0;    
+        wb_wr_reg_en   <= 1'b0;              
+        wb_wr_reg_addr <= 5'b0;
+        wb_pc          <= 32'b0;
+        wb_inst        <= 32'b0;
+    end
+    else if(stall[4] == 1'b0) begin
         wb_reg_wdata   <= lsu_reg_wdata_o;    
         wb_wr_reg_en   <= lsu_wr_reg_en_o;              
         wb_wr_reg_addr <= lsu_wr_reg_addr_o;
