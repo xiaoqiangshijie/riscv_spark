@@ -27,7 +27,7 @@ always @(posedge clk or negedge rst_n) begin
     else if(ctrl_jump_flag) begin
         pc <= ctrl_jump_addr;
     end
-    else if(stall[1] == 1'b1) begin
+    else if(stall[0] == 1'b1) begin
         pc <= pc;
     end
     else begin

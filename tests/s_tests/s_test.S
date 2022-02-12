@@ -1,4 +1,3 @@
-
     .section .init;
     .globl start;
     .type start,@function
@@ -20,7 +19,7 @@ bne x4,x4,fail
 
 //addi
 li    x4,0x00000004
-addi  x3,x4,0x001   //x1 = 1
+addi  x3,x4,0x001   
 li    x6,0x00000005
 bne   x3,x6,fail
 
@@ -30,13 +29,99 @@ slti  x3,x4,-0x1
 li    x6,0x0
 bne   x3,x6,fail
 
-sltiu x3,x0,0x003   //x3 = 1
-xori  x4,x0,0x004   //x4 = 4
-ori   x5,x0,0x005   //x5 = 5
-andi  x6,x0,0x006   //x6 = 0
-slli  x7,x0,0x007   //x7 = 0
-srli  x8,x0,0x008   //x8 = 0
-srai  x9,x0,0x009   //x9 = 0
+//slti
+li    x4,0x00000004
+slti  x3,x4,0x5
+li    x6,0x1
+bne   x3,x6,fail
+
+//sltiu
+li    x4,0x00000004
+slti  x3,x4,0x1
+li    x6,0x0
+bne   x3,x6,fail
+
+//sltiu
+li    x4,0x00000004
+slti  x3,x4,0x5
+li    x6,0x1
+bne   x3,x6,fail
+
+//xori
+li    x4,0x00000004
+xori  x3,x4,0x1
+li    x6,0x5
+bne   x3,x6,fail
+
+//xori 
+li    x4,0x00000004
+xori  x3,x4,0x5
+li    x6,0x1
+bne   x3,x6,fail
+
+//ori
+li    x4,0x00000004
+ori   x3,x4,0x1
+li    x6,0x5
+bne   x3,x6,fail
+
+//ori 
+li    x4,0x00000004
+ori   x3,x4,0x5
+li    x6,0x5
+bne   x3,x6,
+
+//andi
+li    x4,0x00000004
+andi  x3,x4,0x1
+li    x6,0x0
+bne   x3,x6,fail
+
+//andi 
+li    x4,0x00000004
+andi  x3,x4,0x5
+li    x6,0x4
+bne   x3,x6,fail
+
+//slli
+li    x4,0x00000004
+slli  x3,x4,0x1
+li    x6,0x8
+bne   x3,x6,fail
+
+//slli 
+li    x4,0x00000004
+slli  x3,x4,0x2
+li    x6,0x10
+bne   x3,x6,fail
+
+//srli
+li    x4,0x00000004
+srli  x3,x4,0x1
+li    x6,0x2
+bne   x3,x6,fail
+
+//srli 
+li    x4,0x00000004
+srli  x3,x4,0x2
+li    x6,0x1
+bne   x3,x6,fail
+
+//srai
+li    x4,0x00000004
+srai  x3,x4,0x1
+li    x6,0x2
+bne   x3,x6,fail
+
+//srai
+//li    x4,0x10000004
+//srai  x3,x4,0x11
+//li    x6,0x00000800
+//bne   x3,x6,fail
+
+/////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////// R type ////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
 //R type
 add   x3,x2,x1      //x3 = 2
