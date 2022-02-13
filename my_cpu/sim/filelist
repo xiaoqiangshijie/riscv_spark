@@ -15,3 +15,4 @@
 ../rtl/cpu/ctrl.v
 
 ../rtl/memory/rom.v
+../rtl/memory/ram.v

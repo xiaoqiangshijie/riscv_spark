@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Feb 12 20:47:56 2022
+# Make data base, printed on Sun Feb 13 23:35:16 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 MANAGERPID = 1712
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ee5c9d1a-b0c2-4ca1-a930-3e613dd3a63e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-805d0f63-c90b-4a8f-b778-9240640709a4.sock
 # environment
 LC_NAME = zh_CN.UTF-8
 # environment
@@ -117,7 +117,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2855
+GIO_LAUNCHED_DESKTOP_FILE_PID = 115283
 # automatic
 %F = $(notdir $%)
 # environment
@@ -282,7 +282,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2855
+VSCODE_PID = 115283
 # environment
 LC_IDENTIFICATION\tDEFAULT = zh_CN.UTF-8
 # environment
@@ -356,6 +356,6 @@ GNUmakefile:
 # strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Sat Feb 12 20:47:56 2022
+# Finished Make data base on Sun Feb 13 23:35:16 2022
 
  

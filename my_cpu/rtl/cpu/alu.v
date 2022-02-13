@@ -3,6 +3,8 @@ module alu(
     //from de_alu
     input [31:0] alu_op1,
     input [31:0] alu_op2,
+    input [31:0] alu_reg1_data,
+    input [31:0] alu_reg2_data,
     input [31:0] alu_op1_jump,
     input [31:0] alu_op2_jump,
     input        alu_wr_reg_en,
@@ -22,8 +24,15 @@ module alu(
     output reg [31:0] reg_wdata_o,     
     output reg        alu_wr_reg_en_o,                  
     output reg [4:0]  alu_wr_reg_addr_o,
+
     output reg [31:0] alu_pc_o,
-    output reg [31:0] alu_inst_o
+    output reg [31:0] alu_inst_o,
+
+    output            alu_wr_mem_en_o,
+    output     [31:0] alu_mem_addr_o,
+    output     [1:0]  alu_wr_addr_index_o,
+    output     [1:0]  alu_rd_addr_index_o,
+    output     [31:0] alu_wr_mem_data_o
 );
 
 // I type inst
@@ -74,6 +83,9 @@ parameter INST_BGEU     = 3'b111;
 // NOP type inst
 parameter INST_NOP_OP   = 7'b0000001;
 
+//LUI and AUIPC type
+parameter INST_LUI      = 7'b0110111;
+parameter INST_AUIPC    = 7'b0010111;
 
 wire [6:0] opcode = alu_inst[6:0];
 wire [2:0] funct3 = alu_inst[14:12];
@@ -93,8 +105,8 @@ wire [31:0] sri_shift;
 wire [31:0] sr_shift;
 
 //mul wire
-reg [31:0] mul_op1;
-reg [31:0] mul_op2;
+reg  [31:0] mul_op1;
+reg  [31:0] mul_op2;
 wire [31:0] reg1_data_invert;
 wire [31:0] reg2_data_invert;
 wire [63:0] mul_temp;
@@ -103,6 +115,12 @@ wire [31:0] op1_add_op2_res;
 wire [31:0] op1_jump_add_op2_jump_res;
 wire        op1_eq_op2;
 
+//mem output signal
+assign alu_wr_mem_en_o      = alu_inst_type == 3'd4;
+assign alu_mem_addr_o       = op1_add_op2_res;
+assign alu_rd_addr_index_o  = (alu_reg1_data + {{20{alu_inst[31]}}, alu_inst[31:20]}) & 2'b11;
+assign alu_wr_addr_index_o  = (alu_reg1_data + {{20{alu_inst[31]}}, alu_inst[31:25], alu_inst[11:7]}) & 2'b11;
+assign alu_wr_mem_data_o    = alu_reg2_data;
 
 assign op1_add_op2_res               = alu_op1 + alu_op2;
 assign op1_jump_add_op2_jump_res     = alu_op1_jump + alu_op2_jump;
@@ -365,6 +383,11 @@ always @ (*) begin
             reg_wdata_o = 32'b0;
             jump_flag   = 1'b0;
             jump_addr = 32'b0;
+        end
+        INST_LUI, INST_AUIPC: begin
+            reg_wdata_o = op1_add_op2_res;
+            jump_flag   = 1'b0;
+            jump_addr   = 32'b0;
         end
         default: begin
             jump_flag   = 1'b0;

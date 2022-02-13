@@ -4,10 +4,24 @@ module core(
     input rst_n,
 
     input  [31:0] inst_i,
+    input  [31:0] ram_data_in,
     
     output [31:0] rom_addr_o,
-    output        rom_en_o
+    output        rom_en_o,
+
+    output        ram_ce,
+    output        ram_wr_en,
+    output [31:0] ram_addr,
+    output [3:0]  ram_addr_sel,
+    output [31:0] ram_wr_data
 );
+
+// core -> ram
+// wire        ram_ce;
+// wire        ram_wr_en;
+// wire [31:0] ram_addr;
+// wire [3:0]  ram_addr_sel;
+// wire [31:0] ram_wr_data;
 
 //ifu -> rom
 wire pc_stall;
@@ -31,6 +45,8 @@ wire [31:0] rd_data2;
 //de   ->  de_alu
 wire [31:0] op1;
 wire [31:0] op2;
+wire [31:0] rd_data1_o;
+wire [31:0] rd_data2_o;
 wire [31:0] op1_jump;
 wire [31:0] op2_jump;
 wire        wr_reg_en;
@@ -44,6 +60,9 @@ wire        or_flag;
 
 wire [31:0] alu_op1;
 wire [31:0] alu_op2;
+wire [31:0] alu_reg1_data;
+wire [31:0] alu_reg2_data;
+
 wire [31:0] alu_op1_jump;
 wire [31:0] alu_op2_jump;
 wire        alu_wr_reg_en;
@@ -60,6 +79,12 @@ wire [4:0]  alu_wr_reg_addr_o;
 wire [31:0] alu_pc_o;
 wire [31:0] alu_inst_o;
 
+wire        alu_wr_mem_en_o;
+wire [31:0] alu_mem_addr_o;
+wire [1:0]  alu_wr_addr_index_o;
+wire [1:0]  alu_rd_addr_index_o;
+wire [31:0] alu_wr_mem_data_o;
+
 //alu -> ctrl
 wire          jump_flag;
 wire [31:0]   jump_addr;
@@ -70,6 +95,13 @@ wire        lsu_wr_reg_en;
 wire [4:0]  lsu_wr_reg_addr;
 wire [31:0] lsu_pc;
 wire [31:0] lsu_inst;
+
+wire        lsu_wr_mem_en;
+wire [31:0] lsu_mem_addr;
+wire [1:0]  lsu_wr_addr_index;
+wire [1:0]  lsu_rd_addr_index;
+wire [31:0] lsu_wr_mem_data;
+
 
 //lsu -> lsu_wb
 wire [31:0] lsu_reg_wdata_o;   
@@ -165,6 +197,8 @@ de u2_de(
     //to de_alu
     .op1(op1),
     .op2(op2),
+    .rd_data1_o(rd_data1_o),
+    .rd_data2_o(rd_data2_o),
     .op1_jump(op1_jump),
     .op2_jump(op2_jump),
     .wr_reg_en(wr_reg_en),
@@ -181,6 +215,8 @@ de_alu u2_de_alu(
 
     .op1(op1),
     .op2(op2),
+    .rd_data1_o(rd_data1_o),
+    .rd_data2_o(rd_data2_o),
     .op1_jump(op1_jump),
     .op2_jump(op2_jump),
     .wr_reg_en(wr_reg_en),
@@ -195,6 +231,8 @@ de_alu u2_de_alu(
 
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
+    .alu_reg1_data(alu_reg1_data),
+    .alu_reg2_data(alu_reg2_data),
     .alu_op1_jump(alu_op1_jump),
     .alu_op2_jump(alu_op2_jump),
     .alu_wr_reg_en(alu_wr_reg_en),
@@ -213,6 +251,8 @@ alu u3_alu(
     //from de_alu
     .alu_op1(alu_op1),
     .alu_op2(alu_op2),
+    .alu_reg1_data(alu_reg1_data),
+    .alu_reg2_data(alu_reg2_data),
     .alu_op1_jump(alu_op1_jump),
     .alu_op2_jump(alu_op2_jump),
     .alu_wr_reg_en(alu_wr_reg_en),
@@ -233,7 +273,14 @@ alu u3_alu(
     .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
     .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
     .alu_pc_o(alu_pc_o),
-    .alu_inst_o(alu_inst_o)
+    .alu_inst_o(alu_inst_o),
+
+    .alu_wr_mem_en_o(alu_wr_mem_en_o),
+    .alu_mem_addr_o(alu_mem_addr_o),
+    .alu_wr_addr_index_o(alu_wr_addr_index_o),
+    .alu_rd_addr_index_o(alu_rd_addr_index_o),
+    .alu_wr_mem_data_o(alu_wr_mem_data_o)
+
 );
 
 alu_lsu u3_alu_lsu(
@@ -243,15 +290,31 @@ alu_lsu u3_alu_lsu(
     .reg_wdata_o(reg_wdata_o),     
     .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
     .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
+    // pc and inst
     .alu_pc_o(alu_pc_o),
     .alu_inst_o(alu_inst_o),
+    // alu to mem
+    .alu_wr_mem_en_o(alu_wr_mem_en_o),
+    .alu_mem_addr_o(alu_mem_addr_o),
+    .alu_wr_addr_index_o(alu_wr_addr_index_o),
+    .alu_rd_addr_index_o(alu_rd_addr_index_o),
+    .alu_wr_mem_data_o(alu_wr_mem_data_o),
+
     .stall(stall),
 
     .lsu_reg_wdata(lsu_reg_wdata),     
     .lsu_wr_reg_en(lsu_wr_reg_en),                  
     .lsu_wr_reg_addr(lsu_wr_reg_addr),
     .lsu_pc(lsu_pc),
-    .lsu_inst(lsu_inst)
+    .lsu_inst(lsu_inst),
+
+    //req mem signal
+    .lsu_wr_mem_en(lsu_wr_mem_en),
+    .lsu_mem_addr(lsu_mem_addr),
+    .lsu_wr_addr_index(lsu_wr_addr_index),
+    .lsu_rd_addr_index(lsu_rd_addr_index),
+    .lsu_wr_mem_data(lsu_wr_mem_data)
+
     
 );
 
@@ -262,12 +325,28 @@ lsu u4_lsu(
     .lsu_wr_reg_addr(lsu_wr_reg_addr),
     .lsu_pc(lsu_pc),
     .lsu_inst(lsu_inst),
+    //ram -> lsu rd data
+    .mem_lsu_rd_data(ram_data_in),
+
+    //req mem signal
+    .lsu_wr_mem_en(lsu_wr_mem_en),
+    .lsu_mem_addr(lsu_mem_addr),
+    .lsu_wr_addr_index(lsu_wr_addr_index),
+    .lsu_rd_addr_index(lsu_rd_addr_index),
+    .lsu_wr_mem_data(lsu_wr_mem_data),
+
 
     .lsu_reg_wdata_o(lsu_reg_wdata_o),     
     .lsu_wr_reg_en_o(lsu_wr_reg_en_o),                  
     .lsu_wr_reg_addr_o(lsu_wr_reg_addr_o),
     .lsu_pc_o(lsu_pc_o),
-    .lsu_inst_o(lsu_inst_o)
+    .lsu_inst_o(lsu_inst_o),
+
+    .wr_mem_en(ram_wr_en),
+    .mem_addr(ram_addr),
+    .mem_sel(ram_addr_sel),
+    .wr_mem_data(ram_wr_data),
+    .wr_mem_ce(ram_ce)
 
 );
 

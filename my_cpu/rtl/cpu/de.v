@@ -31,6 +31,8 @@ module de(
     //to de_alu
     output reg [31:0] op1,
     output reg [31:0] op2,
+    output reg [31:0] rd_data1_o,
+    output reg [31:0] rd_data2_o,
 
     output reg [31:0] op1_jump,
     output reg [31:0] op2_jump,
@@ -96,8 +98,26 @@ parameter INST_BGE      = 3'b101;
 parameter INST_BLTU     = 3'b110;
 parameter INST_BGEU     = 3'b111;
 
+// L type inst
+parameter INST_TYPE_L   = 7'b0000011;
+parameter INST_LB       = 3'b000;
+parameter INST_LH       = 3'b001;
+parameter INST_LW       = 3'b010;
+parameter INST_LBU      = 3'b100;
+parameter INST_LHU      = 3'b101;
+
+// S type inst
+parameter INST_TYPE_S   = 7'b0100011;
+parameter INST_SB       = 3'b000;
+parameter INST_SH       = 3'b001;
+parameter INST_SW       = 3'b010;
+
 //NOP type
 parameter INST_NOP_OP   = 7'b0000001;
+
+//LUI and AUIPC type
+parameter INST_LUI      = 7'b0110111;
+parameter INST_AUIPC    = 7'b0010111;
 
 
 
@@ -118,43 +138,45 @@ reg [31:0] imm;
 
 always @(*) begin
     if(rd_reg1_flag == 1'b1 && alu_wr_reg_en_o == 1'b1 && alu_wr_reg_addr_o == rd_addr1) begin
-        op1_in = reg_wdata_o;
+        op1_in      = reg_wdata_o;
     end
     else if(rd_reg1_flag == 1'b1 && lsu_wr_reg_en_o == 1'b1 && lsu_wr_reg_addr_o == rd_addr1) begin
-        op1_in = lsu_reg_wdata_o;
+        op1_in      = lsu_reg_wdata_o;
     end
     else if(rd_reg1_flag == 1'b1) begin
-        op1_in = rd_data1;
+        op1_in      = rd_data1;
     end
     else if(rd_reg1_flag == 1'b0) begin
-        op1_in = imm;
+        op1_in      = imm;
     end
     else begin
-        op1_in = 32'b0;
+        op1_in      = 32'b0;
     end
 end
 
 always @(*) begin
     if(rd_reg2_flag == 1'b1 && alu_wr_reg_en_o == 1'b1 && alu_wr_reg_addr_o == rd_addr2) begin
-        op2_in = reg_wdata_o;
+        op2_in     = reg_wdata_o;
     end
     else if(rd_reg2_flag == 1'b1 && lsu_wr_reg_en_o == 1'b1 && lsu_wr_reg_addr_o == rd_addr2) begin
-        op2_in = lsu_reg_wdata_o;
+        op2_in      = lsu_reg_wdata_o;
     end
     else if(rd_reg2_flag == 1'b1) begin
-        op2_in = rd_data2;
+        op2_in      = rd_data2;
     end
     else if(rd_reg2_flag == 1'b0) begin
-        op2_in = imm;
+        op2_in      = imm;
     end
     else begin
-        op2_in = 32'b0;
+        op2_in      = 32'b0;
     end
 end
 
 always @(*) begin
     de_pc_o      =  de_pc;
     de_inst_o    =  de_inst;
+    rd_data1_o   =  op1_in;
+    rd_data2_o   =  op2_in;
     op1          =  32'b0;
     op2          =  32'b0;
     wr_reg_en    =  1'b0;
@@ -233,7 +255,7 @@ always @(*) begin
                         rd_reg2_flag = 1'b1;
                         op1          = op1_in;
                         op2          = op2_in; 
-                        inst_type    = 3'd3;
+                        inst_type    = 3'd2;
                     end
                     // INST_DIV, INST_DIVU, INST_REM, INST_REMU: begin
                     //     reg_we_o = `WriteDisable;
@@ -272,7 +294,7 @@ always @(*) begin
                     rd_reg2_flag = 1'b1;
                     op1          = op1_in;
                     op2          = op2_in; 
-                    inst_type    = 3'd4;
+                    inst_type    = 3'd3;
                     op1_jump     = de_pc;
                     op2_jump     = {{20{de_inst[31]}}, de_inst[7], de_inst[30:25], de_inst[11:8], 1'b0};
                 end
@@ -323,6 +345,86 @@ always @(*) begin
             op1          = 32'b0;
             op2          = 32'b0; 
             inst_type    = 3'd0;
+        end
+        INST_TYPE_L: begin
+            case (funct3)
+                INST_LB, INST_LH, INST_LW, INST_LBU, INST_LHU: begin
+                    wr_reg_en    = 1'b1;
+                    wr_reg_addr  = rd;
+                    rd_addr1     = rs1;
+                    rd_addr2     = 5'b0;
+                    imm          = 32'b0;
+                    rd_reg1_flag = 1'b1;
+                    rd_reg2_flag = 1'b0;
+                    op1          = op1_in;
+                    op2          = {{20{de_inst[31]}}, de_inst[31:20]}; 
+                    inst_type    = 3'd5;
+                end
+                default: begin
+                    wr_reg_en    = 1'b0;
+                    wr_reg_addr  = 5'b0;
+                    rd_addr1     = 5'b0;
+                    rd_addr2     = 5'b0;
+                    imm          = 32'b0;
+                    rd_reg1_flag = 1'b0;
+                    rd_reg2_flag = 1'b0; 
+                    op1          = 32'b0;
+                    op2          = 32'b0; 
+                    inst_type    = 3'd0;
+                end
+            endcase
+        end
+        INST_TYPE_S: begin
+            case (funct3)
+                INST_SB, INST_SW, INST_SH: begin
+                    wr_reg_en    = 1'b0;
+                    wr_reg_addr  = 5'b0;
+                    rd_addr1     = rs1;
+                    rd_addr2     = rs2;
+                    imm          = 32'b0;
+                    rd_reg1_flag = 1'b1;
+                    rd_reg2_flag = 1'b1; 
+                    op1          = op1_in;
+                    op2          = {{20{de_inst[31]}}, de_inst[31:25], de_inst[11:7]}; 
+                    inst_type    = 3'd4;
+                end
+                default: begin
+                    wr_reg_en    = 1'b0;
+                    wr_reg_addr  = 5'b0;
+                    rd_addr1     = 5'b0;
+                    rd_addr2     = 5'b0;
+                    imm          = 32'b0;
+                    rd_reg1_flag = 1'b0;
+                    rd_reg2_flag = 1'b0; 
+                    op1          = 32'b0;
+                    op2          = 32'b0; 
+                    inst_type    = 3'd0;
+                end
+            endcase
+        end
+        INST_LUI: begin
+                wr_reg_en    = 1'b1;
+                wr_reg_addr  = rd;
+                rd_addr1     = rs1;
+                rd_addr2     = rs2;
+                imm          = 32'b0;
+                rd_reg1_flag = 1'b0;
+                rd_reg2_flag = 1'b0; 
+                op1          = {de_inst[31:12], 12'b0};
+                op2          = 32'b0; 
+                inst_type    = 3'd5;
+        end
+        INST_AUIPC: begin
+                wr_reg_en    = 1'b1;
+                wr_reg_addr  = rd;
+                rd_addr1     = rs1;
+                rd_addr2     = rs2;
+                imm          = 32'b0;
+                rd_reg1_flag = 1'b0;
+                rd_reg2_flag = 1'b0; 
+                op1          = de_pc;
+                op2          = {de_inst[31:12], 12'b0}; 
+                inst_type    = 3'd5;
         end
         default:begin
             wr_reg_en    = 1'b0;
