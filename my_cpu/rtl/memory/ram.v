@@ -13,10 +13,10 @@ module ram(
 
 );
 
-reg [7:0] _ram3 [4095:0];
-reg [7:0] _ram2 [4095:0];
-reg [7:0] _ram1 [4095:0];
-reg [7:0] _ram0 [4095:0];
+reg [7:0] _ram3 [1023:0];
+reg [7:0] _ram2 [1023:0];
+reg [7:0] _ram1 [1023:0];
+reg [7:0] _ram0 [1023:0];
 
 // write mem
 always @(posedge clk) begin
