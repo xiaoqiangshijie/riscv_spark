@@ -56,6 +56,9 @@ wire [31:0] de_inst_o;
 wire [2:0]  inst_type;
 wire        or_flag;
 
+//de   ->    ctrl
+wire        de_stall;
+
 //de_alu -> alu
 
 wire [31:0] alu_op1;
@@ -71,6 +74,9 @@ wire [31:0] alu_pc;
 wire [31:0] alu_inst;
 wire [2:0]  alu_inst_type;
 wire        alu_or_flag;
+
+//alu -> de
+wire alu_load_flag;
 
 //alu -> alu_lsu
 wire [31:0] reg_wdata_o;
@@ -134,6 +140,7 @@ assign rom_en_o   = ~pc_stall;
 
 ctrl u_ctrl(
     .rst_n(rst_n),
+    .de_stall(de_stall),
     .jump_flag(jump_flag),
     .jump_addr(jump_addr),
 
@@ -177,6 +184,8 @@ de u2_de(
     .rd_data2(rd_data2),
 
     //from bypass_alu
+    .alu_load_flag(alu_load_flag),
+
     .reg_wdata_o(reg_wdata_o),     
     .alu_wr_reg_en_o(alu_wr_reg_en_o),                  
     .alu_wr_reg_addr_o(alu_wr_reg_addr_o),
@@ -205,7 +214,9 @@ de u2_de(
     .wr_reg_addr(wr_reg_addr),
 
     .de_pc_o(de_pc_o),
-    .de_inst_o(de_inst_o)
+    .de_inst_o(de_inst_o),
+
+    .de_stall(de_stall)
 );
 
 de_alu u2_de_alu(
@@ -263,6 +274,9 @@ alu u3_alu(
 
     .alu_inst_type(alu_inst_type),
     .alu_or_flag(alu_or_flag),
+
+    //alu to de
+    .alu_load_flag(alu_load_flag),
 
     //alu to alu_ctrl
     .jump_flag(jump_flag),

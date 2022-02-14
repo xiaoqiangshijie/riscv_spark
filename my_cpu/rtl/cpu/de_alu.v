@@ -52,7 +52,7 @@ always @(posedge clk or negedge rst_n) begin
         alu_inst_type   <= 3'b0;
         alu_or_flag     <= 1'b0;
     end
-    else if(stall[2] == 1'b1) begin
+    else if(stall[2] == 1'b1 && stall[3] == 1'b0) begin
         alu_op1         <= 32'b0;
         alu_op2         <= 32'b0;
         alu_reg1_data   <= 32'b0;

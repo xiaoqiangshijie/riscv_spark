@@ -9,6 +9,7 @@ module de(
     input [31:0] rd_data2,
 
     //from bypass_alu
+    input        alu_load_flag,
     input [31:0] reg_wdata_o,     
     input        alu_wr_reg_en_o,                  
     input [4:0]  alu_wr_reg_addr_o,
@@ -25,7 +26,7 @@ module de(
     output reg      rd_reg2_flag,
 
     //to de_alu inst type
-    output reg [2:0]  inst_type,
+    output reg [2:0]  inst_type,      // 1=I 2=R 3=jump 4=Store 5=Load 
     output            or_flag,
 
     //to de_alu
@@ -41,7 +42,10 @@ module de(
     output reg [4:0]  wr_reg_addr,
 
     output reg [31:0] de_pc_o,
-    output reg [31:0] de_inst_o
+    output reg [31:0] de_inst_o,
+
+    //to ctrl 
+    output reg        de_stall
 );
 
 wire[6:0] opcode = de_inst[6:0];
@@ -172,6 +176,16 @@ always @(*) begin
     end
 end
 
+//load bypass techology
+wire reg1_load_related_stall;
+wire reg2_load_related_stall;
+
+assign reg1_load_related_stall = (alu_load_flag && rd_reg1_flag == 1'b1 && rd_addr1 == alu_wr_reg_addr_o);
+assign reg2_load_related_stall = (alu_load_flag && rd_reg2_flag == 1'b1 && rd_addr2 == alu_wr_reg_addr_o);
+
+assign de_stall = reg1_load_related_stall | reg2_load_related_stall;
+
+// decoding inst
 always @(*) begin
     de_pc_o      =  de_pc;
     de_inst_o    =  de_inst;
@@ -412,7 +426,7 @@ always @(*) begin
                 rd_reg2_flag = 1'b0; 
                 op1          = {de_inst[31:12], 12'b0};
                 op2          = 32'b0; 
-                inst_type    = 3'd5;
+                inst_type    = 3'd6;
         end
         INST_AUIPC: begin
                 wr_reg_en    = 1'b1;

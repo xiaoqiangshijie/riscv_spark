@@ -1,5 +1,9 @@
 module alu(
 
+    //pc and inst
+    input [31:0] alu_pc,
+    input [31:0] alu_inst,
+
     //from de_alu
     input [31:0] alu_op1,
     input [31:0] alu_op2,
@@ -10,23 +14,23 @@ module alu(
     input        alu_wr_reg_en,
     input [4:0]  alu_wr_reg_addr,
 
-    input [31:0] alu_pc,
-    input [31:0] alu_inst,
-
-    input [2:0]  alu_inst_type,
+    input [2:0]  alu_inst_type,    // 1=I 2=R 3=jump 4=Store 5=Load
     input        alu_or_flag,
+
+    //alu to de, solve load related 
+    output       alu_load_flag,
 
     //alu to ctrl
     output reg          jump_flag,
     output reg [31:0]   jump_addr,
 
     //alu to alu_mem
+    output reg [31:0] alu_pc_o,
+    output reg [31:0] alu_inst_o,
+
     output reg [31:0] reg_wdata_o,     
     output reg        alu_wr_reg_en_o,                  
     output reg [4:0]  alu_wr_reg_addr_o,
-
-    output reg [31:0] alu_pc_o,
-    output reg [31:0] alu_inst_o,
 
     output            alu_wr_mem_en_o,
     output     [31:0] alu_mem_addr_o,
@@ -114,6 +118,9 @@ wire [63:0] mul_temp_invert;
 wire [31:0] op1_add_op2_res;
 wire [31:0] op1_jump_add_op2_jump_res;
 wire        op1_eq_op2;
+
+//send to de signal
+assign alu_load_flag = alu_inst_type == 3'd5;
 
 //mem output signal
 assign alu_wr_mem_en_o      = alu_inst_type == 3'd4;
