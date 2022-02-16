@@ -96,7 +96,7 @@ module bus(
 
     // 主设备请求信号
     // assign req = {m3_req_i, m2_req_i, m1_req_i, m0_req_i};
-    assign req = {m2_req_i, m1_req_i, m0_req_i};
+    assign req = {m2_req_i, m1_req_i, m0_req_i}; //reg[0]=ex //reg[1]=ifu //reg[2]=jtag
 
     // 仲裁逻辑
     // 固定优先级仲裁机制
@@ -117,6 +117,7 @@ module bus(
     //     end
     // end
 
+    //only ifu not stall pipe
     always @ (*) begin
         if (req[0]) begin
             grant = grant0;              // 执行模块
@@ -155,12 +156,15 @@ module bus(
         s3_we_o = `WriteDisable;
         s4_we_o = `WriteDisable;
         s5_we_o = `WriteDisable;
-
+        
+        //ex send to slave
+        //m0 = ex m1 = jtag m2 = ifu
+        //s0 = rom s1 = ram s2 = jtag
         case (grant)
             grant0: begin
                 case (m0_addr_i[31:28])
                     slave_0: begin
-                        s0_we_o = m0_we_i;
+                        s0_we_o   = m0_we_i;
                         s0_addr_o = {{4'h0}, {m0_addr_i[27:0]}};
                         s0_data_o = m0_data_i;
                         m0_data_o = s0_data_i;
@@ -202,18 +206,22 @@ module bus(
             end
             grant1: begin
                 case (m1_addr_i[31:28])
+                //m0 = ex m1 = jtag m2 = ifu
+                //rom
                     slave_0: begin
                         s0_we_o = m1_we_i;
                         s0_addr_o = {{4'h0}, {m1_addr_i[27:0]}};
                         s0_data_o = m1_data_i;
                         m1_data_o = s0_data_i;
                     end
+                //ram
                     slave_1: begin
                         s1_we_o = m1_we_i;
                         s1_addr_o = {{4'h0}, {m1_addr_i[27:0]}};
                         s1_data_o = m1_data_i;
                         m1_data_o = s1_data_i;
                     end
+                //jtag
                     slave_2: begin
                         s2_we_o = m1_we_i;
                         s2_addr_o = {{4'h0}, {m1_addr_i[27:0]}};
