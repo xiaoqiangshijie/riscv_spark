@@ -1,0 +1,5 @@
+./inst_fetch_tb.v
+
+../rtl/ifu.v
+../rtl/rom.v
+../rtl/inst_fetch.v

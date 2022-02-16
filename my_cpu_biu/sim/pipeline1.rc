@@ -1,0 +1,89 @@
+Magic 271485
+Revision Verdi_O-2018.09-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 27 1368 322 113 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/host/riscv_soc1/my_cpu/sim/riscv.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 148.919175 586.251435
+cursor 350.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 21
+; marker line index
+markerPos 35
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "ifu"
+activeDirFile "" "/home/host/riscv_soc1/my_cpu/sim/riscv.fsdb"
+addSignal -h 15 /soc_tb/soc/u_core/u1_ifu/clk
+addSignal -h 15 -holdScope rst_n
+addSignal -h 15 -holdScope pc[31:0]
+addSignal -h 15 -holdScope inst_o[31:0]
+addGroup "de"
+addSignal -h 15 /soc_tb/soc/u_core/u2_de/de_pc[31:0]
+addSignal -h 15 -holdScope de_inst[31:0]
+addSignal -h 15 -holdScope rd_addr1[4:0]
+addSignal -h 15 -holdScope rd_addr2[4:0]
+addSignal -h 15 -holdScope op1[31:0]
+addSignal -h 15 -holdScope op2[31:0]
+addGroup "alu"
+addSignal -h 15 /soc_tb/soc/u_core/u3_alu/alu_pc_o[31:0]
+addSignal -h 15 -holdScope alu_inst_o[31:0]
+addSignal -h 15 -holdScope reg_wdata_o[31:0]
+addGroup "lsu"
+addSignal -h 15 /soc_tb/soc/u_core/u4_lsu/lsu_pc_o[31:0]
+addSignal -h 15 -holdScope lsu_inst_o[31:0]
+addSignal -h 15 -holdScope lsu_reg_wdata_o[31:0]
+addGroup "wb"
+addSignal -h 15 /soc_tb/soc/u_core/u5_wb/wr_en
+addSignal -h 15 -holdScope wr_addr[4:0]
+addSignal -h 15 -holdScope wr_data[31:0]
+addGroup "WRITE_REG[0]#1"
+addSignal -h 15 /soc_tb/soc/u_core/u0_regs/regs[10][31:0]
+addSignal -h 15 -holdScope regs[9][31:0]
+addSignal -h 15 -holdScope regs[8][31:0]
+addSignal -h 15 -holdScope regs[7][31:0]
+addSignal -h 15 -holdScope regs[6][31:0]
+addSignal -h 15 -holdScope regs[5][31:0]
+addSignal -h 15 -holdScope regs[4][31:0]
+addSignal -h 15 -holdScope regs[3][31:0]
+addSignal -h 15 -holdScope regs[2][31:0]
+addSignal -h 15 -holdScope regs[1][31:0]
+addSignal -h 15 -holdScope regs[0][31:0]
+addGroup "G7"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+
