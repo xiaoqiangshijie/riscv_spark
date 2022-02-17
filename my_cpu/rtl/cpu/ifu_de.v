@@ -13,23 +13,18 @@ module ifu_de(
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         de_pc <= 32'b0;
+        de_inst <= 32'd0;
+    end
+    else if(stall == 6'b111111) begin
+        de_pc <= 32'b0;
+        de_inst <= 32'd0;
     end
     else if(stall[1] == 1'b1 && stall[2] == 1'b0) begin
         de_pc <= 32'b0;
+        de_inst <= 32'd0;
     end
     else if(stall[1] == 1'b0) begin
         de_pc <= pc;
-    end
-end
-
-always @(posedge clk or negedge rst_n) begin
-    if(!rst_n) begin
-        de_inst <= 32'd0;
-    end
-    else if(stall[1] == 1'b1 && stall[2] == 1'b0) begin
-        de_inst <= 32'd0;
-    end
-    else if(stall[1] == 1'b0)begin
         de_inst <= inst_o;
     end
 end

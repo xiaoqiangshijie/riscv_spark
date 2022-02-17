@@ -21,7 +21,7 @@ always @(*) begin
         stall = 6'b000000;
     end
     else if(jump_flag == 1'b1) begin
-        stall = 6'b001111;
+        stall = 6'b111111;
     end
     else if(de_stall == 1'b1)begin
         stall = 6'b000111;

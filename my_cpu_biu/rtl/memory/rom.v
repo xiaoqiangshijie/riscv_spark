@@ -6,7 +6,7 @@ module rom(
     input  rom_en,
     input  [31:0] rom_addr,
 
-    output reg [31:0] inst_o
+    output reg [31:0] rom_inst_o
 
 );
 
@@ -19,10 +19,10 @@ end
 
 always @(*) begin
     if(rom_en) begin
-        inst_o = _rom[rom_addr[31:2]];
+        rom_inst_o = _rom[rom_addr[31:2]];
     end
     else begin
-        inst_o = 32'b0;
+        rom_inst_o = 32'b0;
     end
 end
 

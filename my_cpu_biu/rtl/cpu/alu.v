@@ -151,6 +151,7 @@ always @ (*) begin
     alu_wr_reg_addr_o = alu_wr_reg_addr;
     alu_pc_o          = alu_pc;
     alu_inst_o        = alu_inst;
+    jump_flag         = 1'b0;
     
     case (opcode)
         INST_TYPE_I: begin

@@ -52,6 +52,20 @@ always @(posedge clk or negedge rst_n) begin
         alu_inst_type   <= 3'b0;
         alu_or_flag     <= 1'b0;
     end
+    else if(stall == 6'b11111111)begin
+        alu_op1         <= 32'b0;
+        alu_op2         <= 32'b0;
+        alu_reg1_data   <= 32'b0;
+        alu_reg2_data   <= 32'b0;
+        alu_op1_jump    <= 32'b0;
+        alu_op2_jump    <= 32'b0;
+        alu_wr_reg_en   <= 1'b0;
+        alu_wr_reg_addr <= 5'b0;
+        alu_pc          <= 32'b0;
+        alu_inst        <= 32'b0;
+        alu_inst_type   <= 3'b0;
+        alu_or_flag     <= 1'b0;
+    end
     else if(stall[2] == 1'b1 && stall[3] == 1'b0) begin
         alu_op1         <= 32'b0;
         alu_op2         <= 32'b0;

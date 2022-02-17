@@ -7,6 +7,9 @@ module ctrl(
     input         jump_flag,
     input [31:0]  jump_addr,
 
+    //from biu
+    input         biu_hold_flag,
+
     output        ctrl_jump_flag,
     output [31:0] ctrl_jump_addr,
 
@@ -21,10 +24,13 @@ always @(*) begin
         stall = 6'b000000;
     end
     else if(jump_flag == 1'b1) begin
-        stall = 6'b001111;
+        stall = 6'b111111;
     end
     else if(de_stall == 1'b1)begin
         stall = 6'b000111;
+    end
+    else if(biu_hold_flag == 1'b1)begin
+        stall = 6'b000001;
     end
     else begin
         stall = 6'b000000;

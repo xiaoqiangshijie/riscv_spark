@@ -3,25 +3,31 @@ module core(
     input clk,
     input rst_n,
 
-    input  [31:0] inst_i,
-    input  [31:0] ram_data_in,
-    
-    output [31:0] rom_addr_o,
-    output        rom_en_o,
+    // slave 0 interface            //rom
+    output s0_we,        
+    output [31:0] s0_addr,    
+    output [3:0]  s0_addr_sel,
+    output [31:0] s0_wdata,      
+    input  [31:0] s0_rdata,
 
-    output        ram_ce,
-    output        ram_wr_en,
-    output [31:0] ram_addr,
-    output [3:0]  ram_addr_sel,
-    output [31:0] ram_wr_data
+    // slave 1 interface            //ram
+    output s1_we,        
+    output [31:0] s1_addr,    
+    output [3:0]  s1_addr_sel,
+    output [31:0] s1_wdata,      
+    input  [31:0] s1_rdata
 );
 
-// core -> ram
-// wire        ram_ce;
-// wire        ram_wr_en;
-// wire [31:0] ram_addr;
-// wire [3:0]  ram_addr_sel;
-// wire [31:0] ram_wr_data;
+//core -> biu
+wire        ram_ce;
+wire        ram_wr_en;
+wire [31:0] ram_addr;
+wire [3:0]  ram_addr_sel;
+wire [31:0] ram_wr_data;
+wire [31:0] ram_data_in;
+
+wire [31:0] pc;
+wire [31:0] inst_i;
 
 //ifu -> rom
 wire pc_stall;
@@ -58,6 +64,9 @@ wire        or_flag;
 
 //de   ->    ctrl
 wire        de_stall;
+
+//biu  ->    biu
+wire        biu_hold_flag;
 
 //de_alu -> alu
 
@@ -135,13 +144,13 @@ wire        ctrl_jump_flag;
 wire [31:0] ctrl_jump_addr;
 
 
-assign rom_addr_o = pc;
 assign rom_en_o   = ~pc_stall;
 
 ctrl u_ctrl(
     .rst_n(rst_n),
     .de_stall(de_stall),
     .jump_flag(jump_flag),
+    .biu_hold_flag(biu_hold_flag),
     .jump_addr(jump_addr),
 
     .stall(stall),
@@ -417,6 +426,43 @@ regs u0_regs(
     .rd_data2(rd_data2)
 );
 
+biu u_biu(
 
+    .clk(clk),
+    .rst_n(rst_n),
+
+    // master 0 interface            //ex
+    .m0_req(ram_ce), 
+    .m0_we(ram_wr_en),         
+    .m0_addr(ram_addr),      
+    .m0_addr_sel(ram_addr_sel),
+    .m0_wdata(ram_wr_data),         
+    .m0_rdata(ram_data_in),                               
+
+    // master 1 interface            //if
+    .m1_req(1'b1), 
+    .m1_we(1'b1),         
+    .m1_addr(pc),      
+    .m1_addr_sel(4'b1111),
+    .m1_wdata(32'b0),         
+    .m1_rdata(inst_i),
+
+    // slave 0 interface            //rom
+    .s0_we(s0_we),         
+    .s0_addr(s0_addr),      
+    .s0_addr_sel(s0_addr_sel),
+    .s0_wdata(s0_wdata),         
+    .s0_rdata(s0_rdata),   
+
+    // slave 1 interface            //ram
+    .s1_we(s1_we),         
+    .s1_addr(s1_addr),      
+    .s1_addr_sel(s1_addr_sel),
+    .s1_wdata(s1_wdata),         
+    .s1_rdata(s1_rdata),
+
+    .biu_hold_flag(biu_hold_flag)                  //to ctrl
+
+);
 
 endmodule

@@ -8,7 +8,7 @@ module soc(
 //core -> rom
 wire        rom_en_o;
 wire [31:0] rom_addr_o;
-wire [31:0] inst_o;
+wire [31:0] rom_inst_o;
 
 //core -> ram
 wire        ram_ce;
@@ -23,18 +23,23 @@ wire [31:0] ram_data_in;
 
 core u_core(
 
+    //clk and rst_n
     .clk(clk),
     .rst_n(rst_n),
-    .inst_i(inst_o),
-    .ram_data_in(ram_data_in),
-    
-    .rom_addr_o(rom_addr_o),
-    .rom_en_o(rom_en_o),
-    .ram_ce(ram_ce),
-    .ram_wr_en(ram_wr_en),
-    .ram_addr(ram_addr),
-    .ram_addr_sel(ram_addr_sel),
-    .ram_wr_data(ram_wr_data)
+
+    // slave 0 interface            //rom
+    .s0_we(rom_en_o),        
+    .s0_addr(rom_addr_o),    
+    .s0_addr_sel(4'b1111),
+    .s0_wdata(32'b0),      
+    .s0_rdata(rom_inst_o),
+
+    // slave 1 interface            //ram
+    .s1_we(ram_wr_en),        
+    .s1_addr(ram_addr),    
+    .s1_addr_sel(ram_addr_sel),
+    .s1_wdata(ram_wr_data),      
+    .s1_rdata(ram_data_in)
 
 );
 
@@ -45,7 +50,7 @@ rom u_rom(
     .rom_en(rom_en_o),
     .rom_addr(rom_addr_o),
 
-    .inst_o(inst_o)
+    .rom_inst_o(rom_inst_o)
 
 );
 
@@ -54,7 +59,6 @@ ram u_ram(
     .clk(clk),
     .rst_n(rst_n),
 
-    .ram_ce(ram_ce),
     .ram_wr_en(ram_wr_en),
     .ram_addr(ram_addr),
     .ram_addr_sel(ram_addr_sel),

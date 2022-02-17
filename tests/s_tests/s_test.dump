@@ -7,128 +7,108 @@ Disassembly of section .init:
 00000000 <start>:
    0:	00500293          	li	t0,5
    4:	00400213          	li	tp,4
-   8:	1c520a63          	beq	tp,t0,1dc <fail>
+   8:	00420663          	beq	tp,tp,14 <I_table>
    c:	00400213          	li	tp,4
-  10:	1c421663          	bne	tp,tp,1dc <fail>
+  10:	16421a63          	bne	tp,tp,184 <fail>
+
+00000014 <I_table>:
   14:	00400213          	li	tp,4
   18:	00120193          	addi	gp,tp,1 # 1 <start+0x1>
   1c:	00500313          	li	t1,5
-  20:	1a619e63          	bne	gp,t1,1dc <fail>
+  20:	16619263          	bne	gp,t1,184 <fail>
   24:	00400213          	li	tp,4
   28:	fff22193          	slti	gp,tp,-1
   2c:	00000313          	li	t1,0
-  30:	1a619663          	bne	gp,t1,1dc <fail>
+  30:	14619a63          	bne	gp,t1,184 <fail>
   34:	00400213          	li	tp,4
   38:	00522193          	slti	gp,tp,5
   3c:	00100313          	li	t1,1
-  40:	18619e63          	bne	gp,t1,1dc <fail>
+  40:	14619263          	bne	gp,t1,184 <fail>
   44:	00400213          	li	tp,4
   48:	00122193          	slti	gp,tp,1
   4c:	00000313          	li	t1,0
-  50:	18619663          	bne	gp,t1,1dc <fail>
+  50:	12619a63          	bne	gp,t1,184 <fail>
   54:	00400213          	li	tp,4
   58:	00522193          	slti	gp,tp,5
   5c:	00100313          	li	t1,1
-  60:	16619e63          	bne	gp,t1,1dc <fail>
+  60:	12619263          	bne	gp,t1,184 <fail>
   64:	00400213          	li	tp,4
   68:	00124193          	xori	gp,tp,1
   6c:	00500313          	li	t1,5
-  70:	16619663          	bne	gp,t1,1dc <fail>
+  70:	10619a63          	bne	gp,t1,184 <fail>
   74:	00400213          	li	tp,4
   78:	00524193          	xori	gp,tp,5
   7c:	00100313          	li	t1,1
-  80:	14619e63          	bne	gp,t1,1dc <fail>
+  80:	10619263          	bne	gp,t1,184 <fail>
   84:	00400213          	li	tp,4
   88:	00126193          	ori	gp,tp,1
   8c:	00500313          	li	t1,5
-  90:	14619663          	bne	gp,t1,1dc <fail>
+  90:	0e619a63          	bne	gp,t1,184 <fail>
   94:	00400213          	li	tp,4
   98:	00526193          	ori	gp,tp,5
   9c:	00500313          	li	t1,5
-  a0:	12619e63          	bne	gp,t1,1dc <fail>
+  a0:	0e619263          	bne	gp,t1,184 <fail>
   a4:	00400213          	li	tp,4
   a8:	00127193          	andi	gp,tp,1
   ac:	00000313          	li	t1,0
-  b0:	12619663          	bne	gp,t1,1dc <fail>
+  b0:	0c619a63          	bne	gp,t1,184 <fail>
   b4:	00400213          	li	tp,4
   b8:	00527193          	andi	gp,tp,5
   bc:	00400313          	li	t1,4
-  c0:	10619e63          	bne	gp,t1,1dc <fail>
+  c0:	0c619263          	bne	gp,t1,184 <fail>
   c4:	00400213          	li	tp,4
   c8:	00121193          	slli	gp,tp,0x1
   cc:	00800313          	li	t1,8
-  d0:	10619663          	bne	gp,t1,1dc <fail>
+  d0:	0a619a63          	bne	gp,t1,184 <fail>
   d4:	00400213          	li	tp,4
   d8:	00221193          	slli	gp,tp,0x2
   dc:	01000313          	li	t1,16
-  e0:	0e619e63          	bne	gp,t1,1dc <fail>
+  e0:	0a619263          	bne	gp,t1,184 <fail>
   e4:	00400213          	li	tp,4
   e8:	00125193          	srli	gp,tp,0x1
   ec:	00200313          	li	t1,2
-  f0:	0e619663          	bne	gp,t1,1dc <fail>
+  f0:	08619a63          	bne	gp,t1,184 <fail>
   f4:	00400213          	li	tp,4
   f8:	00225193          	srli	gp,tp,0x2
   fc:	00100313          	li	t1,1
- 100:	0c619e63          	bne	gp,t1,1dc <fail>
+ 100:	08619263          	bne	gp,t1,184 <fail>
  104:	00400213          	li	tp,4
  108:	40125193          	srai	gp,tp,0x1
  10c:	00200313          	li	t1,2
- 110:	0c619663          	bne	gp,t1,1dc <fail>
+ 110:	06619a63          	bne	gp,t1,184 <fail>
  114:	10000237          	lui	tp,0x10000
  118:	00420213          	addi	tp,tp,4 # 10000004 <stack_size+0xfffe004>
  11c:	41125193          	srai	gp,tp,0x11
  120:	00001337          	lui	t1,0x1
- 124:	80030313          	addi	t1,t1,-2048 # 800 <run_end+0x620>
- 128:	0a619a63          	bne	gp,t1,1dc <fail>
- 12c:	001101b3          	add	gp,sp,ra
- 130:	401101b3          	sub	gp,sp,ra
- 134:	001111b3          	sll	gp,sp,ra
- 138:	005121b3          	slt	gp,sp,t0
- 13c:	0022b1b3          	sltu	gp,t0,sp
- 140:	0022c1b3          	xor	gp,t0,sp
- 144:	4022d1b3          	sra	gp,t0,sp
- 148:	005151b3          	srl	gp,sp,t0
- 14c:	005161b3          	or	gp,sp,t0
- 150:	005171b3          	and	gp,sp,t0
- 154:	fff00213          	li	tp,-1
- 158:	fff00293          	li	t0,-1
- 15c:	025201b3          	mul	gp,tp,t0
- 160:	fff00213          	li	tp,-1
- 164:	fff00293          	li	t0,-1
- 168:	025231b3          	mulhu	gp,tp,t0
- 16c:	fff00213          	li	tp,-1
- 170:	fff00293          	li	t0,-1
- 174:	025211b3          	mulh	gp,tp,t0
- 178:	fff00213          	li	tp,-1
- 17c:	fff00293          	li	t0,-1
- 180:	025221b3          	mulhsu	gp,tp,t0
- 184:	123450b7          	lui	ra,0x12345
- 188:	67808093          	addi	ra,ra,1656 # 12345678 <sp_top+0x2341678>
- 18c:	00000213          	li	tp,0
- 190:	888891b7          	lui	gp,0x88889
- 194:	88818193          	addi	gp,gp,-1912 # 88888888 <sp_top+0x78884888>
- 198:	00122023          	sw	ra,0(tp) # 0 <start>
- 19c:	00022383          	lw	t2,0(tp) # 0 <start>
- 1a0:	12345437          	lui	s0,0x12345
- 1a4:	67840413          	addi	s0,s0,1656 # 12345678 <sp_top+0x2341678>
- 1a8:	02839a63          	bne	t2,s0,1dc <fail>
- 1ac:	00320023          	sb	gp,0(tp) # 0 <start>
- 1b0:	00020283          	lb	t0,0(tp) # 0 <start>
- 1b4:	f8800313          	li	t1,-120
- 1b8:	02629263          	bne	t0,t1,1dc <fail>
- 1bc:	00000213          	li	tp,0
- 1c0:	00022083          	lw	ra,0(tp) # 0 <start>
- 1c4:	00008193          	mv	gp,ra
- 1c8:	123452b7          	lui	t0,0x12345
- 1cc:	68828293          	addi	t0,t0,1672 # 12345688 <sp_top+0x2341688>
- 1d0:	00519663          	bne	gp,t0,1dc <fail>
+ 124:	80030313          	addi	t1,t1,-2048 # 800 <run_end+0x678>
+ 128:	04619e63          	bne	gp,t1,184 <fail>
+ 12c:	123450b7          	lui	ra,0x12345
+ 130:	67808093          	addi	ra,ra,1656 # 12345678 <sp_top+0x2341678>
+ 134:	10000237          	lui	tp,0x10000
+ 138:	888891b7          	lui	gp,0x88889
+ 13c:	88818193          	addi	gp,gp,-1912 # 88888888 <sp_top+0x78884888>
+ 140:	00122023          	sw	ra,0(tp) # 10000000 <stack_size+0xfffe000>
+ 144:	00022383          	lw	t2,0(tp) # 0 <start>
+ 148:	12345437          	lui	s0,0x12345
+ 14c:	67840413          	addi	s0,s0,1656 # 12345678 <sp_top+0x2341678>
+ 150:	02839a63          	bne	t2,s0,184 <fail>
+ 154:	00320023          	sb	gp,0(tp) # 0 <start>
+ 158:	00020283          	lb	t0,0(tp) # 0 <start>
+ 15c:	f8800313          	li	t1,-120
+ 160:	02629263          	bne	t0,t1,184 <fail>
+ 164:	10000237          	lui	tp,0x10000
+ 168:	00022083          	lw	ra,0(tp) # 10000000 <stack_size+0xfffe000>
+ 16c:	00008193          	mv	gp,ra
+ 170:	123452b7          	lui	t0,0x12345
+ 174:	68828293          	addi	t0,t0,1672 # 12345688 <sp_top+0x2341688>
+ 178:	00519663          	bne	gp,t0,184 <fail>
 
-000001d4 <pass>:
- 1d4:	00100d13          	li	s10,1
- 1d8:	0080006f          	j	1e0 <run_end>
+0000017c <pass>:
+ 17c:	00100d13          	li	s10,1
+ 180:	0080006f          	j	188 <run_end>
 
-000001dc <fail>:
- 1dc:	00100d93          	li	s11,1
+00000184 <fail>:
+ 184:	00100d93          	li	s11,1
 
 Disassembly of section .stack:
 
@@ -142,7 +122,7 @@ Disassembly of section .riscv.attributes:
    2:	0000                	unimp
    4:	7200                	flw	fs0,32(a2)
    6:	7369                	lui	t1,0xffffa
-   8:	01007663          	bgeu	zero,a6,14 <start+0x14>
+   8:	01007663          	bgeu	zero,a6,14 <I_table>
    c:	0014                	0x14
    e:	0000                	unimp
   10:	7205                	lui	tp,0xfffe1
