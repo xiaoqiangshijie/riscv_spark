@@ -134,6 +134,7 @@ sra   x3,x5,x2      //x3 = x5 >> x2 = 5 >> 1 = 2
 srl   x3,x2,x5      //x3 = x2 >> x5 = 1 >> 5 = 0
 or    x3,x2,x5      //x3 = 001 | 101 = 101 = 5
 and   x3,x2,x5      //x3 = 001 & 101 = 001 = 1
+
 //M type
 li    x4,0xffffffff
 li    x5,0xffffffff

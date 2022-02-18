@@ -123,6 +123,9 @@ parameter INST_NOP_OP   = 7'b0000001;
 parameter INST_LUI      = 7'b0110111;
 parameter INST_AUIPC    = 7'b0010111;
 
+//FENCE type
+parameter INST_FENCE    = 7'b0001111;
+
 
 
 //inst type
@@ -417,28 +420,42 @@ always @(*) begin
             endcase
         end
         INST_LUI: begin
-                wr_reg_en    = 1'b1;
-                wr_reg_addr  = rd;
-                rd_addr1     = rs1;
-                rd_addr2     = rs2;
-                imm          = 32'b0;
-                rd_reg1_flag = 1'b0;
-                rd_reg2_flag = 1'b0; 
-                op1          = {de_inst[31:12], 12'b0};
-                op2          = 32'b0; 
-                inst_type    = 3'd6;
+            wr_reg_en    = 1'b1;
+            wr_reg_addr  = rd;
+            rd_addr1     = rs1;
+            rd_addr2     = rs2;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0; 
+            op1          = {de_inst[31:12], 12'b0};
+            op2          = 32'b0; 
+            inst_type    = 3'd6;
         end
         INST_AUIPC: begin
-                wr_reg_en    = 1'b1;
-                wr_reg_addr  = rd;
-                rd_addr1     = rs1;
-                rd_addr2     = rs2;
-                imm          = 32'b0;
-                rd_reg1_flag = 1'b0;
-                rd_reg2_flag = 1'b0; 
-                op1          = de_pc;
-                op2          = {de_inst[31:12], 12'b0}; 
-                inst_type    = 3'd5;
+            wr_reg_en    = 1'b1;
+            wr_reg_addr  = rd;
+            rd_addr1     = rs1;
+            rd_addr2     = rs2;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0; 
+            op1          = de_pc;
+            op2          = {de_inst[31:12], 12'b0}; 
+            inst_type    = 3'd6;
+        end
+        INST_FENCE: begin
+            wr_reg_en    = 1'b0;
+            wr_reg_addr  = rd;
+            rd_addr1     = rs1;
+            rd_addr2     = rs2;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0; 
+            op1          = 32'd0;
+            op2          = 32'd0; 
+            inst_type    = 3'd6;
+            op1_jump     = de_pc;
+            op2_jump     = 32'h4;
         end
         default:begin
             wr_reg_en    = 1'b0;

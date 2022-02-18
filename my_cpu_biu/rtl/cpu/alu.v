@@ -91,6 +91,9 @@ parameter INST_NOP_OP   = 7'b0000001;
 parameter INST_LUI      = 7'b0110111;
 parameter INST_AUIPC    = 7'b0010111;
 
+//FENCE type
+parameter INST_FENCE    = 7'b0001111;
+
 wire [6:0] opcode = alu_inst[6:0];
 wire [2:0] funct3 = alu_inst[14:12];
 wire [6:0] funct7 = alu_inst[31:25];
@@ -396,6 +399,11 @@ always @ (*) begin
             reg_wdata_o = op1_add_op2_res;
             jump_flag   = 1'b0;
             jump_addr   = 32'b0;
+        end
+        INST_FENCE: begin
+            reg_wdata_o = 32'b0;
+            jump_flag   = 1'b1;
+            jump_addr   = op1_jump_add_op2_jump_res;
         end
         default: begin
             jump_flag   = 1'b0;
