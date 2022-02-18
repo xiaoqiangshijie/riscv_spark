@@ -351,18 +351,6 @@ always @(*) begin
             op1_jump     = op1_in;
             op2_jump     = {{20{de_inst[31]}}, de_inst[31:20]};
         end
-        INST_NOP_OP:begin
-            wr_reg_en    = 1'b0;
-            wr_reg_addr  = 5'b0;
-            rd_addr1     = 5'b0;
-            rd_addr2     = 5'b0;
-            imm          = 32'b0;
-            rd_reg1_flag = 1'b0;
-            rd_reg2_flag = 1'b0; 
-            op1          = 32'b0;
-            op2          = 32'b0; 
-            inst_type    = 3'd0;
-        end
         INST_TYPE_L: begin
             case (funct3)
                 INST_LB, INST_LH, INST_LW, INST_LBU, INST_LHU: begin
@@ -456,6 +444,18 @@ always @(*) begin
             inst_type    = 3'd6;
             op1_jump     = de_pc;
             op2_jump     = 32'h4;
+        end
+        INST_NOP_OP:begin
+            wr_reg_en    = 1'b0;
+            wr_reg_addr  = 5'b0;
+            rd_addr1     = 5'b0;
+            rd_addr2     = 5'b0;
+            imm          = 32'b0;
+            rd_reg1_flag = 1'b0;
+            rd_reg2_flag = 1'b0; 
+            op1          = 32'b0;
+            op2          = 32'b0; 
+            inst_type    = 3'd0;
         end
         default:begin
             wr_reg_en    = 1'b0;

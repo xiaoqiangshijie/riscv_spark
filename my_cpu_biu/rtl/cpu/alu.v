@@ -390,11 +390,6 @@ always @ (*) begin
                 jump_addr = op1_jump_add_op2_jump_res;
                 reg_wdata_o = op1_add_op2_res;
         end
-        INST_NOP_OP: begin
-            reg_wdata_o = 32'b0;
-            jump_flag   = 1'b0;
-            jump_addr = 32'b0;
-        end
         INST_LUI, INST_AUIPC: begin
             reg_wdata_o = op1_add_op2_res;
             jump_flag   = 1'b0;
@@ -404,6 +399,11 @@ always @ (*) begin
             reg_wdata_o = 32'b0;
             jump_flag   = 1'b1;
             jump_addr   = op1_jump_add_op2_jump_res;
+        end
+        INST_NOP_OP: begin
+            reg_wdata_o = 32'b0;
+            jump_flag   = 1'b0;
+            jump_addr = 32'b0;
         end
         default: begin
             jump_flag   = 1'b0;
