@@ -14,6 +14,7 @@
 ../rtl/cpu/wb.v
 ../rtl/cpu/ctrl.v
 ../rtl/cpu/biu.v
+../rtl/cpu/div.v
 
 ../rtl/memory/rom.v
 ../rtl/memory/ram.v

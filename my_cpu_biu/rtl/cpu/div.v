@@ -74,7 +74,7 @@ always @(posedge clk or negedge rst_n) begin
             //enter div_on state
             10:begin
                 if(annul == 1'b0) begin
-                    if(cnt! = 6'b100000) begin
+                    if(cnt != 6'b100000) begin
                         if(div_temp[32] == 1'b1) begin
                             dividend <= {dividend[63:0],1'b0};
                         end

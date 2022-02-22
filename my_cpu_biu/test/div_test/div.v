@@ -25,7 +25,7 @@ reg  [31:0] temp_op2;
 assign div_temp = {1'b0,dividend[63:32]} - {1'b0,divisor};  //33bit?
 
 
-always @(posedge clk or negedge rst_n) begin
+always @(posedge clk) begin
     if(!rst_n) begin
         state      <= 2'b00;
         div_ready  <= 1'b0;
@@ -41,6 +41,7 @@ always @(posedge clk or negedge rst_n) begin
                     end
                     else begin
                         state <= 2'b10;
+                        cnt   <= 6'b000000;
                         // init data1
                         if(signed_div == 1'b1 && op1_data[31] == 1'b1) begin
                             temp_op1 = ~op1_data + 1;
@@ -79,9 +80,9 @@ always @(posedge clk or negedge rst_n) begin
                             dividend <= {dividend[63:0],1'b0};
                         end
                         else begin
-                            dividend <= {div_temp[31:0],dividend[31:0],1'b1};
+                            dividend <= {div_temp[31:0],dividend[31:0],1'b0};
                         end
-                        cnt <= cnt +1;
+                        cnt <= cnt + 1'b1;
                     end
                     //div end
                     else begin
