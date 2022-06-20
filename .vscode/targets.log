@@ -1,6 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target 'all'.  Stop.
- 
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Mar 16 11:50:36 2022
+# Make data base, printed on Mon Jun 20 18:54:50 2022
 
 # Variables
 
@@ -23,8 +23,6 @@ DESKTOP_SESSION = ubuntu
 # default
 .SHELLFLAGS := -c
 # environment
-LANG\tDEFAULT = zh_CN.UTF-8
-# environment
 XDG_SESSION_CLASS = user
 # environment
 XDG_SESSION_TYPE = x11
@@ -32,14 +30,10 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# environment
-PLATFORMIO_IDE = 2.4.2
-# environment
-SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1824,unix/host-virtual-machine:/tmp/.ICE-unix/1824
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
-PAPERSIZE\tDEFAULT = a4
+XAUTHORITY = /run/user/1000/gdm/Xauthority
 # environment
 GDMSESSION = ubuntu
 # environment
@@ -53,7 +47,7 @@ VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_langu
 # environment
 _ = /usr/bin/make
 # environment
-JOURNAL_STREAM = 8:56087
+JOURNAL_STREAM = 8:54193
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -67,7 +61,7 @@ MAKEFILE_LIST :=
 # environment
 NOVAS = /opt/synopsys/verdi201809/share/PLI/VCS/LINUX64
 # environment
-IM_CONFIG_PHASE = 1
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # environment
 USERNAME = host
 # environment
@@ -77,13 +71,15 @@ DVE_HOME = /opt/synopsys/vcs201809/gui/dve
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=17bf49e16304d309b28dea51622bff6a
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1625
+MANAGERPID = 1666
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5d8beaee-a825-4f1d-ad4b-e0d301cb93da.sock
+CLUTTER_IM_MODULE = fcitx
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-90a271a1-d74e-4070-bc13-a534f82b7f1d.sock
 # environment
 LC_NAME = zh_CN.UTF-8
 # environment
@@ -91,13 +87,13 @@ VSCODE_CWD = /home/host
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-NO_PROXY = 127.0.0.1
+PATH = /opt/synopsys/vcs201809/gui/dve/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/synopsys/verdi201809/bin:/opt/synopsys/verdi201809/platform/LINUX64/bin:/opt/synopsys/scl/v11.10/linux64/bin:/opt/synopsys/vcs201809/bin
 # environment
 LM_LICENSE_FILE = /opt/synopsys/Synopsys.dat
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-LC_NAME\tDEFAULT = zh_CN.UTF-8
+SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1890,unix/host-virtual-machine:/tmp/.ICE-unix/1890
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -107,7 +103,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = c75959df994f4f62a6e99911b041195c
+INVOCATION_ID = 1468b877f0f54511bab6eeb0cc0228f5
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -117,13 +113,11 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 19247
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5809
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
-# environment
-LC_NUMERIC\tDEFAULT = zh_CN.UTF-8
 # environment
 GTK_IM_MODULE = fcitx
 # environment
@@ -135,7 +129,7 @@ PWD = /home/host/riscv_soc1
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1796
+SSH_AGENT_PID = 1840
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -165,19 +159,15 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
-XAUTHORITY = /run/user/1000/gdm/Xauthority
-# environment
 VCS_TARGET_ARCH = amd64
 # environment
 LC_TIME = zh_CN.UTF-8
-# environment
-PLATFORMIO_PATH = /home/host/.platformio/python3/bin:/opt/synopsys/vcs201809/gui/dve/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/synopsys/verdi201809/bin:/opt/synopsys/verdi201809/platform/LINUX64/bin:/opt/synopsys/scl/v11.10/linux64/bin:/opt/synopsys/vcs201809/bin
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-QT_IM_MODULE = ibus
+QT_IM_MODULE = fcitx
 # environment
 VCS_ARCH_OVERRIDE = linux
 # environment
@@ -189,8 +179,6 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = host
 # environment
-LC_TIME\tDEFAULT = zh_CN.UTF-8
-# environment
 LC_MONETARY = zh_CN.UTF-8
 # makefile
 .DEFAULT_GOAL := 
@@ -200,8 +188,6 @@ XDG_CURRENT_DESKTOP = Unity
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 LC_TELEPHONE = zh_CN.UTF-8
-# environment
-LC_MONETARY\tDEFAULT = zh_CN.UTF-8
 # environment
 novas_args = -P /opt/synopsys/verdi201809/share/PLI/VCS/LINUX64/novas.tab   /opt/synopsys/verdi201809/share/PLI/VCS/LINUX64/pli.a 
 # default
@@ -214,8 +200,6 @@ MAKE_COMMAND := make
 LANGUAGE = zh_CN:zh:en_US:en
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-8836f954-1.63.2-main.sock
-# environment
-LC_TELEPHONE\tDEFAULT = zh_CN.UTF-8
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -229,15 +213,13 @@ BREAKPAD_DUMP_LOCATION = /home/host/.config/Code/exthost Crash Reports
 # environment
 GDK_BACKEND = x11
 # environment
-LANGUAGE\tDEFAULT = zh_CN:en
-# environment
 LC_PAPER = zh_CN.UTF-8
+# environment
+LC_IDENTIFICATION = zh_CN.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
 # environment
 NOVAS_PLI = /opt/synopsys/verdi201809/share/PLI/VCS/LINUX64
-# environment
-LC_PAPER\tDEFAULT = zh_CN.UTF-8
 # default
 MAKEFILES := 
 # environment
@@ -245,23 +227,19 @@ LC_NUMERIC = zh_CN.UTF-8
 # automatic
 <F = $(notdir $<)
 # environment
-PLATFORMIO_CALLER = vscode
-# environment
 NOVAS_HOME = /opt/synopsys/verdi201809
 # environment
 LC_MEASUREMENT = zh_CN.UTF-8
 # environment
 LC_ALL = C
 # environment
-DBUS_STARTER_BUS_TYPE = session
-# environment
 VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=8895d6c5-9d1d-41dc-8eb3-aec8e6c57b37&iid=8895d6c5-9d1d-41dc-8eb3-aec8e6c57b37&sid=8895d6c5-9d1d-41dc-8eb3-aec8e6c57b37","uploadToServer":true}
 # environment
-LC_MEASUREMENT\tDEFAULT = zh_CN.UTF-8
+QT4_IM_MODULE = fcitx
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
-# environment
-PATH = /opt/synopsys/vcs201809/gui/dve/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/synopsys/verdi201809/bin:/opt/synopsys/verdi201809/platform/LINUX64/bin:/opt/synopsys/scl/v11.10/linux64/bin:/opt/synopsys/vcs201809/bin
 # default
 SUFFIXES := 
 # environment
@@ -271,26 +249,17 @@ WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-LC_IDENTIFICATION = zh_CN.UTF-8
+GJS_DEBUG_OUTPUT = stderr
 # default
 .RECIPEPREFIX := 
 # environment
 LC_ADDRESS = zh_CN.UTF-8
 # environment
- 
-GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
-# environment
 LANG = C
 # environment
-VSCODE_PID = 19247
-# environment
-LC_IDENTIFICATION\tDEFAULT = zh_CN.UTF-8
-# environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=17bf49e16304d309b28dea51622bff6a
-# environment
-LC_ADDRESS\tDEFAULT = zh_CN.UTF-8
+VSCODE_PID = 5809
 # variable set hash-table stats:
-# Load=138/1024=13%, Rehash=0, Collisions=22/160=14%
+# Load=123/1024=12%, Rehash=0, Collisions=18/145=12%
 
 # Pattern-specific Variable Values
 
@@ -310,6 +279,7 @@ LC_ADDRESS\tDEFAULT = zh_CN.UTF-8
 
 # Not a target:
 all:
+ 
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -356,6 +326,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Wed Mar 16 11:50:36 2022
+# Finished Make data base on Mon Jun 20 18:54:50 2022
 
  
