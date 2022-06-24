@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jun 20 18:54:50 2022
+# Make data base, printed on Fri Jun 24 17:22:49 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_langu
 # environment
 _ = /usr/bin/make
 # environment
-JOURNAL_STREAM = 8:54193
+JOURNAL_STREAM = 8:64598
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,11 +75,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1666
+MANAGERPID = 1720
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-90a271a1-d74e-4070-bc13-a534f82b7f1d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6539fb69-84b7-4167-a939-b2dbd5b9a589.sock
 # environment
 LC_NAME = zh_CN.UTF-8
 # environment
@@ -93,7 +93,7 @@ LM_LICENSE_FILE = /opt/synopsys/Synopsys.dat
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1890,unix/host-virtual-machine:/tmp/.ICE-unix/1890
+SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1935,unix/host-virtual-machine:/tmp/.ICE-unix/1935
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -103,7 +103,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 1468b877f0f54511bab6eeb0cc0228f5
+INVOCATION_ID = 4180e90b845e47e096b3b383a1b72f73
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -113,7 +113,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5809
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2389
 # automatic
 %F = $(notdir $%)
 # environment
@@ -129,7 +129,7 @@ PWD = /home/host/riscv_soc1
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1840
+SSH_AGENT_PID = 1893
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -257,7 +257,7 @@ LC_ADDRESS = zh_CN.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5809
+VSCODE_PID = 2389
 # variable set hash-table stats:
 # Load=123/1024=12%, Rehash=0, Collisions=18/145=12%
 
@@ -279,8 +279,8 @@ VSCODE_PID = 5809
 
 # Not a target:
 all:
- 
 #  Command line target.
+ 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
@@ -326,6 +326,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Mon Jun 20 18:54:50 2022
+# Finished Make data base on Fri Jun 24 17:22:49 2022
 
  
