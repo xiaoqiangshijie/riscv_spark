@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 25 20:47:16 2022
+# Make data base, printed on Mon Jun 27 22:03:44 2022
 
 # Variables
 
@@ -47,7 +45,7 @@ VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{"*":"zh-cn"},"_langu
 # environment
 _ = /usr/bin/make
 # environment
-JOURNAL_STREAM = 8:57950
+JOURNAL_STREAM = 8:59897
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -75,11 +73,11 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 1695
+MANAGERPID = 1671
 # environment
 CLUTTER_IM_MODULE = fcitx
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-e25185e4-0601-40a7-abd5-5f9a9bce9438.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8af02095-94e6-4b24-8b12-62e47e2bb4b4.sock
 # environment
 LC_NAME = zh_CN.UTF-8
 # environment
@@ -93,7 +91,7 @@ LM_LICENSE_FILE = /opt/synopsys/Synopsys.dat
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1911,unix/host-virtual-machine:/tmp/.ICE-unix/1911
+SESSION_MANAGER = local/host-virtual-machine:@/tmp/.ICE-unix/1886,unix/host-virtual-machine:/tmp/.ICE-unix/1886
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -103,7 +101,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 8f44f91c4e90452cad2bfe57d636c3fa
+INVOCATION_ID = c657b389aabd48e1aa23ab4b012a5557
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -113,7 +111,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2389
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3312
 # automatic
 %F = $(notdir $%)
 # environment
@@ -129,7 +127,7 @@ PWD = /home/host/riscv_soc1
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1869
+SSH_AGENT_PID = 1845
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -257,7 +255,7 @@ LC_ADDRESS = zh_CN.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2389
+VSCODE_PID = 3312
 # variable set hash-table stats:
 # Load=123/1024=12%, Rehash=0, Collisions=18/145=12%
 
@@ -279,8 +277,10 @@ VSCODE_PID = 2389
 
 # Not a target:
 all:
- 
 #  Command line target.
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
@@ -326,6 +326,6 @@ GNUmakefile:
 # strcache performance: lookups = 24 / hit rate = 12%
 # hash-table stats:
 # Load=21/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Sat Jun 25 20:47:16 2022
+# Finished Make data base on Mon Jun 27 22:03:44 2022
 
  
