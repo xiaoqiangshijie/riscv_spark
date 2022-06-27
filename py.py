@@ -1,623 +1,12 @@
-#########################test##########################
-###################    one name    ####################
-#########################test##########################
-
-# count = 3
-# import random
-# answer = random.randint(1,10)
-
-# while count > 0:
-#     temp  = input("guess number:")
-#     guess = int(temp)
-
-#     if guess == answer:
-#         print("you are ture")
-#         break
-#     else:
-#         if guess < answer:
-#             print("you are input less")
-#         else:
-#             print("you are input more")
-#     count = count - 1
-
-# print("game over")
-
-#########################test##########################
-###################      while     ####################
-#########################test##########################
-
-# count = 3
-# while count > 0:
-#     print("I love you")
-#     count = count - 1
-#     # break
-
-#########################test##########################
-###################      random    ####################
-#########################test##########################
-
-# import random
-# num = random.randint(1,10)
-# print(num)
-
-#########################test##########################
-###################       decimal         #############
-#########################test##########################
-
-# import decimal
-# select = input("decimal or nodecimal:")
-# num = int(select)
-# if num == 1:
-#     a = decimal.Decimal('0.1')
-#     b = decimal.Decimal('0.2')
-#     print(a + b)
-# else:
-#     a = 0.1
-#     b = 0.2
-#     print(a + b)
-
-#########################test##########################
-###########       compound number         #############
-#########################test##########################
-
-# x = 1 + 2j
-# print(x.real)
-# print(x.imag)
-
-#########################test##########################
-###########         not > and > or        #############
-#########################test##########################
-
-
-
-#########################test##########################
-###########           condition           #############
-#########################test##########################
-
-# if "xiaoqiang" == "xiaoqiang1":
-#     print("123")
-# elif "xiaoqiang" == "xiaoqiang2":
-#     print("456")
-# else:
-#     print("789")
-
-# a = 3
-# b = 5
-# flag = 0 
-# if a < b:
-#     if flag == 1:
-#         small = a
-#     else:
-#         small = b
-# else:
-#     small = b 
-# print(small)
-
-# #condition express
-# small = a if a < b else b
-# print(small)
-
-
-#########################test##########################
-###########             cycle             #############
-#########################test##########################
-
-
-#########################(1)
-
-# love = "yes"
-# while love == "yes":
-#     love = input("do you love me today?")
-
-#########################(2)
-
-# i = 1
-# sum = 0
-# while i <= 1000000:
-#     sum = sum + i
-#     i   = i + 1
-# print(sum)
-
-#########################(3)
-
-# while True:
-#     print("my task is continuous work")
-
-
-#########################test##########################
-#############          while            ###############
-#########################test##########################
-
-
-#########################(1)
-# i = 0
-# while i < 10:
-#     i = i + 1
-#     if i % 2 == 0:
-#         continue
-#     print(i)
-
-#########################(2)
-# day = 1
-# while day <= 7:
-#     answer = input("do you study today?")
-#     if answer != "yes":
-#         break
-#     day = day + 1
-# else:
-#     print("nice!,you hold for seven days")
-
-#########################(3)
-# i = 1
-# while i <= 9:
-#     j = 1
-#     while j <= i:
-#         print(j,"*",i,"=",j*i,end="")
-#         j = j + 1
-#     print()
-#     i = i + 1
-
-#########################(4)
-# day = 1
-# hour = 1
-# while day <= 7:
-#     while hour <= 8:
-#         print("be sure to study for eight hours today")
-#         hour = hour + 1
-#         if hour > 1:
-#             break
-#     day = day + 1
-
-#########################test##########################
-###############          for           ################
-#########################test##########################
-
-#########################(1)
-# for name in "wangqiang":
-#     print(name)
-
-#########################(1)
-# for name in "wangqiang":
-#     print(name)
-
-#########################(2)
-# for number in range(11):
-#     print(number)
-
-# for number in range(5,11):
-#     print(number)
-
-# for number in range(5,11,2):
-#     print(number)
-
-# for number in range(10,5,-2):
-#     print(number)
-
-#########################(3)
-# i = 1
-# sum = 0
-# for i in range(1000001):
-#     sum = sum + i
-# print(sum)
-
-#########################(3)
-# for n in range(2,10):
-#     for x in  range(2,n):
-#         if n % x == 0:
-#             print(n,"=",x,"x",n//x)
-#             break
-#     else:
-#         print(n,"number is prime number")
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
-
-# list = [1,2,3,4,5,"go mountain hit tiger"]
-# print(list[0:6:2])
-# print(list[::-1])
-
-#########################(2)
-
-# heros = ["wang","qiang"]
-# heros.append("lili")
-# print(heros[::])
-
-#########################(3)
-
-# heros = ["wang","qiang"]
-# heros.extend(["lili","xue"])
-# print(heros[::])
-
-#########################(4)
-
-# s = [1,3,4,5]
-# s.insert(1,2)
-# print(s)
-
-#########################(4)
-
-# s = [1,3,4,5]
-# s.remove(1)
-# print(s)
-
-#########################(5)
-
-# s = [1,3,4,5]
-# s.pop(2)
-# print(s)
-
-#########################(6)
-
-# s = [1,3,4,5]
-# s.clear()
-# print(s)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-# heros    =  ["wang","qiang"]
-# heros[0] =  "xiao"
-# print(heros)
-
-# heros    =  ["wang","qiang","shi","jie"]
-# heros[1:] =  ["b","o","x"]
-# print(heros)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
-
-# heros    =  ["wang","qiang"]
-# heros[0] =  "xiao"
-# print(heros)
-
-#########################(2)
-
-# heros    =  ["wang","qiang","shi","jie"]
-# heros[1:] =  ["b","o","x"]
-# print(heros)
-
-#########################(3)
-
-# nums    =  [3,1,9,6,8,3,5,3]
-# nums.sort()
-# print(nums)
-
-#########################(4)
-
-# heros    =  ["wang","qiang","shi","jie"]
-# print(heros.index("qiang"))
-
-#########################(5)
-
-# heros    =  ["wang","qiang","shi","jie"]
-# heros_copy = heros.copy()
-# print(heros)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
-
-# s = [1,2,3]
-# t = [4,5,6]
-# print(s + t)
-# print(s * 3)
-
-#########################(2)
-
-# s = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# print(s)
-
-#########################(3)
-
-# s = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# print(s)
-
-#########################(4)
-
-# s = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# print(s[0][0])
-# print(s[2][2])
-
-
-#########################(5)
-
-# x = "wang"
-# y = "wang"
-# print(x is y)
-
-# m = 1
-# n = 1
-# print(m is n)
-
-# a = [1,2,3]
-# b = [1,2,3]
-# print(a is b)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
-
-# x = [1,2,3]
-# y = x
-# x[1] = 0
-# print(x,y)
-
-#########################(2)
-
-# x = [1,2,3]
-# y = x.copy()
-# x[1] = 0 
-# print(x,y)
-
-#########################(3)
-
-# x = [1,2,3]
-# y = x[:]
-# x[1] = 0 
-# print(x,y)
-
-#########################(3)
-
-# x = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# y = x.copy()
-# x[1][1] = 1
-# print(x,y)
-
-
-#########################(4) deep copy
-
-# x = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# import copy
-# y = copy.copy(x)
-# x[1][1] = 1
-# print(x,y)
-
-
-# x = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# import copy
-# y = copy.deepcopy(x)
-# x[1][1] = 1
-# print(x,y)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
- 
-# x = [1,2,3,4,5]
-# for i in range(len(x)):
-#     x[i] = x[i] * 2
-# print(x)
-
-#########################(2)
- 
-# x = [i for i in range(10)]
-# print(x)
-
-# x = [i+1 for i in range(10)]
-# print(x)
-
-#########################(3)
-
-# x = []
-# for i in range(10):
-#     x.append(i+1)
-# print(x)
-# y = [c * 2 for c in "wangqiang"]
-# print(y)
-
-#########################(4)
-
-# name = [ord(c) for c in "wang"]
-# print(name)
-
-#########################(5)
-
-# x = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# col2 = [row[1] for row in x]
-# print(col2)
-
-# x = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#             ]
-# col2 = [x[i][i] for i in range(len(x))]
-# print(col2)
-
-#########################test##########################
-###############        listbox         ################
-#########################test##########################
-
-#########################(1)
-
-# x = [[0] * 3] * 3
-# x[1][1]  = 1
-# print(x)
-
-#########################(2)
-
-# x = [0] * 3
-# for i in range(3):
-#     x[i] = [0] * 3
-# x[1][1] = 1
-# print(x)
-
-#########################(3)
-
-# s = [[0] * 3 for i in range(3)]
-# s[1][1] = 1 
-# print(s)
-
-#########################(4)
-
-# s = [i for i in range(10) if i % 2 == 0]
-# print(s)
-
-#########################(5)
-
-# s = [i + 1 for i in range(10) if i % 2 == 0]
-# print(s)
-
-#########################(6)
-
-# words  = ["wang","qiang","shi","wo"]
-# w_word = [w for w in words if w[0] == "w"]
-# print(w_word)
-
-#########################(7)
-
-# s = [
-#      [1,2,3],
-#      [4,5,6],
-#      [7,8,9]
-#              ]
-# num = []
-# for row in s:
-#     for col in row:
-#         num.append(col)
-# print(num)
-
-#########################(8)
-
-# s = [[1,2,3],[4,5,6],[7,8,9]]
-# s = [col for row in s for col in row]
-# print(s)
-
-#########################test##########################
-###############     element group     #################
-#########################test##########################
-
-#########################(1)
-
-# group = 1,2,3,4,5,"go to hit tiger"
-# group = (1,2,3,4,5,"go to hit tiger")
-# print(group[0])
-# print(group[:3])
-# print(group[:])
-# print(group[::2])
-# print(group[::-1])
-
-#########################(2)
-# nums = (3,1,9,6,8,3,5,3)
-# print(nums.count(3))
-
-#########################(3)
-# hero = ("wang","qiang","shi","wo")
-# print(hero.index("shi"))
-
-#########################(4)
-# s = (1,2,3)
-# t = (4,5,6)
-# print(s+t)
-# print(s * 3)
-# w = s,t
-# print(w)
-
-#########################(5)
-# s = (1,2,3)
-# for each in s:
-#     print(each)
-
-#########################(6)
-# w = ((1,2,3),(4,5,6))
-# for i in w:
-#     for each in i:
-#         print(each)
-
-#########################(7)
-# s = (1,2,3,4,5)
-# k = [each * 2 for each in s]
-# print(k)
-
-#########################(8)
-# s = (1,2,3,4,5)
-# k = [each * 2 for each in s]
-# print(k)
-
-#########################(9)
-# s = (1,2,3,4,5)
-# k = [each * 2 for each in s]
-# print(k)
-
-#########################(10)
-# t = (123,'fishc',3.14)
-# x,y,z = t
-# print(x)
-# print(y)
-# print(z)
-
-#########################(11)
-# a,b,c,d,e = "fishc"
-# print(a)
-# print(b)
-# print(c)
-# print(d)
-# print(e)
-
-#########################(12)
-# a,b,*c = "fishc"
-# print(a,b,c)
-
-#########################(13)
-# x,y = 10,20
-# _   = (10,20)
-# x,y = _ 
-# print(x,y)
-
-#########################(14)
-# s = [1,2,3]
-# t = [4,5,6]
-# w = (s,t) 
-# print(w)
-# w[0][1] = 9
-# print(w)
-
-
-
-
-
-
-
+############################################################################################
+############################################################################################
+############################################################################################
+#################################                        ###################################
+#################################      Python学习碎片     ###################################
+#################################                        ###################################
+############################################################################################
+############################################################################################
+############################################################################################
 
 
 
@@ -954,17 +343,455 @@
 ########################################   列表   ######################################
 ########################################################################################
 
+
+############################
+#########  一维列表   #######
+############################
+
 ############################ （1）初识列表
 
-list = [1,2,3,"wangqiang"]
-print(list)
-print(list[0])
-print(list[1])
-print(list[2])
-print(list[3])
+# list = [1,2,3,"wangqiang"]
+# print(list)
+# print(list[0])
+# print(list[1])
+# print(list[2])
+# print(list[3])    #列表中最后一个
+# print(list[-1])   #列表中最后一个
 
-############################ （2）使用for循环打印列表中的元素
+# print(len(list))  #列表中元素的个数
 
-for i in list:
-    print(i)
+# for i in list:    #使用for循环打印出来
+#     print(i)
 
+############################ （2）列表切片-左闭右开区间
+
+# list = [1,2,3,"wangqiang"]
+# print(list[0:2])    #打印前两个元素
+# print(list[0:4:2])  #跨度打印1，3
+# print(list[::-1])   #向后打印列表
+
+############################ （3）向列表增加元素
+
+# list = [1,2,3,"wangqiang"] 
+# list.append("add")                 #append方法加入一个
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list.extend(["add","sub"])         #extend方法加入多个
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list[len(list):] = ["add","sub"]   #切片方法加入多个
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list.insert(3,4)                   #insert在任意位置加入
+# print(list)
+
+############################ （4）从列表删除元素
+
+# list = [1,2,3,"wangqiang"] 
+# list.remove("wangqiang")           #remove删除指定的元素
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list.pop(0)                        #pop删除指定位置的元素
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list.clear()                       #clear清空列表的元素
+# print(list)
+
+############################ （5）在列表更改元素
+
+# list = [1,2,3,"wangqiang"] 
+# list[3] = "海泥"                     #利用切片更改列表的元素
+# print(list)
+
+# list = [1,2,3,"wangqiang"] 
+# list[1:] = ["海泥","王强"]            #利用切片更改列表的多个元素
+# print(list)
+
+# list = [1,3,2] 
+# list.sort()                          #对列表的数字进行正排序
+# print(list)
+
+# list = [1,3,2] 
+# list.reverse()                       #对列表的数字位置进行翻转
+# print(list)
+
+############################ （6）查询列表中的元素
+
+# list = [1,1,2,3,"wangqiang"] 
+# print(list.count(1))                  #count查询列表中出现元素的个数
+
+# list = [1,1,2,3,"wangqiang"] 
+# print(list.index(1))                  #index查询列表中元素的位置
+
+# list = [1,1,2,3,"wangqiang"] 
+# print(list.index(1,1,3))              #index查询列表中元素的位置,并设置起末位置。
+
+# list = [1,1,2,3,"wangqiang"] 
+# list[list.index(2)] = 3               #index查询并替换列表中元素
+# print(list)
+
+# list = [1,1,2,3,"wangqiang"] 
+# list[list.index(2)] = 3               #index查询并替换列表中元素
+# print(list)
+
+############################ （7）复制列表中的元素
+
+# list = [1,1,2,3,"wangqiang"] 
+# list1 = list.copy()                     #copy实现列表的复制
+# print(list1)
+
+# list = [1,1,2,3,"wangqiang"] 
+# list1 = list[:]                         #切片实现列表的复制
+# print(list1)
+
+############################
+#########  二维列表   #######
+############################
+
+############################ （1）认识二维列表
+
+# list = [[1,2,3],[4,5,6],[7,8,9]]
+# print(list)
+
+# list = [
+#         [1,2,3],
+#         [4,5,6],
+#         [7,8,9]
+#                 ]
+# print(list)
+
+############################ （2）print打印二维列表
+
+# list = [[1,2,3],[4,5,6],[7,8,9]]
+# for i in list:
+#     for j in i:
+#         print(j,end='')
+#     print()
+
+############################ （3）查询二维列表
+
+# list = [[1,2,3],[4,5,6],[7,8,9]]
+# print(list[0])                              #查询某行
+# print(list[0][1])                           #查询某行中的某列
+
+############################ （4）创建二维列表
+
+# list = [0] * 3
+# for i in range(3):
+#     list[i] = [0] * 3
+# print(list)
+
+############################
+#########  列表的复制   ######
+############################
+
+
+############################ （1）列表的引用到不同的变量，但本身只有一个列表，实际上不是copy
+
+# x = [1,2,3]                            
+# y = x
+# print(y)
+# x[0] = 4
+# print(y)
+
+############################ （2）使用copy对一维数组实现浅拷贝
+
+# x = [1,2,3]                            
+# y = x.copy()
+# x[0] = 4
+# print(y)
+
+############################ （3）使用copy中的deepcopy函数对二维列表实现深拷贝
+
+# import copy
+# x =[[1,2,3],
+#     [4,5,6],
+#     [7,8,9]]                       
+# y = copy.deepcopy(x)
+# x[1][1] = 0
+# print(y)
+
+############################
+#########  列表的推导式   ####   [表达式 for 表达式中的变量 in 范围] 
+############################
+
+############################ （1）认识列表推导式
+
+# list = [i for i in range(3)]
+# print(list)
+
+############################ （2）利用列表推导式快速创立二维列表
+
+# list = [[0] * 3 for i in range(3)]
+# print(list)
+
+############################ （3）通过列表推导式将二维数组的列取出
+
+# x =[[1,2,3],
+#     [4,5,6],
+#     [7,8,9]] 
+# x = [row[1] for row in x]
+# print(x)
+
+############################ （4）利用列表推导式以及ord将字符串转换为ASCII
+
+# list = [ord(i) for i in "wangqiang"]
+# print(list)
+
+############################ （5）对列表推导式加入条件分支
+
+# list = [i for i in range(10) if i % 2 == 0] #先执行for语句，再执行条件分支，最后执行表达式
+# print(list)
+
+# word = ["apple","sub","add"]
+# word = [i for i in word if i[0] == "a"]     #列表推导式识别首字母为a的字符串
+# print(word)
+
+
+########################################################################################
+########################################   元组   ######################################
+########################################################################################
+
+
+############################ （1）认识元组(tuple)
+
+# tuple = (1,2,3,4,5,"上山打老虎")
+# tuple[0] = 0                                   #元组的内容不可修改
+
+
+############################ （2）查询元组中的元素
+
+# tuple = (1,2,3,3,4,4,4,5,"上山打老虎")
+# print(tuple[2:])                      
+# x=tuple[2:]                                     #利用切片赋值给新的变量
+# print(x)
+
+# print(tuple.count(4))                           #查看元组中的元素的个数
+# print(tuple.index(4))                           #利用元组中的元素的位置
+
+############################ （3）建立只有一个元素的元组
+
+# x = (520,)                                       #要在元素后加逗号
+# print(type(x))
+
+############################ （4）元组的解包和打包
+
+# tuple = (520,"book",0.1)                          #对于列表和字符串也通用
+# x,y,z=tuple
+# print(x)
+# print(y)
+# print(z)
+
+############################ （5）元组中的列表是可变的
+
+# x = [1,2,3]
+# y = [4,5,6]
+# z = [7,8,9]
+# p = (x,y,z)
+# print(p)
+# p[1][1] = 0                                        #元组中的列表
+
+
+########################################################################################
+########################################   字符串   #####################################
+########################################################################################
+
+
+############################ （1）利用字符串查看是否是回文数
+
+# x = "12321"
+# if x == x[::-1]:
+#     print("是回文数")
+# else:
+#     print("不是回文数")
+
+############################ （2）字符串中的大小写字母转换
+
+# string = "I Love WangQiang"
+# print(string.capitalize())                            #capitalize 首字母大写，其他小写
+# print(string.title())                                 #title      所有单词以首字母大写开始，其余小写
+# print(string.casefold())                              #casefold   所有字符串的符号均小写
+# print(string.lower())                                 #lower      所有字母均小写
+# print(string.upper())                                 #upper      所有字母均大写
+# print(string.swapcase())                              #swapcase   所有字母大小写翻转
+
+############################ （3）字符串中的左中右对齐
+
+# string = "I Love WangQiang"                             
+# print(string.center(25))                              #center    设置字符串的宽度，并居中对齐
+# print(string.center(25,"退"))                         #center    居中对齐，将左侧补自定义字符 
+# print(string.ljust(25))                               #ljust     左对齐
+# print(string.rjust(25))                               #rjust     右对齐
+# print(string.zfill(25))                               #zfill     居中对齐，将左侧补0
+
+############################ （4）字符串中的查找功能
+
+# string = "王强是王者" 
+# print(string.count("王"))                             #count     查看字符出现的次数
+# print(string.count("王",0,2))                         #count     查看字符出现的次数（设置起始位置）
+# print(string.find("王"))                              #find      查看字符出现的位置（从左往右）
+# print(string.rfind("王"))                             #rfind     查看字符出现的位置（从右往左）
+# print(string.index("王"))                             #index     查看字符出现的位置（从左往右）
+# print(string.rindex("王"))                            #rindex    查看字符出现的位置（从右往左）
+
+############################ （5）字符串中的替换功能
+
+# note = "在吗，我在你家楼下，快点下来"
+# print(note.replace("在吗","想你"))                     #replace   替换字符串
+
+# note = "在吗，我在你家楼下，快点下来"
+# table = str.maketrans("在","干","下来")                #translate  设计替换规则,脚本中用到
+# print(note.translate(table))
+
+############################ （6）字符串中的判断功能
+
+# string = "I Love WangQiang"
+# print(string.startswith("I"))                         #startswith  判断首字符
+# print(string.startswith("",1,3))                      #startswith  判断首字符(设置边界)
+# print(string.endswith("g"))                           #endswith    判断尾字符
+# print(string.istitle())                               #istitle     判断每个单词首字母是否大写，其余小写
+# print(string.isupper())                               #isupper     判断每个单词是否都是大写
+# print(string.upper().isupper())                       #isupper     方法的迭代,先改成大写，然后判断
+# print(string.lower().islower())                       #islower     方法的迭代,先改成小写，然后判断
+# print(string.isalpha())                               #alpha       判断是否全是字母构成，空格不是字母
+# print(string.isspace())                               #isspace     判断是否空白字符串
+# print(string.isprintable())                           #isprintable 判断是否可打印(转义字符不可打印)
+
+# string = "12345"
+# print(string.isdecimal())                             #isdecimal    判断是否数字（不可兼容特殊写法）
+# print(string.isdigit())                               #isspace      判断是否数字（不可兼容大写数字）
+# print(string.isnumeric())                             #isnumeric    判断是否数字（兼容性最强）
+# print(string.isidentifier())                          #isidentifier 判断是否是一个合法的变量名（必须由数字、字母、下划线组成）
+
+############################ （7）字符串中的截取功能
+
+# string = "    不，要留，白\n "                                  
+# print(string.lstrip())                                  #lstrip       删除左侧空白
+# print(string.rstrip())                                  #rstrip       删除右侧空白
+# print(string.strip())                                   #strip        删除左右侧空白
+# print(string.partition("留"))                           #partition    以指令字符为中心拆分
+# print(string.split("，"))                               #split        以指令字符为中心拆分，指令元素删除
+# print(string.rsplit("，",1))                            #rsplit       以指令字符为中心拆分，指令元素删除,同时指令拆分个数
+# print(string.splitlines())                              #splitlines   以换行符为中心拆分
+# print(".".join(["wang","qiang","pin"]))                 #join         以指定的字符串插入各个子字符中
+
+############################ （8）格式化字符串
+
+# x = 98
+# string = "王强的得分为{}".format(x)                       #format   引用变量到字符串中
+# string = "名字为{0}，得分为{1}".format("王强","98")          
+# string = "名字为{name}，得分为{score}".format(name="王强",score="98")          
+# print(string)
+
+# x = 520
+# string = "{0:^10}".format(x)                            #format   引用变量到字符串中,同时设置宽度居中
+# string = "{0:%>10}{1:%<10}".format(520,250)             #format   引用变量到字符串中,同时设置宽度填充左右对齐
+# print(string) 
+
+# print("{:+} {:-}".format(1,-2))                           #format   添加正负号
+# print("{:_}".format(1234567))                             #format   千位分隔符
+# print("{:,}".format(1234567))                             #format   千位逗号符
+# print("{:.2f}".format(1234567))                           #format   保留小数点后两位
+# print("{:.2g}".format(1234567))                           #format   保留两位有效数字
+# print("{:.6}".format("1234567"))                          #format   保留字符串前6位
+# print("{:b}".format(80))                                  #format   二进制形式输出
+# print("{:c}".format(80))                                  #format   字符形式输出
+# print("{:d}".format(80))                                  #format   十进制形式输出
+# print("{:o}".format(80))                                  #format   八进制形式输出
+# print("{:x}".format(80))                                  #format   十六进制形式输出
+# print("{:#x}".format(80))                                 #format   十六进制形式输出（显示前缀）
+# print("{:e}".format(80))                                  #format   科学计数法形式输出
+# print("{:g}".format(1234.369))                            #format   自适应输出
+# print("{:%}".format(0.98))                                #format   百分号形式输出
+# print("{:.2%}".format(0.98))                              #format   百分号形式输出（设置精度）
+# print("{:.{prec}f}".format(3.1415,prec=2))                #format   参数化设计
+# print("{:{fill}{align}{width}.{prec}{ty}}".format(3.1415,fill="+",align="^",width=10,prec=3,ty="g"))     #format   超级参数化设计
+
+# string = f"王强的得分为{98}"                                #format   f-string语法糖
+# print(string)
+# print(f"{1234567:_}")                                     #format   f-string语法糖表示格式化字符串
+
+
+########################################################################################
+#########################################   序列   #####################################
+########################################################################################
+
+
+############################ （1）序列分为列表、元组、字符串
+
+# x = [1,2,3]                                                 
+# y = [1,2,3]
+# print(id(x))
+# print(id(y))
+# print(x is y)                                               #列表开辟了不同的空间保存两个变量
+
+# x = (1,2,3)                                                 
+# y = (1,2,3)
+# print(id(x))
+# print(id(y))
+# print(x is y)                                               #元组开辟了一个的空间指向两个变量
+
+# x = "1,2,3"                                                 
+# y = "1,2,3" 
+# print(id(x))
+# print(id(y))
+# print(x is y)                                               #字符串开辟了一个的空间指向两个变量
+
+############################ （2）运用序列的一些方法
+
+# print("1" in "1,2,3,4")                                       #字符串检测包含关系
+
+# x = [1,2,3]
+# del x[0:1]                                                    #del   删除序列
+# print(x)
+
+# x = [1,2,3]                                                   #del 清除列表
+# del x[:]                                                      #或者x.clear()                                                   
+# print(x)
+
+############################ （3）序列之间的相互转换
+
+# print(list("a,b,c"))                                          #将字符串转换成列表
+# print(list((1,2,3)))                                          #将元组转换成列表
+
+# print(tuple("a,b,c"))                                         #将字符串转换成元组
+# print(tuple([1,2,3]))                                         #将列表转换成元组
+
+# print(str([1,2,3]))                                           #将列表转换成字符串
+# print(str((1,2,3)))                                           #将元组转换成字符串
+
+# x = [1,2,0]
+# print(all(x))                                                   #与操作
+# print(any(x))                                                   #或操作
+
+############################ （4）迭代器（一次性的）
+
+# x = ["wang","qiang"]
+# print(list(enumerate(x)))                                       #enumerate 引入索引号
+
+# x = [1,2,3]
+# y = [4,5,6]
+# z = "a,b,c"
+# print(list(zip(x,y,z)))                                         #zip    返回列压缩元组
+
+# print(list(map(ord,"a,b,c")))                                   #map    利用函数计算ASCII码
+# print(list(map(pow,[1,2],[2,4])))                               #map    利用函数计算平方
+
+# print(list(filter(str.islower,"a,B,c")))                            #filter 将小写过滤出来
+
+# x = [1,2,3,4,5]
+# y = iter(x)                                                     #iter   将迭代对象转换成迭代器
+# print(type(x))                                                  
+# print(type(y))
+
+# print(next(y))                                                  #iter   每一次显示迭代器中的一个字符
+# print(next(y))
+# print(next(y))
+# print(next(y))
+# print(next(y))
+# print(next(y,"没有了"))
