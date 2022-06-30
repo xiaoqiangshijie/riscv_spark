@@ -795,3 +795,259 @@
 # print(next(y))
 # print(next(y))
 # print(next(y,"没有了"))
+
+
+########################################################################################
+#########################################   字典   #####################################
+########################################################################################
+
+
+############################ （1）初识字典
+
+# x = {"关羽":"云长","诸葛亮":"孔明"}
+# print(x["关羽"])                                     #关羽为键，云长为信息
+# print(type(x))
+# x["刘备"] = "玄德"                                    #增加一个字典
+# print(x)
+
+############################ （2）创建字典的5种方法
+
+# x = {"关羽":"云长","诸葛亮":"孔明"}                    
+# y = dict(关羽 = "云长",诸葛亮 = "孔明")
+# z = dict([("关羽","云长"),("诸葛亮","孔明")])
+# m = dict({"关羽":"云长","诸葛亮":"孔明"})
+# n = dict({"关羽":"云长"},诸葛亮 = "孔明")
+# k = dict(zip(["关羽","云长"],["诸葛亮","孔明"]))
+
+############################ （3）字典元素的 增-改
+
+# x = dict.fromkeys("wang",250)                         #所有的键赋予相同的值
+# print(x)
+
+# x["w"] = 30                                           #修改键中对应的值
+# print(x)
+
+# x["q"] = 40                                           #增加一个键以及对应的值
+# print(x)
+
+############################ （4）字典元素的 删
+
+# x = dict.fromkeys("wang",250)
+# x.pop("w")                                             #pop      删除一个键以及对应的值
+# print(x)
+
+# x = dict.fromkeys("wang",250)
+# x.popitem()                                            #popitem  删除最近添加的一个键以及对应的值
+# print(x)
+
+# x = dict.fromkeys("wang",250)
+# del x["w"]                                             #del      删除一个键以及对应的值
+# print(x)
+
+# x = dict.fromkeys("wang",250)
+# del x                                                  #del      删除整个字典
+# print(x)
+
+# x = dict.fromkeys("wang",250)
+# x.clear()                                              #clear    清空字典的内容
+# print(x)
+
+############################ （5）字典元素的 改
+
+# x = dict.fromkeys("wang",250)                          #修改字典的基本方式
+# x["w"] = 150
+# print(x)
+
+# x = dict.fromkeys("wang",250)                          #update 修改多个键值
+# x.update({"w":50,"a":100})
+# x.update(w="50",a="100")
+# print(x)
+
+############################ （6）字典元素的 查
+
+# x = dict.fromkeys("wang",250)
+# print(x["w"])                                           #查字典的基本方式
+# print(x.get("l","这里没有"))                             #采用get查字典，可以打印注释
+# print(x.setdefault("l",300))                            #采用setdefault查字典，查不到则建立新的键值
+
+############################ （7）字典元素的 复制
+
+# x = dict.fromkeys("wang",250)
+# y = x.copy()                                             #copy   使用copy进行浅拷贝
+# print(y)
+
+############################ （8）字典元素的 视图对象
+
+# x = dict.fromkeys("wang",250)
+# keys   = x.keys()                                        #keys   保存键
+# values = x.values()                                      #values 保存值
+# items  = x.items()                                       #items  保存键值
+# print(keys)
+# print(values)
+# print(items)
+
+############################ （9）字典元素的 一些方法
+
+# x = dict.fromkeys("wang",250) 
+# print(len(x))                                              #items    查看键长
+# print("a" in x)                                            #in       判断是否包含
+# print(list(x))                                             #list     键转换成列表
+# print(list(x.values()))                                    #x.values 值转换成列表
+# y = iter(x)                                                #x.values 键转换成迭代器
+# print(next(y))
+
+# x = dict.fromkeys("wang",250) 
+# x["w"] = 50
+# print(list(reversed(x.values())))                          #items    将键值倒序及转换成列表
+
+############################ （10）字典元素的 嵌套
+
+# score = {"王强":{"数学":"99","政治":"59"},"徐振鹏":{"数学":"64","政治":"99"}}    
+# print(score)
+# print(score["王强"]["数学"])                                  #字典嵌套字典
+
+# score = {"王强":[1,2,3],"徐振鹏":[4,5,6]}    
+# print(score)
+# print(score["王强"][0])                                      #字典嵌套列表
+
+############################ （11）字典推导式
+
+# x = {"关羽":"云长","诸葛亮":"孔明"}
+# c = {v:k for k,v in x.items()}                               #交换键和值
+# print(c)
+
+
+# c = {x:ord(x) for x in "wangqiang"}                          #求出字符串对应的编码值
+# print(c)
+
+
+########################################################################################
+#########################################   集合   #####################################
+########################################################################################
+
+
+############################ （1）认识集合（无序且唯一）
+
+# x = {"a"}                                                  #集合的基本构造
+# print(type(x))
+
+############################ （2）创建集合
+
+# x = {"a","b","c"}                                          #集合的创建
+
+# y = {x for x in "wang"}                                    #采用集合推导式创建
+# print(y)
+
+# z = set("wang")                                            #采用类型构造器创建
+# print(z)
+
+############################ （3）集合的方法
+
+# x = {"a","b","c"}
+# print("a" in x)                                            #判断是否在集合中
+
+# print(set([1,2,2,3]))                                      #set 集合降重
+
+# for i in x:                                                #迭代打印集合的元素
+#     print(i)
+
+# x = {"a","b","c"} 
+# y = x.copy()                                               #copy 浅复制集合
+# print(y)                              
+
+# x = {"a","b","c"} 
+# print(x.isdisjoint(set("nlp")))                            #isdisjoint 判断集合没有交集 
+# print(x.isdisjoint("nlp"))                                 #isdisjoint 判断集合没有交集 
+
+# x = {"a","b","c"} 
+# print(x.issubset("abcde"))                                 #issubset   判断集合是否为子集
+# print(x < set("abcde"))
+ 
+# x = {"a","b","c"}
+# print(x.issuperset("ab"))                                  #issubset   判断集合是否为超集
+# print(x > set("ab")) 
+
+# x = {"a","b","c"} 
+# print(x.union("123"))                                      #union                 并集
+# print(x | {1, 2, 3})                                         
+# print(x.union("123","456"))
+
+# x = {"a","b","c"} 
+# print(x.intersection("aoe"))                               #intersection          交集
+# print(x & {"a","o","e"}) 
+# print(x.intersection("abe","bce"))
+
+# x = {"a","b","c"} 
+# print(x.difference("aoe"))                                 #difference            差集
+# print(x - {"a","o","e"}) 
+# print(x.difference("aoe","bpl"))
+
+# x = {"a","b","c"} 
+# print(x.symmetric_difference("aoe"))                       #symmetric_difference  对称差集
+# print(x ^ {"a","o","e"}) 
+
+############################ （4）可变集合和不可变集合
+
+# x = frozenset("wang")                                        #frozenset 不可变集合定义  
+# print(type(x))
+# print(x)
+
+
+# x = set("wang")                                              #frozenset 不可变集合与可变集合区别 
+# y = frozenset("wang")                              
+# x.update([1,1],"qiang")                                      #update    可以使用update更新集合            
+# print(x)   
+# y.update([1,1],"qiang")                                      #update    不可以使用update更新集合
+# print(y) 
+
+############################ （5）三种更新集合方式
+
+# x = {"a","b","c"} 
+# x.update("123")                                                #intersection    更新并集
+# print(x)
+
+# x = {"a","b","c"} 
+# x.intersection_update("aoe")                                   #intersection    更新交集
+# print(x)
+
+# x = {"a","b","c"} 
+# x.difference_update("aoe")                                     #difference_update    更新差集
+# print(x)
+
+# x = {"a","b","c"} 
+# x.symmetric_difference_update("aoe")                           #symmetric_difference  更新对称差集
+# print(x)
+
+############################ （6）集合增减元素
+
+# x = {"a","b","c"} 
+# x.add("d")                                                     #add     向集合中增加一个元素
+# print(x)      
+
+# x = {"a","b","c"} 
+# x.remove("d")                                                  #remomve 从集合中删除一个元素
+# print(x)                                                       #若删除元素不存在，则报错
+
+# x = {"a","b","c"} 
+# x.discard("d")                                                 #discard 从集合中删除一个元素
+# print(x)                                                       #若删除元素不存在，则不变
+
+# x = {"a","b","c"} 
+# x.pop()                                                        #pop 从集合中随机弹出一个元素
+# print(x)                                                      
+
+# x = {"a","b","c"} 
+# x.clear()                                                      #clear 清空集合
+# print(x)                                                 
+
+############################ （7）哈希（可变的不可哈希，不可变的可哈希）
+############################     只有可哈希的对象才能作为字典的键以及集合的元素
+
+# print(hash("123"))                                          #字符串不可变     -可哈希
+# print(hash((1,2,3)))                                        #元组不可变       -可哈希
+# print(hash(frozenset("wang")))                              #不可变集合不可变  -可哈希
+
+# print(hash[1,2,3])                                          #数列可变         -不可哈希
+# print(hash({"a"}))                                          #集合可变         -不可哈希
+
+# print({"王强":123,"徐振鹏":456})                              #这种没问题            
