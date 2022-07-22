@@ -42,7 +42,7 @@ initial begin
     #15;
     rst=1'b1;
     #800;
-    $stop;
+    #250000 $finish();   //vcs simulate time finish
 end
 
 `ifdef VCS_WAVE  //VCS加载波形
