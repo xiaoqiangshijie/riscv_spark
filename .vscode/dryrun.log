@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/host/riscv_soc1'
-make: Leaving directory '/home/host/riscv_soc1'
+make: Entering directory '/home/host/riscv_spark'
+make: Leaving directory '/home/host/riscv_spark'
  
 make: *** No targets specified and no makefile found.  Stop.
 
