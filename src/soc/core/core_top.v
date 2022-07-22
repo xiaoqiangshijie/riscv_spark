@@ -1,4 +1,4 @@
-`include "/home/host/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_spark/src/defines.v"
 
 // 处理器核顶层模块
 module core(

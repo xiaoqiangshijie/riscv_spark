@@ -1,4 +1,4 @@
-`include "/home/host/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_spark/src/defines.v"
 
 // PC寄存器模块//取指模块
 module pc_reg(

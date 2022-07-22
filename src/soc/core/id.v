@@ -1,4 +1,4 @@
-`include "/home/host/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_spark/src/defines.v"
 
 // 译码模块
 // 纯组合逻辑电路

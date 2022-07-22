@@ -1,4 +1,4 @@
-`include "/home/host/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_spark/src/defines.v"
 
 // 除法模块
 // 试商法实现32位整数除法

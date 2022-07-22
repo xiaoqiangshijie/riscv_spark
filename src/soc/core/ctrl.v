@@ -1,4 +1,4 @@
-`include "/home/host/riscv_soc1/src/defines.v"
+`include "/home/host/riscv_spark/src/defines.v"
 
 // 控制模块
 // 发出跳转、暂停流水线信号
