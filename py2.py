@@ -561,7 +561,7 @@
 # f.write("I Love crow\n")                            # write     写入一行字符串 
 # f.writelines(["I Love Wang\n","I Love Qiang"])      # writeline 写入几行字符串 
 # f.close()                                           # close将写入的文件关闭
-# f.flush()                                           # flush写入硬盘中
+# f.flush()                                           # flush写入硬盘中,真正的保存
 
 # f = open("crow.txt",mode="w")                       # 写入模式后，不作任何操作就关闭，会清空文件
 # f.close() 
@@ -579,7 +579,7 @@
 # print(f.read())                                     #read     从指针的开头读取文件内容
 # print(f.seek(0))                                    #seek     将指针移动到文件开头
 # print(f.readline())                                 #readline 将打印第一行的字符
-# f.truncate(29)                                      #截取从0到19的指针位置的内容
+# f.truncate(29)                                      #截取从0到29的指针位置的内容
 
 ############################ （3）文件路径
 
@@ -590,13 +590,183 @@
 # print(p.is_dir())                                     #判断p是不是个文件夹
 # print(p.name)                                         #获取路径的最后部分
 
-# q = p/"crow.txt"                                      #指定路径中的文件
+# q = p / "crow.txt"                                      #指定路径中的文件
 # print(q)                                              #打印路径中的文件
 # print(q.is_file())                                    #判断q是不是个文件
 # print(q.exists())                                     #判断q路径是不是存在
 # print(q.name)                                         #获取路径的最后部分
 # print(q.stem)                                         #获取文件名
 # print(q.suffix)                                       #获取文件后缀
+# print(q.parent)                                       #获取父级目录
+# qs = q.parents                                        #获取父级们目录
+
+# for each in qs:                                       #打印父级们目录
+#     print(each) 
+
+# print(q.parts)                                        #路径信息以元组形式保存
+# print(p.stat())                                       #获取文件信息
+# print(p.stat().st_size)                               #获取文件尺寸
+# print(Path("./doc"))                                  #打印相对路径
+# print(Path("./doc").resolve())                        #将相对路径转换成绝对路径
+
+
+############################ （4）上下文管理器
+
+# f = open("crow.txt", "w")         #正常操作
+# f.write("test write1")
+# f.close
+
+# with open("crow.txt", "w") as f:  # with操作，可以帮我关闭保存文件
+#     f.write("test write2")        # 同时当程序中有错误时，依然可以保存文件内容
+
+############################ （5）将代码转换二进制流
+
+# import pickle
+
+# x, y, z = 1, 2, 3
+# s = "wq"
+# l = ["wq", 520, 3.14]
+# d = {"one":1, "two":2}
+
+# with open("data.pkl", "wb") as f:  # with操作 b为二进制
+    
+#     pickle.dump(x, f)
+#     pickle.dump(y, f)  
+#     pickle.dump(z, f)  
+#     pickle.dump(s, f)  
+#     pickle.dump(l, f)
+#     pickle.dump(d, f)      
+#     # pickle.dump((x,y,z,s,l,d), f) #元组形式打包也可以额
+
+# with open("data.pkl", "rb") as f:  # 读取这个文件
+#     # 
+#     x = pickle.load(f)
+#     y = pickle.load(f)
+#     z = pickle.load(f)
+#     s = pickle.load(f)  
+#     l = pickle.load(f)
+#     d = pickle.load(f)     
+#     # x,y,z,s,l,d = pickle.load(f) #元组形式解包也可以额
+
+# print(x,y,z,s,l,d, sep="\n")
+
+
+
+########################################################################################
+#########################################   异常   ######################################
+########################################################################################
+
+############################ （1）什么是异常
+
+# 1 / 0               #触发异常
+# "wq" + 520          #触发异常
+
+############################ （2）捕获异常
+
+# try:
+#     1/0                                               #检测范围
+# except:                                               #发生异常时打印
+#     print("出错了~")
+
+# try:
+#     1/0                                               #检测范围
+# except ZeroDivisionError:                             #捕获的异常一定是除数为0时才打印，否则依然打印异常信息
+#     print("出错了~")
+
+# try:
+#     1/0                                               #检测范围
+# except ZeroDivisionError as e:                        #使用as命令 获取异常原因
+#     print(e)
+
+# try:
+#     1/0                                               #检测范围
+#     520 + "wq"
+# except (ZeroDivisionError, ValueError, TypeError):    #检测到3个异常的任何一个，都会执行pass跳过
+#     pass
+
+# try:
+#     1/0                                               #多个条件分支判断异常
+#     520 + "wq"
+# except ZeroDivisionError:   
+#     print("除数不能为0")
+# except ValueError:
+#     print("值不正确")
+# except TypeError:
+#     print("类型不正确")
+
+############################ （3）异常分支
+
+#try-except-else
+
+# try:
+#     1/0
+# except:
+#     print("逮到了~")
+# else:
+#     print("没逮到~")
+
+#try-except-else-finally
+
+# try:
+#     1/0
+# except:
+#     print("逮到了~")
+# else:
+#     print("没逮到~")
+# finally:
+#     print("逮没逮到都会吱一声")
+
+#无限循环异常
+
+# try:
+#     while True:
+#         pass
+# finally:
+#     print("无限月读")
+
+############################ （3）异常的嵌套
+
+# try:
+#     try:
+#         520 + "wq"
+#     except:
+#         print("内部异常")
+#     1/0
+# except:
+#     print("外部异常!")
+# finally:
+#     print("收尾工作!")
+
+############################ （4）rise语句(自爆异常)
+
+# raise ValueError("值不正确")
+
+# try:
+#     1/0
+# except:
+#     raise ValueError("这样可不行")                      #python提示偷换的异常
+
+# raise ValueError("这样可不行~") from ZeroDivisionError    #异常链
+
+############################ （5）assert-断言
+
+# s = "wq"
+# assert s == "Fishc"                                     #断言触发的异常
+
+############################ （6）利用异常实现goto
+
+# try:
+#     while True:
+#         while True:
+#             for i in range(10):
+#                 if i > 3:
+#                     raise
+#                 print(i)
+#             print("被跳过")
+#         print("被跳过")
+#     print("被跳过")
+# except:
+#     print("到我碗里来!")
 
 
 ########################################################################################
