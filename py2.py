@@ -1245,7 +1245,7 @@
 
 ############################ （2）__slots__的继承
 
-##采用__slots__控制属性不允许继承
+#采用__slots__控制属性不允许继承
 
 # class C:
 #     __slots__ = ["x","y"]
@@ -1296,6 +1296,10 @@
 ## del c                                          #直接销毁对象
 # print(c.a)                                       #结束后被销毁
 
+############################################
+############# 运算相关的魔法（上） ############        
+############################################
+
 ############################ （3）__add__ 加法
 
 # class S(str):
@@ -1308,7 +1312,7 @@
 # print(s1+"bbq")  
 # print("bbq"+s2)  
 
-############################ （4）__radd__ 加法
+############################ （4）__radd__ 反算术运算加法
 
 # class S1(str):
 #     def __add__(self, other):
@@ -1322,11 +1326,11 @@
 # s2 = S2("banana")
 # print(s1+s2)
 
-############################ （5）__iadd__ 左侧增强型加法
+############################ （5）__iadd__ 左侧增强型加法，加法并赋值
 
 # class S1(str):
 #     def __iadd__(self, other):
-#         return len(self) + len(other)                   #魔法方法未实现
+#         return len(self) + len(other)                
 
 # class S2(str):
 #     def __radd__(self, other):
@@ -1337,3 +1341,109 @@
 # s1 += s2
 # print(s1)
 # print(type(s1))
+
+############################ （6）__int__ 将字符串装换成整型 "5" => 5
+
+############################################
+############# 运算相关的魔法（下） ############        
+############################################
+
+# print(3 & 2) # 结果是2
+# print(3 & 4) # 结果是0
+# print(3 | 2) # 结果是3
+# print(3 | 4) # 结果是1
+# print(~2) # 结果是1
+# print(~4) # 结果是1
+# print(3 ^ 2) # 结果是3
+# print(3 ^ 4) # 结果是1
+# print(8 >> 2) # 结果是2
+# print(8 >> 3) # 结果是1
+# print(8 << 3) # 结果是32
+# print(8 << 4) # 结果是64
+# print(8 >> -2) # 移位值不能为负数
+
+# class C:
+#     def __index__(self):
+#         print("被拦截")
+#         return 3
+# c = C()
+# s = "FishC"
+# print(s[c]) 
+# print(bin(3))
+
+
+#############################################
+############# 属性访问相关的魔法方法 ############        
+#############################################
+
+############################ （0）先了解一些魔法方法
+
+# class C:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.__age = age
+
+# c = C("wq", 18)
+# print(hasattr(c, "name"))             #判断c这个对象是否有"name"这个参数
+# print(getattr(c, "name"))             #获取name属性的值
+# print(getattr(c, "_C__age"))          #获取私有属性age的值的方法##################
+# print(setattr(c, "_C__age", 19))      #修改私有属性age的值的方法##################
+# print(delattr(c, "_C__age"))          #删除私有属性age的值的方法##################
+
+############################ （1）__getattribute__的魔法方法
+
+# class C:
+#     def __init__(self,name,age):
+#         self.name   = name
+#         self.__age  = age
+#     def __getattribute__(self, attrname):
+#         print("拿来把你")
+#         return super().__getattribute__(attrname)
+
+# c = C("小甲鱼", 18)
+# getattr(c, "name")                    #通过魔法方法访问属性
+# print(c._C__age)
+
+############################ （2）__getattr__魔法方法
+
+# class C:
+#     def __init__(self,name,age):
+#         self.name   = name
+#         self.__age  = age
+#     def __getattribute__(self, attrname):                     #当访问属性时可以触发
+#         print("拿来把你")
+#         return super().__getattribute__(attrname)
+#     def __getattr__(self, attrname):                          #当访问不存在的属性时触发这个方法
+#         if attrname == "FishC":
+#             print("i love fishc")
+#         else:
+#             raise AttributeError(attrname)
+
+# c = C("小甲鱼", 18)
+# c.FishC
+
+############################ （3）__getattr__魔法方法 
+# - 可以在对象外部对属性赋值
+
+# class D:
+#     def __setattr__(self,name,value):
+#         self.__dict__[name]   = value
+
+# d = D()
+# d.name = "小甲鱼"
+# print(d.name)
+
+############################ （4）__delattr__魔法方法 
+# - 可以在对象外部对属性删除
+
+# class D:
+#     def __setattr__(self,name,value):
+#         self.__dict__[name]   = value
+#     def __delattr__(self, name):
+#         del self.__dict__[name]
+
+# d = D()
+# d.name = "小甲鱼"
+# print(d.__dict__)
+# del d.name
+# print(d.__dict__)
