@@ -1447,3 +1447,287 @@
 # print(d.__dict__)
 # del d.name
 # print(d.__dict__)
+
+
+#############################################
+###############  切片获取的魔法方法 ############        
+#############################################
+
+
+############################ （1）__getitem__魔法方法 
+
+# class C:
+#     def __getitem__(self, index):
+#         print(index)
+
+# c = C()
+# print(c[2])
+# print(c[2:8])
+
+### slice用法 ###
+
+# s = "I Love You"
+
+# print(s[2:6])
+# print(s[slice(2, 6)])
+
+# print(s[7:])
+# print(s[slice(7,None)])
+
+# print(s[::4])
+# print(s[slice(None,None,4)])
+
+############################ （1）__setitem__魔法方法 切片修改
+
+
+# class D:
+#     def __init__(self, data):
+#         self.data = data
+#     def __getitem__(self, index):
+#         return self.data[index]
+#     def __setitem__(self, index, value):
+#         self.data[index] = value
+
+# d = D([1,2,3,4,5])
+# print(d[1])
+
+# d[1] = 1      ## __setitem__ 修改
+# print(d[1])
+
+# d[2:4] = [2,3]
+# print(d[:])
+
+### __getitem__ ###
+
+# class D:
+#     def __init__(self, data):
+#         self.data = data
+#     def __getitem__(self, index):
+#         return self.data[index] * 2
+
+# d = D([1,2,3,4,5])
+# for i in d:
+#     print(i, end='')
+
+############################ （3）__iter__可迭代对象和__next__迭代器
+
+# x = [1,1,2,3,5]  ##列表不是迭代器
+
+# # print(next(2))  #error
+
+# for i in x:
+#     print(i, end='')
+
+# temp = iter(x)   # 获取迭代对象，返回迭代器
+# while True:
+#     try:
+#         i = temp.__next__() #使用迭代器
+#     except StopIteration:
+#         break
+#     print(i, end='')
+
+############################ （4）实现迭代器
+
+# class Double:
+#     def __init__(self, start, stop):
+#         self.value = start - 1                          #  ???
+#         self.stop = stop
+#     def __iter__(self):
+#         return self
+#     def __next__(self):
+#         if self.value == self.stop:
+#             raise StopIteration
+#         self.value += 1
+#         return self.value * 2
+
+# d = Double(1,5)
+# for i in d:
+#     print(i, end='')
+
+
+#############################################
+#################### 代偿 ###################
+#############################################
+
+############################ （1）__contains__
+# 判断3是否在列表中
+
+# class C:
+#     def __init__(self,data):
+#         self.data = data
+#     def __contains__(self,item):
+#         print("嗨~")
+#         return item in self.data
+
+# c = C([1,2,3,4,5])
+# print(3 in c)                     #item是3
+# print(6 in c)                     #item是6
+
+############################ （2）代尝
+
+#当找不到__contains__,则找到iter和next进行代尝
+
+# class C:
+#     def __init__(self,data):
+#         self.data = data
+#     def __iter__(self):
+#         print("Iter", end= " -> ")
+#         self.i=0
+#         return self
+#     def __next__(self):
+#         print("Next",end="->")
+#         if self.i == len(self.data):
+#             raise StopIteration
+#         item = self.data[self.i]
+#         self.i += 1
+#         return item
+
+# c = C([1,2,3,4,5])
+# 3 in c
+
+############################ （3）bool测试
+
+# class D:
+#     def __bool__(self):
+#         print("Bool")
+#         return True
+
+# d = D()
+# bool(d)
+
+#用len进行代尝
+
+# class D:
+#     def __init__(self,data):
+#         self.data = data
+#     def __len__(self):
+#         print("len")
+#         return len(self.data)
+
+
+# d = D("FishC")
+# print(bool(d))      # 是true
+# d = D("")
+# print(bool(d))      # 是false
+
+
+###############################################
+#################### 运算魔法 ###################
+###############################################
+
+# 小于大于和等于
+
+# class S(str):
+#     def __lt__(self,other):
+#         return len(self) < len(other)
+#     def __gt__(self,other):
+#         return len(self) > len(other)
+#     def __eq__(self,other):
+#         return len(self) == len(other)
+
+# s1 = S("FishC")
+# s2 = S("fishc")
+# print(s1<s2)
+# print(s1==s2)
+
+###############################################
+#################### call魔法 ###################
+###############################################
+
+############################ （1）call的魔法方法   
+#让对象像函数一样可以被调用
+
+# class C:
+#     def __call__(self):
+#         print("嗨")
+
+# c = C()
+# c()
+
+# class C:
+#     def __call__(self,*args,**kwargs):
+#         print(f"位置参数 -> {args}\n关键字参数 -> {kwargs}")
+
+# c = C()
+# c(1,2,3,x=250,y=520)
+
+############################ （2）实现exp的魔法方法
+
+# class Power:
+#     def __init__(self,exp):
+#         self.exp = exp
+#     def __call__(self,base):
+#         return base ** self.exp
+
+# square = Power(2)
+# print(square(2))
+# print(square(3))
+
+# square = Power(3)
+# print(square(2))
+
+############################ （3）字符串相关的方法
+
+# str ：将参数装换成字符串对象，给人看
+# repr：将对象装换成程序可执行字符串，给程序看
+
+# print(str(123))
+# print(repr(123))
+
+# print(str("wq"))
+# print(repr("wq"))
+
+# eval 将字符串去引号执行
+
+# print(eval("1 + 2"))
+# print(repr("wq"))   ##repr多穿了一层外衣，脱了输出字符串
+
+# print(repr(12345))   ##repr多穿了一层外衣，脱了输出字符串
+
+############################ （4）字符串相关的魔法方法(懵)
+
+# class C:
+#     def __repr__(self):
+#         return "i love you"
+
+# c = C()
+# print(repr(c))
+# print(str(c))
+
+
+# class C:
+#     def __str__(self):
+#         return "i love you"
+
+# c = C()
+# print(repr(c))
+# print(str(c))
+
+
+# class C:
+#     def __str__(self):
+#         return "i love you"
+
+# cs = [C(),C(),C()]
+# for each in cs:
+#     print(each)
+# print(cs)
+
+############################ （5）利用魔法方法显示不同的形式
+
+# class C:
+#     def __init__(self, data):
+#         self.data = data
+#     def __str__(self):                  #重构打印信息 print触发
+#         return f"data = {self.data}"    
+#     def __repr__(self):                 #重构打印信息和对象输出  直接输入对象名触发
+#         return f"C({self.data})"        
+#     def __add__(self,other):            #对象加另一个参数时触发
+#         self.data += other 
+
+# c = C(250)
+# print(c)         
+# c +250
+# print(c)
+
+
