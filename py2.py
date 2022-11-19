@@ -1595,7 +1595,7 @@
 # d = D()
 # bool(d)
 
-#用len进行代尝
+# 用len进行代尝
 
 # class D:
 #     def __init__(self,data):
@@ -1630,9 +1630,9 @@
 # print(s1<s2)
 # print(s1==s2)
 
-###############################################
+################################################
 #################### call魔法 ###################
-###############################################
+################################################
 
 ############################ （1）call的魔法方法   
 #让对象像函数一样可以被调用
@@ -1675,9 +1675,9 @@
 # print(repr(123))
 
 # print(str("wq"))
-# print(repr("wq"))
-
-# eval 将字符串去引号执行
+# print(repr("wq"))  #      "'wq'"
+                             #||
+# eval 将字符串去引号执行      #'wq'
 
 # print(eval("1 + 2"))
 # print(repr("wq"))   ##repr多穿了一层外衣，脱了输出字符串
@@ -1720,14 +1720,164 @@
 #         self.data = data
 #     def __str__(self):                  #重构打印信息 print触发
 #         return f"data = {self.data}"    
-#     def __repr__(self):                 #重构打印信息和对象输出  直接输入对象名触发
+#     def __repr__(self):                 #修改打印信息和对象输出  直接输入对象名触发
 #         return f"C({self.data})"        
 #     def __add__(self,other):            #对象加另一个参数时触发
 #         self.data += other 
 
 # c = C(250)
+# c + 20
 # print(c)         
 # c +250
 # print(c)
 
 
+#################################################
+#################### property ###################
+#################################################
+
+###########################  （1）property应用
+
+# class C:
+#     def __init__(self):
+#         self._x=250
+#     def getx(self):
+#         return self._x
+#     def setx(self, value):
+#         self._x = value
+#     def delx(self):
+#         del self._x
+#     x = property(getx, setx, delx)
+
+# c = C()
+# print(c.x)
+# c.x = 520
+# print(c.x)
+# print(c.__dict__)
+# del c.x
+# print(c.__dict__)
+
+###########################  （2）property装饰器
+
+# class E:
+#     def __init__(self):
+#         self._x = 250
+#     @property
+#     def x(self):
+#         return self._x
+#     @x.setter
+#     def x(self,value):
+#         self._x = value
+#     @x.deleter
+#     def x(self):
+#         del self._x
+#     #x = property(x)
+
+# e = E()
+# print(e.x)
+# e.x = 520
+# print(e.__dict__)
+# del e.x
+# print(e.__dict__)
+
+
+#################################################
+###################### 类方法 ####################
+#################################################
+
+
+###########################  （1）@classmethod类方法
+
+# class C:
+#     def funA(self):
+#         print(self)
+#     @classmethod
+#     def funB(cls):   #类方法,cls是一个类
+#         print(cls)
+
+# c = C()
+# c.funA()                   # 绑定的是obiect对象
+# c.funB()                   # class方法
+
+
+# class C:
+#     count = 0
+#     def __init__(self):
+#         C.count += 1                            #每一次例化时，count加1
+#     @classmethod
+#     def get_count(cls):                         #cls是类,cls.count是类的属性
+#         print(f"该类一共例化了{cls.count}个对象")   
+
+# c1 = C()
+# c2 = C()
+# c3 = C()
+
+# c3.get_count()
+
+###########################  （2） 静态方法
+
+# class C:
+#     @staticmethod
+#     def funC():
+#         print("I love FichC")
+
+# c = C()
+# c.funC()
+# C.funC()                                #可以通过类直接调用静态方法
+
+
+# class C:
+#     count = 0
+#     def __init__(self):
+#         C.count += 1
+#     @staticmethod
+#     def get_count():                    #get_count是静态方法，其中C.count是访问类的count属性
+#         print(f"该类一共例化了{C.count}个对象")
+
+# c1 = C()
+# c2 = C()
+# c3 = C()
+
+# c3.get_count()
+
+
+##############################################
+#################### 描述符 ###################
+##############################################
+
+
+# class D:                                    #类D去访问类C的私有属性
+#     def __get__(self, instance, owner):
+#         return instance._x
+#     def __set__(set,instance,value):
+#         instance._x = value
+#     def __delete__(self,instance):
+#         del instance._x
+
+# class C:
+#     def __init__(self,x=250):
+#         self._x = x
+#     x = D()
+
+# c = C()
+# print(c.x)
+# c.x = 520
+# print(c.__dict__)
+# del c.x
+# print(c.__dict__)
+
+
+####################################################
+#################### type类型转换 ###################
+####################################################
+
+# #判断类型
+# print(type(250))
+# print(type(3.14))
+# print(type("fishc"))
+
+# #类型装换
+# print(type(250)("520"))                 #转换成整数
+# print(type([])("520"))                  #转换成列表
+# print(type(())([5,2,0]))                #转换成数组
+# print(type({}).fromkeys([5,2,0]))       #转换成字典
