@@ -1,0 +1,85 @@
+//-----------------------------------------------------------------------------------
+//
+//-----------------------------------------------------------------------------------
+//File          : ahbl_slave_if.v
+//Author        : fengyi
+//Date          : 7/27/2021
+//Version       : 0.1
+//Description   : this file is ahbl slave interface module.
+//-----------------------------------------------------------------------------------
+//Modiication history:
+//Date           By            Version           Change Description
+//07/27/2021     fengyi        0.1               
+//8/4/2021       fengyi                          haddr_r do not reset                                               
+//-----------------------------------------------------------------------------------
+
+module ahbl_slave_if(
+  input clk ,
+  input rstn,
+//with BIU
+  input  [31:0] biu_int_haddr ,
+  input  [31:0] biu_int_hwdata,
+  input         biu_int_hwrite,
+  input  [1: 0] biu_int_htrans,
+  input  [2: 0] biu_int_hsize ,
+  input  [2: 0] biu_int_hburst,
+  input         biu_int_hsel  ,
+  input         biu_int_hready,
+  output [31:0] int_biu_hrdata,
+  output        int_biu_hresp ,
+  output        int_biu_hreadyout,
+
+//with regfile
+  input  [31:0] reg_if_rdata  ,
+  output        if_reg_wr     ,
+  output        if_reg_en     ,
+  output [31:0] if_reg_wdata  ,
+  output [31:0] if_reg_addr    
+  );
+
+  reg           hwrite_r      ; 
+  reg    [2 :0] hsize_r       ; 
+  reg    [2 :0] hburst_r      ; 
+  reg    [1 :0] htrans_r      ; 
+  reg    [31:0] haddr_r       ;  
+  reg           hsel_r        ;
+
+  assign int_biu_hrdata    = reg_if_rdata     ;
+  assign int_biu_hresp     = 1'b0             ; //OK
+  assign int_biu_hreadyout = 1'b1             ;
+
+  assign if_reg_wr      = hwrite_r         ;
+  assign if_reg_en      = htrans_r == 2'b10 && hsel_r && biu_int_hready; 
+  assign if_reg_addr    = haddr_r          ;
+  assign if_reg_wdata   = biu_int_hwdata   ; //write process
+  
+//reg ctrl signals to align with addr cycle
+  always@(posedge clk or negedge rstn) begin
+    if(!rstn) begin
+      hwrite_r <= 1'b0 ;
+      hsize_r  <= 3'b0 ;
+      hburst_r <= 3'b0 ;
+      htrans_r <= 2'b0 ;
+//      haddr_r  <= 32'b0;
+    end
+    else if(biu_int_hsel && biu_int_hready) begin
+      hwrite_r <= biu_int_hwrite;
+      hsize_r  <= biu_int_hsize ;
+      hburst_r <= biu_int_hburst;
+      htrans_r <= biu_int_htrans;
+//      haddr_r  <= biu_int_haddr ;
+    end
+  end
+
+  always@(posedge clk) begin
+    if(biu_int_hsel && biu_int_hready) begin
+      haddr_r <= biu_int_haddr;
+    end
+  end
+
+  always@(posedge clk) begin
+      hsel_r <= biu_int_hsel;
+  end
+
+
+endmodule
