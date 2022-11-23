@@ -45,12 +45,14 @@ def creatBall():
     print(f"红色球:{realRed},蓝色球:{blue}")
     return realRed
 
-for i in range(round):
-    list = [
-        [0] * round,
-        [0] * round,
-        [0] * round
-                ]
+for i in range(round):  #round = 3 i={0,1,2}
+    list = [               
+        [0] ,   
+        [0] ,    
+        [0] ,
+        [0] ,
+        [0]
+            ]
     list[i] = creatBall()
     # print(list[i])
     choose(list[i])
