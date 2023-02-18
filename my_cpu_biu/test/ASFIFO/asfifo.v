@@ -77,7 +77,7 @@ always @(posedge rd_clk or negedge rd_rst_n) begin
         rd_gray_2d <= {DEEP{1'b0}};
     end
     else begin
-        rd_gray_1d <= wr_gray;
+        rd_gray_1d <= rd_gray;
         rd_gray_2d <= rd_gray_1d;
     end
 end
@@ -92,7 +92,7 @@ always @(posedge wr_clk or negedge wr_rst_n) begin
         wr_gray_2d <= {DEEP{1'b0}};
     end
     else begin
-        wr_gray_1d <= rd_gray;
+        wr_gray_1d <= wr_gray;
         wr_gray_2d <= wr_gray_1d;
     end
 end
@@ -128,7 +128,7 @@ end
 
 //generate rd_empty signal
 always @(*) begin
-    if((wr_bin[DEEP] == rd_bin_wr[DEEP]) && wr_bin[DEEP-1:0] == rd_bin_wr[DEEP-1:0]) begin
+    if(rd_bin == wr_bin_rd) begin
         rd_empty = 1'b1;
     end
     else begin
